@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Camp Week Schedule 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1f4d3d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<style>
+:root{
+  --bg:#f5f2ec;
+  --bg-elev:#ffffff;
+  --text:#22281f;
+  --text-dim:#5c6357;
+  --accent:#1f4d3d;
+  --accent-text:#ffffff;
+  --border:#e4ded2;
+  --pill-bg:#eae4d5;
+  --pill-active-bg:#1f4d3d;
+  --pill-active-text:#ffffff;
+  --chip-signup:#c96a3c;
+  --sunrise:#c96a3c;
+  --noon:#b8922f;
+  --sunset:#5b4d8a;
+  --shadow:0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.08);
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14161a;
+    --bg-elev:#1e2126;
+    --text:#eceae4;
+    --text-dim:#9aa08f;
+    --accent:#3f8f6d;
+    --accent-text:#08130f;
+    --border:#2b2f35;
+    --pill-bg:#242830;
+    --pill-active-bg:#3f8f6d;
+    --pill-active-text:#08130f;
+    --chip-signup:#e08a5c;
+    --sunrise:#e08a5c;
+    --noon:#d4af52;
+    --sunset:#9384d6;
+    --shadow:0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161a; --bg-elev:#1e2126; --text:#eceae4; --text-dim:#9aa08f;
+  --accent:#3f8f6d; --accent-text:#08130f; --border:#2b2f35; --pill-bg:#242830;
+  --pill-active-bg:#3f8f6d; --pill-active-text:#08130f; --chip-signup:#e08a5c;
+  --sunrise:#e08a5c; --noon:#d4af52; --sunset:#9384d6;
+  --shadow:0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.5);
+}
+:root[data-theme="light"]{
+  --bg:#f5f2ec; --bg-elev:#ffffff; --text:#22281f; --text-dim:#5c6357;
+  --accent:#1f4d3d; --accent-text:#ffffff; --border:#e4ded2; --pill-bg:#eae4d5;
+  --pill-active-bg:#1f4d3d; --pill-active-text:#ffffff; --chip-signup:#c96a3c;
+  --sunrise:#c96a3c; --noon:#b8922f; --sunset:#5b4d8a;
+  --shadow:0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.08);
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;height:100%;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  overscroll-behavior-y:none;
+  padding-top: var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+}
+.app{display:flex;flex-direction:column;min-height:100vh; min-height:100dvh;}
+
+header.top{
+  padding:14px 16px 8px;
+  display:flex; align-items:center; justify-content:space-between;
+  position:sticky; top:0; z-index:20; background:var(--bg);
+}
+header.top h1{font-size:19px; margin:0; font-weight:700; letter-spacing:-0.01em;}
+header.top .sub{font-size:12px; color:var(--text-dim); margin-top:1px;}
+.icon-btn{
+  border:none; background:var(--pill-bg); color:var(--text);
+  width:36px; height:36px; border-radius:50%; font-size:16px;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  flex:none;
+}
+
+.day-tabs{
+  display:flex; gap:8px; overflow-x:auto; padding:6px 16px 12px;
+  scrollbar-width:none; position:sticky; top:52px; z-index:19; background:var(--bg);
+}
+.day-tabs::-webkit-scrollbar{display:none;}
+.day-pill{
+  flex:none; padding:8px 14px; border-radius:999px; border:1px solid var(--border);
+  background:var(--pill-bg); color:var(--text); font-size:14px; font-weight:600;
+  cursor:pointer; position:relative; white-space:nowrap;
+}
+.day-pill.active{background:var(--pill-active-bg); color:var(--pill-active-text); border-color:transparent;}
+.day-pill .cnt{
+  display:inline-block; min-width:16px; padding:0 4px; margin-left:6px; border-radius:999px;
+  background:var(--chip-signup); color:#fff; font-size:10px; font-weight:700; line-height:16px; vertical-align:2px;
+}
+.day-pill.active .cnt{background:rgba(255,255,255,0.35);}
+
+main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
+
+.section{margin-top:22px;}
+.section:first-child{margin-top:8px;}
+.section-head{
+  display:flex; align-items:center; gap:8px; margin-bottom:10px;
+  font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.06em;
+}
+.section-head .dot{width:8px;height:8px;border-radius:50%;}
+.section-head.sunrise .dot{background:var(--sunrise);} .section-head.sunrise{color:var(--sunrise);}
+.section-head.noon .dot{background:var(--noon);} .section-head.noon{color:var(--noon);}
+.section-head.sunset .dot{background:var(--sunset);} .section-head.sunset{color:var(--sunset);}
+
+.card{background:var(--bg-elev); border-radius:14px; box-shadow:var(--shadow); overflow:hidden; border:1px solid var(--border);}
+.item{
+  display:flex; align-items:flex-start; gap:12px; padding:11px 14px;
+  border-top:1px solid var(--border);
+}
+.item:first-child{border-top:none;}
+.item .time{
+  flex:none; width:92px; font-size:12.5px; color:var(--text-dim); font-weight:600; padding-top:2px;
+  line-height:1.3;
+}
+.item .title{flex:1; font-size:15px; line-height:1.35; padding-top:1px;}
+.item .check{
+  flex:none; width:26px; height:26px; border-radius:8px; border:2px solid var(--border);
+  background:transparent; display:flex; align-items:center; justify-content:center; cursor:pointer;
+  margin-top:-1px;
+}
+.item .check.checked{background:var(--chip-signup); border-color:var(--chip-signup); color:#fff; font-size:15px; font-weight:800;}
+.item.is-checked .title{font-weight:600;}
+
+.empty-note{
+  text-align:center; color:var(--text-dim); font-size:14px; padding:30px 20px;
+}
+
+.info-banner{
+  font-size:12.5px; color:var(--text-dim); background:var(--pill-bg); border-radius:10px;
+  padding:9px 12px; margin-bottom:16px; line-height:1.4;
+}
+
+/* Menu */
+.meal-block{margin-bottom:18px;}
+.meal-title{font-size:16px; font-weight:800; margin-bottom:8px;}
+.meal-title .name{font-weight:600; color:var(--text-dim); font-size:13px; margin-left:6px;}
+.food-group{padding:10px 14px; border-top:1px solid var(--border); font-size:14px; line-height:1.6;}
+.food-group:first-child{border-top:none;}
+.food-group .g-label{font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim); font-weight:700; margin-bottom:3px;}
+
+/* My sign-ups */
+.day-group{margin-bottom:20px;}
+.day-group h3{font-size:14px; font-weight:800; margin:0 0 8px 2px;}
+.mini-item{display:flex; gap:10px; padding:9px 14px; border-top:1px solid var(--border); font-size:14.5px; align-items:baseline;}
+.mini-item:first-child{border-top:none;}
+.mini-item .t{color:var(--text-dim); font-size:12px; width:88px; flex:none;}
+.summary-actions{display:flex; gap:10px; margin:14px 0 4px;}
+.btn{
+  flex:1; border:1px solid var(--border); background:var(--pill-bg); color:var(--text);
+  padding:11px; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer;
+}
+.btn.danger{color:#c0392b;}
+
+/* Bottom nav */
+nav.bottom{
+  position:sticky; bottom:0; z-index:20;
+  display:flex; background:var(--bg-elev); border-top:1px solid var(--border);
+  padding-bottom: calc(6px + var(--safe-bottom));
+}
+nav.bottom button{
+  flex:1; background:none; border:none; padding:9px 4px 6px; cursor:pointer;
+  color:var(--text-dim); font-size:11px; font-weight:700; display:flex; flex-direction:column; align-items:center; gap:3px;
+}
+nav.bottom button .ic{font-size:20px;}
+nav.bottom button.active{color:var(--accent);}
+
+/* Modal */
+.modal-back{
+  position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:50;
+  display:flex; align-items:flex-end; justify-content:center;
+}
+.modal-back.hidden{display:none;}
+.modal{
+  background:var(--bg-elev); width:100%; max-width:640px; border-radius:18px 18px 0 0;
+  padding:20px 20px calc(24px + var(--safe-bottom)); max-height:80vh; overflow:auto;
+}
+.modal h2{margin:0 0 12px; font-size:17px;}
+.modal p{font-size:13.5px; line-height:1.55; color:var(--text-dim); margin:0 0 10px;}
+.modal .close-row{display:flex; justify-content:flex-end; margin-top:10px;}
+.modal .close-row button{
+  border:none; background:var(--pill-active-bg); color:var(--pill-active-text);
+  padding:10px 18px; border-radius:10px; font-weight:700; font-size:14px; cursor:pointer;
+}
+.search-wrap{margin-bottom:14px;}
+.search-wrap input{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--border);
+  background:var(--pill-bg); color:var(--text); font-size:14px;
+}
+
+/* Install walkthrough */
+.howto-tabs{display:flex; gap:8px; margin-bottom:16px;}
+.howto-tabs button{
+  flex:1; padding:9px; border-radius:10px; border:1px solid var(--border);
+  background:var(--pill-bg); color:var(--text); font-size:14px; font-weight:700; cursor:pointer;
+}
+.howto-tabs button.active{background:var(--pill-active-bg); color:var(--pill-active-text); border-color:transparent;}
+.step{display:flex; gap:12px; margin-bottom:18px; align-items:flex-start;}
+.step-num{
+  flex:none; width:26px; height:26px; border-radius:50%; background:var(--accent); color:var(--accent-text);
+  font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-top:1px;
+}
+.step-body{flex:1;}
+.step-body .s-text{font-size:14px; line-height:1.5; margin-bottom:8px; color:var(--text);}
+.shot{
+  border:1px solid var(--border); border-radius:14px; background:var(--bg);
+  padding:12px; overflow:hidden;
+}
+.mock-urlbar{
+  display:flex; align-items:center; gap:8px; background:var(--pill-bg);
+  border-radius:10px; padding:8px 12px; font-size:12.5px; color:var(--text-dim);
+}
+.mock-urlbar .grow{flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.mock-toolbar{
+  display:flex; justify-content:space-around; align-items:center; padding:10px 4px 2px; font-size:18px; color:var(--text-dim);
+}
+.mock-sheet{border-radius:12px; border:1px solid var(--border); background:var(--bg-elev); overflow:hidden; margin-top:10px;}
+.mock-row{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  padding:11px 13px; font-size:13.5px; border-top:1px solid var(--border); color:var(--text);
+}
+.mock-row:first-child{border-top:none;}
+.mock-row .r-ic{font-size:16px; width:22px; text-align:center; flex:none;}
+.mock-row .r-label{flex:1;}
+.mock-row.dim{color:var(--text-dim);}
+.hl{
+  outline:2.5px solid var(--chip-signup); outline-offset:-2.5px; border-radius:9px;
+  position:relative; background:color-mix(in srgb, var(--chip-signup) 10%, transparent);
+}
+.hl-tag{
+  display:inline-block; background:var(--chip-signup); color:#fff; font-size:10px; font-weight:800;
+  border-radius:5px; padding:1px 6px; margin-left:6px; vertical-align:1px; letter-spacing:0.03em;
+}
+.mock-confirm{
+  display:flex; justify-content:space-between; align-items:center; padding:10px 13px;
+  font-size:14px; font-weight:600;
+}
+.mock-confirm .cancel{color:var(--text-dim);}
+.mock-confirm .add{color:var(--chip-signup); font-weight:800;}
+.mock-homescreen{display:flex; gap:14px; padding:6px 2px 2px; flex-wrap:wrap;}
+.mock-appicon{width:56px; text-align:center; font-size:10.5px; color:var(--text-dim);}
+.mock-appicon .ic{
+  width:48px; height:48px; border-radius:12px; background:var(--pill-bg); margin:0 auto 4px;
+  display:flex; align-items:center; justify-content:center; font-size:24px; border:1px solid var(--border);
+}
+.mock-appicon.you .ic{background:var(--accent); border-color:transparent;}
+.mock-appicon.you{color:var(--text); font-weight:700;}
+</style>
+
+<div class="app">
+  <header class="top">
+    <div>
+      <h1>🏕️ Week in Preview</h1>
+      <div class="sub" id="subtitle">Summer 2026</div>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button class="icon-btn" onclick="openHowto()" aria-label="Add to Home Screen">📲</button>
+      <button class="icon-btn" onclick="openInfo()" aria-label="Info">ⓘ</button>
+    </div>
+  </header>
+
+  <div class="day-tabs" id="dayTabs"></div>
+
+  <main id="main"></main>
+
+  <nav class="bottom">
+    <button id="navSchedule" class="active" onclick="setView('schedule')"><span class="ic">🗓️</span>Schedule</button>
+    <button id="navMenu" onclick="setView('menu')"><span class="ic">🍽️</span>Menu</button>
+    <button id="navMine" onclick="setView('mine')"><span class="ic">✅</span>My Sign-Ups</button>
+  </nav>
+</div>
+
+<div class="modal-back hidden" id="infoModal" onclick="if(event.target===this)closeInfo()">
+  <div class="modal">
+    <h2>Good to know</h2>
+    <p><strong>Shaded activities on the printed sheet require advance sign-up</strong> in the sign-up notebook. This app just tracks what you personally plan to do — it doesn't sign you up with the camp office.</p>
+    <p><strong>Office hours:</strong> Saturday 8–10am and 3–10pm; Sunday–Friday 8am–noon and 1–10pm.</p>
+    <p><strong>Fountain &amp; Boat Dock hours:</strong> check the Guest Display board by the Office.</p>
+    <p><strong>Ski Dock sign-ups</strong> take place at the Ski Dock every day of the week.</p>
+    <p>Days and times of events are subject to change — check the Whatzappening board for the latest.</p>
+    <p>Your checked-off activities are saved only on this device (offline, no account/server). Use "Export" in My Sign-Ups to back them up as text.</p>
+    <p><a href="#" onclick="closeInfo();openHowto();return false;" style="color:var(--accent);font-weight:700;">📲 How to add this app to your home screen →</a></p>
+    <div class="close-row"><button onclick="closeInfo()">Got it</button></div>
+  </div>
+</div>
+
+<div class="modal-back hidden" id="howtoModal" onclick="if(event.target===this)closeHowto()">
+  <div class="modal">
+    <h2>📲 Add to Home Screen</h2>
+    <p>Install this page as an app icon so it opens full-screen and works offline at camp. Pick your phone:</p>
+    <div class="howto-tabs">
+      <button id="howtoIos" onclick="setHowtoPlatform('ios')">iPhone (Safari)</button>
+      <button id="howtoAndroid" onclick="setHowtoPlatform('android')">Android (Chrome)</button>
+    </div>
+
+    <div id="howtoIosSteps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="s-text">Open this page in <strong>Safari</strong>, then tap the <strong>Share</strong> button — the square with the up arrow at the bottom center of the screen.</div>
+          <div class="shot">
+            <div class="mock-urlbar">🔒<span class="grow">claude.ai/code/artifact/…</span>↻</div>
+            <div class="mock-toolbar">
+              <span>‹</span><span>›</span><span class="hl" style="padding:4px 10px;">⬆️<span class="hl-tag">TAP</span></span><span>📖</span><span>▦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="s-text">Scroll down the share sheet and tap <strong>“Add to Home Screen.”</strong></div>
+          <div class="shot">
+            <div class="mock-sheet">
+              <div class="mock-row dim"><span class="r-ic">📋</span><span class="r-label">Copy</span></div>
+              <div class="mock-row dim"><span class="r-ic">🔖</span><span class="r-label">Add Bookmark</span></div>
+              <div class="mock-row hl"><span class="r-ic">➕</span><span class="r-label"><strong>Add to Home Screen</strong></span><span class="hl-tag">TAP</span></div>
+              <div class="mock-row dim"><span class="r-ic">🔍</span><span class="r-label">Find on Page</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="s-text">Rename it if you like (e.g. “Camp”), then tap <strong>Add</strong> in the top-right corner. The icon appears on your home screen — tap it anytime, even with no signal.</div>
+          <div class="shot">
+            <div class="mock-sheet">
+              <div class="mock-confirm"><span class="cancel">Cancel</span><span>Add to Home Screen</span><span class="add hl" style="padding:2px 8px;">Add</span></div>
+            </div>
+            <div class="mock-homescreen" style="margin-top:10px;">
+              <div class="mock-appicon"><div class="ic">📷</div>Photos</div>
+              <div class="mock-appicon"><div class="ic">✉️</div>Mail</div>
+              <div class="mock-appicon you"><div class="ic">🏕️</div>Camp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;"><strong>Note:</strong> this only works from Safari. If the link opened inside another app (Gmail, Messages…), tap its “open in browser / Safari” option first.</p>
+    </div>
+
+    <div id="howtoAndroidSteps" style="display:none;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="s-text">Open this page in <strong>Chrome</strong>, then tap the <strong>⋮ menu</strong> in the top-right corner.</div>
+          <div class="shot">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div class="mock-urlbar" style="flex:1;">🔒<span class="grow">claude.ai/code/artifact/…</span></div>
+              <span class="hl" style="padding:5px 10px; font-size:18px;">⋮<span class="hl-tag">TAP</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="s-text">In the menu, tap <strong>“Add to Home screen”</strong> (on some phones it says <strong>“Install app.”</strong>)</div>
+          <div class="shot">
+            <div class="mock-sheet">
+              <div class="mock-row dim"><span class="r-ic">⭐</span><span class="r-label">Bookmark</span></div>
+              <div class="mock-row dim"><span class="r-ic">⬇️</span><span class="r-label">Download</span></div>
+              <div class="mock-row hl"><span class="r-ic">📱</span><span class="r-label"><strong>Add to Home screen</strong></span><span class="hl-tag">TAP</span></div>
+              <div class="mock-row dim"><span class="r-ic">🖥️</span><span class="r-label">Desktop site</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="s-text">Confirm by tapping <strong>Add</strong> (or <strong>Install</strong>). The icon lands on your home screen and opens like a regular app — offline too.</div>
+          <div class="shot">
+            <div class="mock-sheet">
+              <div class="mock-confirm"><span>Add to Home screen?</span><span class="add hl" style="padding:2px 8px;">Add</span></div>
+            </div>
+            <div class="mock-homescreen" style="margin-top:10px;">
+              <div class="mock-appicon"><div class="ic">🗺️</div>Maps</div>
+              <div class="mock-appicon"><div class="ic">💬</div>Chat</div>
+              <div class="mock-appicon you"><div class="ic">🏕️</div>Camp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:12.5px;"><strong>Tip:</strong> Samsung Internet works too — tap the ☰ menu and choose “Add page to → Home screen.”</p>
+    </div>
+
+    <div class="close-row"><button onclick="closeHowto()">Done</button></div>
+  </div>
+</div>
+
+<script>
+const DAYS = [
+  {key:'sat', label:'Saturday', short:'SAT'},
+  {key:'sun', label:'Sunday', short:'SUN'},
+  {key:'mon', label:'Monday', short:'MON'},
+  {key:'tue', label:'Tuesday', short:'TUE'},
+  {key:'wed', label:'Wednesday', short:'WED'},
+  {key:'thu', label:'Thursday', short:'THU'},
+  {key:'fri', label:'Friday', short:'FRI'}
+];
+
+function a(time,title){return {time,title};}
+
+const SCHEDULE = {
+  sat:{
+    sunrise:[a('7:45-8:45am','Breakfast'), a('8-10am','Check-Out / Return Keys')],
+    noon:[],
+    sunset:[a('3pm','Check-in! Welcome!!'), a('3-5pm','Boat Dock'), a('5:45-6:45pm','Dinner'),
+      a('7-7:45pm','Boat Dock'), a('7:15-8pm','New Camper Orientation'), a('8-9pm','Intro Meeting'),
+      a('9-10pm','Ski Dock & Activity Sign-Ups'), a('9:15-9:45pm','Hiking Meeting')]
+  },
+  sun:{
+    sunrise:[a('6:30-8am','Rowing'), a('7-8am','Sunrise Yoga'), a('7:45-8:45am','Breakfast'),
+      a('8-10am','Advanced Ski/Board Clinic*'), a('9am-3pm','Naturalist Hike'), a('9am-5pm','Boat Dock'),
+      a('9:15-11:45am','Guppies'), a('9:30-11:30am','Arts & Crafts: Bisqueware'), a('9:30-11:45am','Kids Groups'),
+      a('9:45-11:15am','Tennis: Beginners Clinic'), a('10am','Teens Overnight Leaves'), a('10am','Church Service'),
+      a('10-11am','Ski Dock*'), a('10-11:45am','Ospreys')],
+    noon:[a('12-12:45pm','BBQ Lunch'), a('1-2pm','Open Climb'), a('1-2:30pm','Ospreys'),
+      a('1-3:30pm','Outrigger Canoe'), a('1-5pm','Ski Dock*'), a('1:30-4pm','Beginner Sailing'),
+      a('1:45-4:30pm','Beginner Mountain Bike'), a('2-3:30pm','Art: Mosaic Magic'),
+      a('2-4pm','Kids Groups (excluding Guppies)'), a('2:30-3:30pm','Beginner Social Volleyball'),
+      a('2:30-4pm','Bread Bake'), a('3-4pm','Language Hour'), a('4:15-5:15pm','Book Talk: Arrow of God'),
+      a('5-6pm','Story Hour'), a('5-6pm','Social Hike/Couples Photo')],
+    sunset:[a('5:45-6:45pm','Dinner'), a('6:30-7:30pm','Family Portraits'), a('6:30-7:30pm','Multicultural Engagement Dinner'),
+      a('7-7:45pm','Boat Dock'), a('7:50-9pm','Guppy/Crawdad Puppet Show'), a('7:50-9pm','Chickaree/Merganser Night'),
+      a('8-9pm','Faculty Speaker Lecture'), a('8-9:15pm','Marmots'), a('8:15-10:15pm','Ospreys'),
+      a('9-10:30pm','Fountain Pretzel Night'), a('10-11pm','Astrocruise')]
+  },
+  mon:{
+    sunrise:[a('6:30-8am','Rowing'), a('7:45-8:45am','Breakfast'), a('8-11am','Ski Dock*'),
+      a('8:15am-4pm','Long Hike'), a('9am-5pm','Boat Dock'), a('9:15am-3pm','Guppies'),
+      a('9:30-10:45am','Advanced Tennis Clinic'), a('9:30am-3:30pm','Kids Groups'), a('10-11am','Pickleball Play'),
+      a('10-11:30am','Craft: Shrinky Dink'), a('10:15-11:15am','Faculty Speaker Debrief/Follow-Up'),
+      a('10:30-11:30am','Cardio Yoga'), a('11:30am','Teen Overnight Returns'), a('11:30am-4pm','Ospreys')],
+    noon:[a('12-12:45pm','Adult Lunch'), a('1-5pm','Ski Dock*'), a('1-2pm','Staph 2 Guest'),
+      a('1-2:45pm','Beginner Sail'), a('1:30-3:30pm','Craft: Bisqueware'), a('2:30-4:15pm','Naturalist Kayak'),
+      a('2:30-4:30pm','Open Climb'), a('3-4:30pm','Teen Sail'), a('4-5pm','Multicultural Engagement Social'),
+      a('4-5:30pm','Social Volleyball'), a('5-6pm','Story Hour'), a('5-6pm','Boatster Cruise')],
+    sunset:[a('5:45-6:45pm','Dinner'), a('7-7:45pm','Boat Dock'), a('7:30-8:30pm','Bingo Night!'),
+      a('10-11pm','Astrocruise')]
+  },
+  tue:{
+    sunrise:[a('6:30-8am','Rowing'), a('7-8am','Morning Exercise'), a('7:15-8:15am','Forest Yoga: Back to the Trees'),
+      a('7:45-8:45am','Breakfast (Omelette Bar)'), a('8-10am','MCE Ski/Board Clinic*'), a('9am-5pm','Boat Dock'),
+      a('9:15-11:45am','Guppies'), a('9:30-11:00am','Open Tennis Clinic'), a('9:30-11am','Washoe History: Past and Present'),
+      a('9:30-11:45am','Crawdads, Mergansers, Chickarees, and Marmots'), a('9:30am-1:30pm','Outdoor Climb'),
+      a('9:30am-3:30pm','Medium Hike'), a('9:45-10:45am','Craft: Resin Coasters/Trays'), a('10-11am','Ski Dock*'),
+      a('11am-12pm','Pickleball Clinic and Play'), a('11am-12pm','Ospreys'), a('11:30am-4pm','Teens')],
+    noon:[a('12-12:45pm','Lunch'), a('1-2:30pm','Ospreys'), a('1-5pm','Ski Dock*'),
+      a('1:30-3:30pm','Not-Quite-Beginner Sailing'), a('1:30-3:30pm','Art: Intro to Oil Painting'),
+      a('2-4pm','Kids Groups'), a('2:15-3:45pm','Craft: Shibori Dye'), a('2:15-3:45pm','Pickleball Play'),
+      a('3-4pm','Nature Boatster'), a('3-4pm','Adult Improv'), a('3-4pm','Book Talk: Worlds of Wonders'),
+      a('3:45-5pm','Family Sail'), a('4-5pm','Open Climb'), a('5-6pm','Story Hour'), a('5-6pm',"Women's Boatster Cruise")],
+    sunset:[a('5:45-6:45pm','Dinner'), a('6:30-7:30pm','Family Portraits'), a('7-7:45pm','Boat Dock'),
+      a('7-8pm','Guest-to-Guest'), a('7:30-10:00pm','Fountain Pretzel Night'), a('8:30-9:30pm','Improv Show')]
+  },
+  wed:{
+    sunrise:[a('6:30-8am','Rowing'), a('7:45-8:45am','Breakfast'), a('9-10am','Linen Bar'),
+      a('10am-12pm','Games Day & Ski Show')],
+    noon:[a('12-12:45pm','BBQ in Front of Lodge'), a('12:30-3pm','Guest vs Guest Volleyball'),
+      a('1-2pm','Wilderness Skills Workshop'), a('1-3pm','Outrigger'), a('1-5pm','Boat Dock'), a('1-5pm','Ski Dock*'),
+      a('1:30-3:30pm','Kids Sail'), a('2-5pm','Wimbledon Wednesday'), a('2:15-3:45pm','Orienteering'),
+      a('2:30-3:30pm','Dance: Line Dancing'), a('2:30-3:30pm','Family Craft: Jewelry Making'),
+      a('2:30-3:30pm','Partner Yoga: Mirror Yoga'), a('2:30-3:30pm','Family Improv Workshop'),
+      a('2:45-4:45pm','Open Climb'), a('3-4pm','Language Hour'), a('3-4pm',"Music Lesson: Playin' the Blues"),
+      a('5-6pm','Story Hour'), a('5-6pm','Boatster Cruise'), a('5-6pm','Family Portraits'), a('5:45-7:45pm','Teen Free Ski')],
+    sunset:[a('5:45-6:45pm','Dinner'), a('7-7:45pm','Boat Dock'), a('7:30-8:45pm','Campfire'),
+      a('9-10pm','The Play'), a('10-11pm','Astrocruise')]
+  },
+  thu:{
+    sunrise:[a('6:30-8am','Rowing'), a('7:15-8:15am','Morning Exercise'), a('7:45-8:45am','Breakfast'),
+      a('7:45-8:45am',"Women's Breakfast"), a('8-11am','Ski Dock*'), a('8:15am-12pm','Advanced Mountain Biking'),
+      a('8:15am-4pm','Long Hike'), a('9am-5pm','Boat Dock'), a('9:15am-3pm','Guppies'),
+      a('9:30am-11:30am','Arts: Oil Painting - Fruit & Still Life'), a('9:30am-3:30pm','Kids Groups'),
+      a('9:30am-3:30pm','Medium Hike'), a('9:45-11:15am','Couples Tennis'), a('10-11am','Open Climb'),
+      a('10-11am','Fountain Trivia'), a('10:30-11:45am','Teens')],
+    noon:[a('12-12:45pm','Adult Lunch'), a('1pm','Osprey Overnight Leaves'), a('1-5pm','Ski Dock*'),
+      a('2-4pm','Arts: Watercolor Landscapes'), a('3-4pm','Yoga: Beach and Shallow Water'),
+      a('4:30-5:30pm','Kids + Adults Volleyball'), a('5-6pm','Story Hour'), a('5-6pm','Boatster Cruise')],
+    sunset:[a('5:45-6:45pm','Dinner'), a('7-7:45pm','Boat Dock'), a('7:50-9pm','Guppy/Crawdad Night'),
+      a('7:50-9pm','Merganser/Chickaree Night'), a('8-9pm','Faculty Speaker'), a('8-9:15pm','Marmots'),
+      a('8:30-9:30pm','Teens'), a('9-10:30pm','Fountain Pretzel Night!'), a('9:45-10:45pm','Trivia Night!'),
+      a('10-11pm','Astrocruise')]
+  },
+  fri:{
+    sunrise:[a('6:30-8am','Rowing'), a('7-8:15am','SUP Yoga'), a('7:15-8:15am','Morning Exercise + Cold Plunge'),
+      a('7:45-8:45am','Breakfast (Omelette Bar)'), a('8-11am','Ski Dock*'), a('9am','Osprey Overnight Returns'),
+      a('9-11:45am','Intermediate Mountain Biking'), a('9am-5pm','Boat Dock'), a('9:15-11:45am','Guppies'),
+      a('9:30-10:45am','Crafts: Print Making'), a('9:30-11am','Arts: Acrylic Paint'), a('9:30-11:45am','Kids Groups'),
+      a('9:45-11:30am','Pickleball Play'), a('10-11:15am','Reflection Yoga'), a('10:45am-12pm','Teens Group'),
+      a('','***Early Check-Out Sign-Up Ends at Noon***')],
+    noon:[a('12-12:45pm','Lunch'), a('1-5pm','Ski Dock*'), a('1:15-3:00pm','Staph vs. Guest Volleyball'),
+      a('1:30-2:30pm','Faculty Speaker Discussion'), a('1:30-3:30pm','Sailing Regatta'),
+      a('1:45-2:45pm','Basketball Tournament'), a('2-3pm','Kids Talent Show'), a('2:45-3:45pm','Bread Bake'),
+      a('2:45-4:15pm','Pickleball Tournament'), a('2:45-3:45pm','Psychology Discussion'), a('3-4pm','Hip Hop Dance'),
+      a('3-4pm','Kids Carnival'), a('3-4:15pm','Open Climb'), a('3-4:30pm','Ospreys'), a('3-6pm','Early Check-Out'),
+      a('4-5pm','Art & Crafts Social'), a('4:15-5pm','Egg Drop'), a('4:30-5:30pm','Cherry House Social'),
+      a('5:00-5:45pm','Shabbat')],
+    sunset:[a('5:45-6:45pm','BBQ Dinner'), a('6-7pm','Music Hour'), a('7-7:45pm','Boat Dock'), a('8-8:30pm','Slide Show'),
+      a('8:30-9:15pm','Staph Talent Show'), a('9:15-10pm','Silent Disco'), a('9:15-10:45pm','Last Chance Fountain')]
+  }
+};
+
+function m(name, groups){return {name, groups};}
+
+const MENU = {
+  sat:{
+    breakfast:m(null,[
+      ['Bakery & Cereal',['Strawberry Bread','Coffee Cake','Selection of Fresh Fruit, Cereals & Yogurts','Assorted Fresh Bagels & Toppings','House Made Granola','Oatmeal & Overnight Oats Bar','Waffle Bar']],
+      ['Hot Breakfast',['Scrambled Eggs & Specialty Eggs','Sausage & Bacon','Hash Browns','Challah French Toast','Buttermilk Biscuits & Sausage Gravy']],
+      ['Beverages',['Hiker Bar','Assorted Juices and Local Roast Coffees','Herbal Teas, Milk, and Hot Chocolate']]
+    ]),
+    lunch:null,
+    dinner:m(null,[
+      ['To Start',['Sourdough Bread','Assorted Salads & Dressings','Seasonal Soup']],
+      ['Mains & Sides',['Roasted Prime Rib w/ Pepper, Garlic, & Sea Salt','Grilled Salmon','Ratatouille w. Eggplant, Tomato, Onion, Peppers, & Garlic','Brussel Sprouts','Corn','Roasted Garlic Red Mashed Potatoes','Horseradish Cream Sauce','Beef Jus','Corn Dogs','Loaded Baked Potato Bar']],
+      ['Dessert',['Vegan Chocolate Raspberry Cake','Fresh Fruit']]
+    ])
+  },
+  sun:{
+    breakfast:m(null,[
+      ['Bakery & Cereal',['Cinnamon Coffee Cake','Vegan Apple Muffins','Selection of Fresh Fruit, Cereals & Yogurts','Assorted Fresh Bagels & Toppings','House Made Granola','Oatmeal & Overnight Oats Bar','Waffle Bar']],
+      ['Hot Breakfast',['Scrambled Eggs & Specialty Eggs','Sausage & Bacon','Breakfast Meatless Sausage','French Toast']],
+      ['Beverages',['Hiker Bar','Assorted Juices and Local Roast Coffees','Herbal Teas, Milk, and Hot Chocolate']]
+    ]),
+    lunch:m('BBQ Lunch',[
+      ['To Start',['Assorted Deli Selections with Fresh Toppings and Whole Grain Breads','Soup of the Day','Assorted Salads & Dressings']],
+      ['Mains & Sides',['Chicken Tikka Masala','Spiced Lentils','Lamb Masala','Curried Chickpeas','Curried Potatoes','Steamed Basmati Rice','Roasted Broccoli','Assorted Fresh Herbs and Toppings','Grilled Garlic Naan Bread']],
+      ['Dessert',['Lemon Blondies','Rice Krispies']]
+    ]),
+    dinner:m(null,[
+      ['To Start',['Truckee Sourdough Traditional Loaf','Assorted Salads, Toppings & Dressings','Cucumber Salad','Quinoa','Farro','Seasonal Soup']],
+      ['Mains & Sides',['Thai Fried Chicken','Red Curry Prawns','Tofu Nam Prik Pao w/ Kale','Basil Fried Rice','Thai Noodles','Malay Style Cauliflower','Thai Papaya Salad w/ Chili, Mint, Fried Garlic, and Cabbage','Grilled Cheese Sandwiches']],
+      ['Dessert',['Coffee Cheesecake','Cheesecake','Fresh Fruit']]
+    ])
+  },
+  mon:{
+    breakfast:m(null,[
+      ['Bakery & Cereal',['Honey Olive Oil Cake','Sourdough Lemon Bread','Selection of Fresh Fruit, Cereals & Yogurts','Assorted Fresh Bagels & Toppings','House Made Granola','Oatmeal & Overnight Oats Bar']],
+      ['Hot Breakfast',['Scrambled Eggs & Specialty Eggs','Sausage & Bacon','Breakfast Meatless Sausage','Home Style Potatoes','Buttermilk Pancakes',"Chef's Special"]],
+      ['Beverages',['Hiker Bar','Assorted Juices and Local Roast Coffees','Herbal Teas, Milk, and Hot Chocolate']]
+    ]),
+    lunch:m('Adult Lunch',[
+      ['To Start',['Assorted Deli Selections with Fresh Toppings and Whole Grain Breads','Soup of the Day','Assorted Salads & Dressings']],
+      ['Mains & Sides',['Beef birria','Grilled chicken thighs','Pork carnitas','Jackfruit','Grilled Peppers and Onions','Vegetarian Pinto Beans','Cilantro Lime Rice','Corn & Flour Tortillas','Guacamole, Pico, & Fresh Fried Chips','Assorted Toppings']],
+      ['Dessert',['Strawberry Shortcake','Fresh Whipped Cream','Fresh Fruits']]
+    ]),
+    dinner:m(null,[
+      ['To Start',['Squaw Dinner Rolls','Assorted Salads & Dressings','Seasonal Soup']],
+      ['Mains & Sides',['Grilled Chicken Thighs','Seared Cod w/ Chipotle','Breaded Chicken Wings','Grilled Tofu','Meatless Wings','Grilled Seasonal Vegetables','Steamed Brown Rice','Green Tahini Sauce','Greek Yogurt Sauce','Chicken Tenders']],
+      ['Dessert',['Tiramisu','Fresh Fruit']]
+    ])
+  },
+  tue:{
+    breakfast:m(null,[
+      ['Bakery & Cereal',['Scones','Croissants','Selection of Fresh Fruit, Cereals & Yogurts','Assorted Fresh Bagels & Toppings','House Made Granola','Oatmeal & Overnight Oats Bar','Omelette Bar']],
+      ['Hot Breakfast',['Scrambled Eggs & Specialty Eggs','Sausage & Bacon','Breakfast Meatless Sausage','Vegetable Burritos','Meat Burritos','Pancakes','Sweet Potatoes']],
+      ['Beverages',['Hiker Bar','Assorted Juices and Local Roast Coffees','Herbal Teas, Milk, and Hot Chocolate']]
+    ]),
+    lunch:m('Family Lunch',[
+      ['To Start',['Assorted Deli Selections with Fresh Toppings and Whole Grain Breads','Soup of the Day','Assorted Salads & Dressings']],
+      ['Mains & Sides',['Beef birria','Grilled chicken thighs','Pork carnitas','Jackfruit','Grilled Peppers and Onions','Vegetarian Pinto Beans','Cilantro Lime Rice','Corn & Flour Tortillas','Guacamole, Pico, & Fresh Fried Chips','Assorted Toppings']],
+      ['Dessert',['Ice Cream Pops','Fresh Fruit']]
+    ]),
+    dinner:m(null,[
+      ['To Start',['Assorted Salads & Dressings','Rye Traditional Loaf','Pita Bread','Seasonal Soup']],
+      ['Mains & Sides',['Rosemary Braised Lamb Shoulder','Seared Cod (Sayadieh)','Red Beans w/ Celery, Bell Pepper, Garlic, and Onion','Roasted Zucchini','Roasted Baby Peppers','Moroccan Rice Pilaf','Cheese Tortellini Basil Pesto','Tzatziki Sauce & Hummus','Cucumber Salad','Cheese Quesadillas']],
+      ['Dessert',['Apple Pie','Blueberry Pie','Whipped Cream','Fresh Fruit']]
+    ])
+  },
+  wed:{
+    breakfast:m(null,[
+      ['Bakery & Cereal',['Banana Chocolate Chip Muffins','Danishes','Selection of Fresh Fruit, Cereals & Yogurts','Assorted Fresh Bagels & Toppings','House Made Granola','Oatmeal & Overnight Oats Bar']],
+      ['Hot Breakfast',['Scrambled Eggs & Specialty Eggs','Sausage & Bacon','Breakfast Meatless Sausage','Hash Browns','Chocolate Chip Pancakes',"Chef's Special"]],
+      ['Beverages',['Hiker Bar','Assorted Juices and Local Roast Coffees','Herbal Teas, Milk, and Hot Chocolate']]
+    ]),
+    lunch:m('Lodge BBQ Lunch',[
+      ['To Start',['Assorted Deli Selections with Fresh Toppings and Whole Grain Breads','Caesar Salad','Garden Salads','Spinach Salad','Southwest Tofu Salad']],
+      ['Mains & Sides',['Grilled Beef Chuck Burgers','Turkey Burgers','Beef Hot Dogs','Italian Pork Sausages','Beyond Burgers','Roasted Portabella Mushrooms','Assorted Hamburger and Hot Dog Buns','Assorted Burger and Hot Dog Toppings','Potato Chips']],
+      ['Dessert',['Assorted Cookies','Brownies']]
+    ]),
+    dinner:m(null,[
+      ['To Start',['Sourdough Rosemary Ciabatta','Assorted Salads & Dressings','Seasonal Soup']],
+      ['Mains & Sides',['Roasted Marinated Flank Steak','Shrimp Scampi','Beef Meatballs','Pasta Primavera','Fried Zucchini Sticks','Penne Pasta w/ Garlic & Lemon','Cavatappi Pasta','Marinara Sauce','Spicy Pork Red Sauce']],
+      ['Dessert',['House Made Sourdough Carrot Cake','Fresh Fruit']]
+    ])
+  },
+  thu:{
+    breakfast:m(null,[
+      ['Bakery & Cereal',['Cream Puffs','Gluten Free Chocolate Muffins','Selection of Fresh Fruit, Cereals & Yogurts','Assorted Fresh Bagels & Toppings','House Made Granola','Oatmeal & Overnight Oats Bar']],
+      ['Hot Breakfast',['Waffle Bar','Scrambled Eggs & Specialty Eggs','Sausage & Bacon','Breakfast Meatless Sausage','French Toast']],
+      ['Beverages',['Hiker Bar','Assorted Juices and Local Roast Coffees','Herbal Teas, Milk, and Hot Chocolate']]
+    ]),
+    lunch:m('Adult Lunch',[
+      ['To Start',['Assorted Deli Selections with Fresh Toppings and Whole Grain Breads','Assorted Salads & Dressings','Mint Citrus Salad','Quinoa Salad']],
+      ['Mains & Sides',['Hot Prime Rib Sandwich w/ Horseradish Aioli, Swiss Cheese, & Arugula','Seared Ahi Tuna on Ciabatta Bread w/ Pickled Cucumbers, Slaw and Spicy Aioli','Seared Tofu on Focaccia w/ Pickled Cucumbers, Sesame Slaw, & Hummus','Au Jus','Soup of the Day','Sweet Potato Tots','Roasted Asparagus','Seasonal Vegetable Pizza','Sausage & Pepperoni Pizza']],
+      ['Dessert',["S'mores Bars",'Blondies']]
+    ]),
+    dinner:m(null,[
+      ['To Start',['House Made Focaccia','Assorted Salads & Dressings','Seasonal Soup']],
+      ['Mains & Sides',['Grilled Teriyaki Chicken Thighs','Coconut Shrimp','Ahi Poke','Tofu Poke','Peppers, Onions, & Carrots','Japanese Curry','Steamed White Rice','Udon Noodles w/ Vegetables','Poke Sides','Grilled Cheese Sandwiches']],
+      ['Dessert',['Champagne Cake','Fresh Fruit']]
+    ])
+  },
+  fri:{
+    breakfast:m(null,[
+      ['Bakery & Cereal',['Orange Bread','Blueberry Muffins','Selection of Fresh Fruit, Cereals & Yogurts','Assorted Fresh Bagels & Toppings','House Made Granola','Oatmeal & Overnight Oats Bar','Omelette Bar']],
+      ['Hot Breakfast',['Scrambled Eggs & Specialty Eggs','Sausage & Bacon','Breakfast Meatless Sausage','Country Potatoes','Blueberry Pancakes','Pork Verde Burritos']],
+      ['Beverages',['Hiker Bar','Assorted Juices and Local Roast Coffees','Herbal Teas, Milk, and Hot Chocolate']]
+    ]),
+    lunch:m('Family Lunch',[
+      ['To Start',['Assorted Deli Selections with Fresh Toppings and Whole Grain Breads','Soup of the Day','Assorted Salads & Dressings']],
+      ['Mains & Sides',['Fried Chicken w/ Ginger, Orange, & Garlic','Beef & Broccoli w/ Garlic, Tamari, Onion, & Ginger','Sweet Chili Tofu with Eggplant','Snap Peas & Julienne Peppers','Vegetarian Spring Rolls','Stir Fried Noodles with Vegetables','Jasmine Rice','Chicken Pot Stickers']],
+      ['Dessert',['Ice Cream Sundae Bar','Fresh Fruit']]
+    ]),
+    dinner:m('BBQ Dinner',[
+      ['To Start',['Freshly Baked Challah and Butter','Caesar Salad','Garden Salads','Spinach Salad']],
+      ['Mains & Sides',['Grilled Flap Steaks','Grilled Salmon','Grilled Beef Hamburgers','White Beans w/ Garlic, Onion, Rosemary & Tomato','Beyond Burgers','Roasted Brussel Sprouts w/ Balsamic, Onion, Garlic, & Herbs','Baked Potato Bar','Grilled Sweet Peppers','Roasted Sweet Potatoes','Mushrooms and Onions','Assorted Hamburger Toppings']],
+      ['Dessert',['Chocolate Éclair Cake','Cherry Pie','Fresh Fruit']]
+    ])
+  }
+};
+
+/* ---------------- State ---------------- */
+const STORAGE_KEY = 'campSignups2026';
+let signups = new Set();
+try{
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw) signups = new Set(JSON.parse(raw));
+}catch(e){}
+
+function saveSignups(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify([...signups])); }catch(e){}
+}
+
+let currentDay = (function(){
+  const idx = new Date().getDay(); // 0=Sun..6=Sat
+  const map = {0:'sun',1:'mon',2:'tue',3:'wed',4:'thu',5:'fri',6:'sat'};
+  return map[idx] || 'sat';
+})();
+let currentView = 'schedule';
+
+/* ---------------- Render: day tabs ---------------- */
+function dayCount(dayKey){
+  let c=0;
+  for(const id of signups){ if(id.startsWith(dayKey+'_')) c++; }
+  return c;
+}
+
+function renderDayTabs(){
+  const el = document.getElementById('dayTabs');
+  el.innerHTML = '';
+  DAYS.forEach(d=>{
+    const btn = document.createElement('button');
+    btn.className = 'day-pill' + (d.key===currentDay?' active':'');
+    const c = dayCount(d.key);
+    btn.innerHTML = d.short + (c>0 ? `<span class="cnt">${c}</span>` : '');
+    btn.onclick = ()=>{ currentDay = d.key; renderAll(); };
+    el.appendChild(btn);
+  });
+}
+
+/* ---------------- Render: schedule ---------------- */
+function renderSchedule(){
+  const day = SCHEDULE[currentDay];
+  const dayLabel = DAYS.find(d=>d.key===currentDay).label;
+  let html = `<div class="section"><div class="info-banner">Tap the checkbox to mark an activity you're signed up for. It's saved on this device, offline.</div></div>`;
+
+  const sections = [['sunrise','Sunrise'],['noon','Noon'],['sunset','Sunset']];
+  let any=false;
+  sections.forEach(([key,label])=>{
+    const items = day[key];
+    if(!items || items.length===0) return;
+    any=true;
+    html += `<div class="section"><div class="section-head ${key}"><span class="dot"></span>${label}</div><div class="card">`;
+    items.forEach((it,idx)=>{
+      const id = `${currentDay}_${key}_${idx}`;
+      const checked = signups.has(id);
+      html += `<div class="item ${checked?'is-checked':''}">
+        <div class="time">${it.time||''}</div>
+        <div class="title">${escapeHtml(it.title)}</div>
+        <button class="check ${checked?'checked':''}" onclick="toggleSignup('${id}')">${checked?'✓':''}</button>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  if(!any){
+    html += `<div class="empty-note">No scheduled activities listed for ${dayLabel}.</div>`;
+  }
+  document.getElementById('main').innerHTML = html;
+}
+
+function toggleSignup(id){
+  if(signups.has(id)) signups.delete(id); else signups.add(id);
+  saveSignups();
+  renderAll();
+}
+
+/* ---------------- Render: menu ---------------- */
+function renderMenu(){
+  const menu = MENU[currentDay];
+  const meals = [['breakfast','Breakfast','7:45–8:45 AM'],['lunch','Lunch','12–12:45 PM'],['dinner','Dinner','5:45–6:45 PM']];
+  let html='';
+  meals.forEach(([key,label,time])=>{
+    const meal = menu[key];
+    if(!meal){
+      return;
+    }
+    html += `<div class="meal-block"><div class="meal-title">${label} <span class="name">${time}${meal.name?' · '+escapeHtml(meal.name):''}</span></div><div class="card">`;
+    meal.groups.forEach(([gLabel, items])=>{
+      html += `<div class="food-group"><div class="g-label">${gLabel}</div>${items.map(escapeHtml).join(', ')}</div>`;
+    });
+    html += `</div></div>`;
+  });
+  if(!menu.lunch){
+    html += `<div class="empty-note">No lunch is served on check-in day.</div>`;
+  }
+  document.getElementById('main').innerHTML = html;
+}
+
+/* ---------------- Render: my sign-ups ---------------- */
+function renderMine(){
+  let html = '';
+  if(signups.size===0){
+    html = `<div class="empty-note">You haven't marked any activities yet.<br>Go to Schedule and tap a checkbox to add one.</div>`;
+    document.getElementById('main').innerHTML = html;
+    return;
+  }
+  DAYS.forEach(d=>{
+    const day = SCHEDULE[d.key];
+    const sections = [['sunrise','Sunrise'],['noon','Noon'],['sunset','Sunset']];
+    let rows='';
+    sections.forEach(([key])=>{
+      (day[key]||[]).forEach((it,idx)=>{
+        const id = `${d.key}_${key}_${idx}`;
+        if(signups.has(id)){
+          rows += `<div class="mini-item"><div class="t">${it.time||''}</div><div>${escapeHtml(it.title)}</div></div>`;
+        }
+      });
+    });
+    if(rows){
+      html += `<div class="day-group"><h3>${d.label}</h3><div class="card">${rows}</div></div>`;
+    }
+  });
+  html += `<div class="summary-actions">
+      <button class="btn" onclick="exportSignups()">Export as text</button>
+      <button class="btn danger" onclick="clearSignups()">Clear all</button>
+    </div>`;
+  document.getElementById('main').innerHTML = html;
+}
+
+function exportSignups(){
+  let text = "My Camp Sign-Ups\n\n";
+  DAYS.forEach(d=>{
+    const day = SCHEDULE[d.key];
+    const sections = [['sunrise','Sunrise'],['noon','Noon'],['sunset','Sunset']];
+    let lines=[];
+    sections.forEach(([key])=>{
+      (day[key]||[]).forEach((it,idx)=>{
+        const id = `${d.key}_${key}_${idx}`;
+        if(signups.has(id)) lines.push(`  ${it.time ? it.time+' — ' : ''}${it.title}`);
+      });
+    });
+    if(lines.length){
+      text += `${d.label}\n${lines.join('\n')}\n\n`;
+    }
+  });
+  if(navigator.share){
+    navigator.share({title:'My Camp Sign-Ups', text}).catch(()=>{fallbackCopy(text);});
+  } else {
+    fallbackCopy(text);
+  }
+}
+function fallbackCopy(text){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(()=>alert('Copied your sign-ups to the clipboard!')).catch(()=>promptCopy(text));
+  } else {
+    promptCopy(text);
+  }
+}
+function promptCopy(text){
+  window.prompt('Copy your sign-ups:', text);
+}
+function clearSignups(){
+  if(confirm('Remove all your sign-ups? This cannot be undone.')){
+    signups = new Set();
+    saveSignups();
+    renderAll();
+  }
+}
+
+/* ---------------- View switching ---------------- */
+function setView(view){
+  currentView = view;
+  ['navSchedule','navMenu','navMine'].forEach(id=>document.getElementById(id).classList.remove('active'));
+  document.getElementById('nav'+view.charAt(0).toUpperCase()+view.slice(1)).classList.add('active');
+  renderAll();
+  document.getElementById('main').scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+function renderAll(){
+  renderDayTabs();
+  document.getElementById('subtitle').textContent = DAYS.find(d=>d.key===currentDay).label + ' · Summer 2026';
+  if(currentView==='schedule') renderSchedule();
+  else if(currentView==='menu') renderMenu();
+  else renderMine();
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function openInfo(){ document.getElementById('infoModal').classList.remove('hidden'); }
+function closeInfo(){ document.getElementById('infoModal').classList.add('hidden'); }
+
+function openHowto(){
+  document.getElementById('howtoModal').classList.remove('hidden');
+  setHowtoPlatform(detectPlatform());
+}
+function closeHowto(){ document.getElementById('howtoModal').classList.add('hidden'); }
+function detectPlatform(){
+  const ua = navigator.userAgent || '';
+  if(/android/i.test(ua)) return 'android';
+  return 'ios';
+}
+function setHowtoPlatform(p){
+  document.getElementById('howtoIos').classList.toggle('active', p==='ios');
+  document.getElementById('howtoAndroid').classList.toggle('active', p==='android');
+  document.getElementById('howtoIosSteps').style.display = p==='ios' ? '' : 'none';
+  document.getElementById('howtoAndroidSteps').style.display = p==='android' ? '' : 'none';
+}
+
+renderAll();
+
+/* Offline: the service worker precaches this page and its icons, so once
+   the app has been opened one time, it launches and works with no signal. */
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+
+</html>

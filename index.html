@@ -141,6 +141,10 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
 .item.open .chev{transform:rotate(90deg);}
 .item .desc{display:none; font-size:13px; color:var(--text-dim); line-height:1.55; margin-top:7px; white-space:pre-line; font-weight:400;}
 .item.open .desc{display:block;}
+.signup-chip{
+  display:inline-block; background:var(--chip-signup); color:#fff; font-size:9.5px; font-weight:800;
+  border-radius:5px; padding:1px 5px; margin-left:6px; vertical-align:1.5px; letter-spacing:0.04em; white-space:nowrap;
+}
 
 .empty-note{
   text-align:center; color:var(--text-dim); font-size:14px; padding:30px 20px;
@@ -293,7 +297,7 @@ nav.bottom button.active{color:var(--accent);}
 <div class="modal-back hidden" id="infoModal" onclick="if(event.target===this)closeInfo()">
   <div class="modal">
     <h2>Good to know</h2>
-    <p><strong>Shaded activities on the printed sheet require advance sign-up</strong> in the sign-up notebook. This app just tracks what you personally plan to do — it doesn't sign you up with the camp office.</p>
+    <p><strong>Activities marked with * require advance sign-up</strong> in the sign-up notebook (they're the shaded ones on the printed sheet). This app just tracks what you personally plan to do — it doesn't sign you up with the camp office.</p>
     <p><strong>Office hours:</strong> Saturday 8–10am and 3–10pm; Sunday–Friday 8am–noon and 1–10pm.</p>
     <p><strong>Fountain &amp; Boat Dock hours:</strong> check the Guest Display board by the Office.</p>
     <p><strong>Ski Dock sign-ups</strong> take place at the Ski Dock every day of the week.</p>
@@ -507,62 +511,62 @@ const SCHEDULE = {
       a('5-6pm','Story Hour',"This afternoon, buckle up to leave SSC and blast off into the world of stories! The destination is anywhere and everywhere — we can go to far off planets, to the homes of rabbits, to a battle between witches and warlocks…the possibilities are endless! Just show up at the Cathedral Steps at 5pm to meet Prisha & Murph for this storytelling journey!"),
       a('5-6pm','Music Trivia Boatster Cruise*',"Music and memories. Need we say more? Join Josh & Ben on the Boat Dock for a happy hour on the water, now with a twist – music trivia! A time for relaxation, good company, and toe-tapping tunes. Grab a blanket from the dock, put on your sea legs, and test your musical know-how as we cruise. An hour you won't forget!")],
     sunset:[a('5:45-6:45pm','Dinner'), a('7-7:45pm','Boat Dock'), a('7:30-8:30pm','Bingo Night!'),
-      a('10-11pm','Astrocruise')]
+      a('10-11pm','Astrocruise*')]
   },
   tue:{
-    sunrise:[a('6:30-8am','Rowing'), a('7-8am','Morning Exercise'), a('7:15-8:15am','Forest Yoga: Back to the Trees'),
+    sunrise:[a('6:30-8am','Rowing*'), a('7-8am','Morning Exercise'), a('7:15-8:15am','Forest Yoga: Back to the Trees*'),
       a('7:45-8:45am','Breakfast (Omelette Bar)'), a('8-10am','MCE Ski/Board Clinic*'), a('9am-5pm','Boat Dock'),
       a('9:15-11:45am','Guppies'), a('9:30-11:00am','Open Tennis Clinic'), a('9:30-11am','Washoe History: Past and Present'),
-      a('9:30-11:45am','Crawdads, Mergansers, Chickarees, and Marmots'), a('9:30am-1:30pm','Outdoor Climb'),
-      a('9:30am-3:30pm','Medium Hike'), a('9:45-10:45am','Craft: Resin Coasters/Trays'), a('10-11am','Ski Dock*'),
-      a('11am-12pm','Pickleball Clinic and Play'), a('11am-12pm','Ospreys'), a('11:30am-4pm','Teens')],
+      a('9:30-11:45am','Crawdads, Mergansers, Chickarees, and Marmots'), a('9:30am-1:30pm','Outdoor Climb*'),
+      a('9:30am-3:30pm','Medium Hike*'), a('9:45-10:45am','Craft: Resin Coasters/Trays*'), a('10-11am','Ski Dock*'),
+      a('11am-12pm','Pickleball Clinic and Play*'), a('11am-12pm','Ospreys'), a('11:30am-4pm','Teens')],
     noon:[a('12-12:45pm','Lunch'), a('1-2:30pm','Ospreys'), a('1-5pm','Ski Dock*'),
-      a('1:30-3:30pm','Not-Quite-Beginner Sailing'), a('1:30-3:30pm','Art: Intro to Oil Painting'),
-      a('2-4pm','Kids Groups'), a('2:15-3:45pm','Craft: Shibori Dye'), a('2:15-3:45pm','Pickleball Play'),
-      a('3-4pm','Nature Boatster'), a('3-4pm','Adult Improv'), a('3-4pm','Book Talk: Worlds of Wonders'),
-      a('3:45-5pm','Family Sail'), a('4-5pm','Open Climb'), a('5-6pm','Story Hour'), a('5-6pm',"Women's Boatster Cruise")],
-    sunset:[a('5:45-6:45pm','Dinner'), a('6:30-7:30pm','Family Portraits'), a('7-7:45pm','Boat Dock'),
-      a('7-8pm','Guest-to-Guest'), a('7:30-10:00pm','Fountain Pretzel Night'), a('8:30-9:30pm','Improv Show')]
+      a('1:30-3:30pm','Not-Quite-Beginner Sailing*'), a('1:30-3:30pm','Art: Intro to Oil Painting*'),
+      a('2-4pm','Kids Groups'), a('2:15-3:45pm','Craft: Shibori Dye*'), a('2:15-3:45pm','Pickleball Play'),
+      a('3-4pm','Nature Boatster*'), a('3-4pm','Adult Improv'), a('3-4pm','Book Talk: Worlds of Wonders'),
+      a('3:45-5pm','Family Sail*'), a('4-5pm','Open Climb'), a('5-6pm','Story Hour'), a('5-6pm',"Women's Boatster Cruise*")],
+    sunset:[a('5:45-6:45pm','Dinner'), a('6:30-7:30pm','Family Portraits*'), a('7-7:45pm','Boat Dock'),
+      a('7-8pm','Guest-to-Guest*'), a('7:30-10:00pm','Fountain Pretzel Night'), a('8:30-9:30pm','Improv Show')]
   },
   wed:{
-    sunrise:[a('6:30-8am','Rowing'), a('7:45-8:45am','Breakfast'), a('9-10am','Linen Bar'),
+    sunrise:[a('6:30-8am','Rowing*'), a('7:45-8:45am','Breakfast'), a('9-10am','Linen Bar'),
       a('10am-12pm','Games Day & Ski Show')],
-    noon:[a('12-12:45pm','BBQ in Front of Lodge'), a('12:30-3pm','Guest vs Guest Volleyball'),
-      a('1-2pm','Wilderness Skills Workshop'), a('1-3pm','Outrigger'), a('1-5pm','Boat Dock'), a('1-5pm','Ski Dock*'),
-      a('1:30-3:30pm','Kids Sail'), a('2-5pm','Wimbledon Wednesday'), a('2:15-3:45pm','Orienteering'),
-      a('2:30-3:30pm','Dance: Line Dancing'), a('2:30-3:30pm','Family Craft: Jewelry Making'),
+    noon:[a('12-12:45pm','BBQ in Front of Lodge'), a('12:30-3pm','Guest vs Guest Volleyball*'),
+      a('1-2pm','Wilderness Skills Workshop'), a('1-3pm','Outrigger*'), a('1-5pm','Boat Dock'), a('1-5pm','Ski Dock*'),
+      a('1:30-3:30pm','Kids Sail*'), a('2-5pm','Wimbledon Wednesday*'), a('2:15-3:45pm','Orienteering*'),
+      a('2:30-3:30pm','Dance: Line Dancing'), a('2:30-3:30pm','Family Craft: Jewelry Making*'),
       a('2:30-3:30pm','Partner Yoga: Mirror Yoga'), a('2:30-3:30pm','Family Improv Workshop'),
       a('2:45-4:45pm','Open Climb'), a('3-4pm','Language Hour'), a('3-4pm',"Music Lesson: Playin' the Blues"),
-      a('5-6pm','Story Hour'), a('5-6pm','Boatster Cruise'), a('5-6pm','Family Portraits'), a('5:45-7:45pm','Teen Free Ski')],
+      a('5-6pm','Story Hour'), a('5-6pm','Boatster Cruise*'), a('5-6pm','Family Portraits*'), a('5:45-7:45pm','Teen Free Ski')],
     sunset:[a('5:45-6:45pm','Dinner'), a('7-7:45pm','Boat Dock'), a('7:30-8:45pm','Campfire'),
-      a('9-10pm','The Play'), a('10-11pm','Astrocruise')]
+      a('9-10pm','The Play'), a('10-11pm','Astrocruise*')]
   },
   thu:{
-    sunrise:[a('6:30-8am','Rowing'), a('7:15-8:15am','Morning Exercise'), a('7:45-8:45am','Breakfast'),
-      a('7:45-8:45am',"Women's Breakfast"), a('8-11am','Ski Dock*'), a('8:15am-12pm','Advanced Mountain Biking'),
-      a('8:15am-4pm','Long Hike'), a('9am-5pm','Boat Dock'), a('9:15am-3pm','Guppies'),
-      a('9:30am-11:30am','Arts: Oil Painting - Fruit & Still Life'), a('9:30am-3:30pm','Kids Groups'),
-      a('9:30am-3:30pm','Medium Hike'), a('9:45-11:15am','Couples Tennis'), a('10-11am','Open Climb'),
+    sunrise:[a('6:30-8am','Rowing*'), a('7:15-8:15am','Morning Exercise'), a('7:45-8:45am','Breakfast'),
+      a('7:45-8:45am',"Women's Breakfast"), a('8-11am','Ski Dock*'), a('8:15am-12pm','Advanced Mountain Biking*'),
+      a('8:15am-4pm','Long Hike*'), a('9am-5pm','Boat Dock'), a('9:15am-3pm','Guppies'),
+      a('9:30am-11:30am','Arts: Oil Painting - Fruit & Still Life*'), a('9:30am-3:30pm','Kids Groups'),
+      a('9:30am-3:30pm','Medium Hike*'), a('9:45-11:15am','Couples Tennis*'), a('10-11am','Open Climb'),
       a('10-11am','Fountain Trivia'), a('10:30-11:45am','Teens')],
     noon:[a('12-12:45pm','Adult Lunch'), a('1pm','Osprey Overnight Leaves'), a('1-5pm','Ski Dock*'),
-      a('2-4pm','Arts: Watercolor Landscapes'), a('3-4pm','Yoga: Beach and Shallow Water'),
-      a('4:30-5:30pm','Kids + Adults Volleyball'), a('5-6pm','Story Hour'), a('5-6pm','Boatster Cruise')],
+      a('2-4pm','Arts: Watercolor Landscapes*'), a('3-4pm','Yoga: Beach and Shallow Water'),
+      a('4:30-5:30pm','Kids + Adults Volleyball'), a('5-6pm','Story Hour'), a('5-6pm','Boatster Cruise*')],
     sunset:[a('5:45-6:45pm','Dinner'), a('7-7:45pm','Boat Dock'), a('7:50-9pm','Guppy/Crawdad Night'),
       a('7:50-9pm','Merganser/Chickaree Night'), a('8-9pm','Faculty Speaker'), a('8-9:15pm','Marmots'),
       a('8:30-9:30pm','Teens'), a('9-10:30pm','Fountain Pretzel Night!'), a('9:45-10:45pm','Trivia Night!'),
-      a('10-11pm','Astrocruise')]
+      a('10-11pm','Astrocruise*')]
   },
   fri:{
-    sunrise:[a('6:30-8am','Rowing'), a('7-8:15am','SUP Yoga'), a('7:15-8:15am','Morning Exercise + Cold Plunge'),
+    sunrise:[a('6:30-8am','Rowing*'), a('7-8:15am','SUP Yoga*'), a('7:15-8:15am','Morning Exercise + Cold Plunge*'),
       a('7:45-8:45am','Breakfast (Omelette Bar)'), a('8-11am','Ski Dock*'), a('9am','Osprey Overnight Returns'),
-      a('9-11:45am','Intermediate Mountain Biking'), a('9am-5pm','Boat Dock'), a('9:15-11:45am','Guppies'),
-      a('9:30-10:45am','Crafts: Print Making'), a('9:30-11am','Arts: Acrylic Paint'), a('9:30-11:45am','Kids Groups'),
+      a('9-11:45am','Intermediate Mountain Biking*'), a('9am-5pm','Boat Dock'), a('9:15-11:45am','Guppies'),
+      a('9:30-10:45am','Crafts: Print Making*'), a('9:30-11am','Arts: Acrylic Paint*'), a('9:30-11:45am','Kids Groups'),
       a('9:45-11:30am','Pickleball Play'), a('10-11:15am','Reflection Yoga'), a('10:45am-12pm','Teens Group'),
       a('','***Early Check-Out Sign-Up Ends at Noon***')],
     noon:[a('12-12:45pm','Lunch'), a('1-5pm','Ski Dock*'), a('1:15-3:00pm','Staph vs. Guest Volleyball'),
-      a('1:30-2:30pm','Faculty Speaker Discussion'), a('1:30-3:30pm','Sailing Regatta'),
-      a('1:45-2:45pm','Basketball Tournament'), a('2-3pm','Kids Talent Show'), a('2:45-3:45pm','Bread Bake'),
-      a('2:45-4:15pm','Pickleball Tournament'), a('2:45-3:45pm','Psychology Discussion'), a('3-4pm','Hip Hop Dance'),
+      a('1:30-2:30pm','Faculty Speaker Discussion'), a('1:30-3:30pm','Sailing Regatta*'),
+      a('1:45-2:45pm','Basketball Tournament'), a('2-3pm','Kids Talent Show*'), a('2:45-3:45pm','Bread Bake*'),
+      a('2:45-4:15pm','Pickleball Tournament*'), a('2:45-3:45pm','Psychology Discussion'), a('3-4pm','Hip Hop Dance'),
       a('3-4pm','Kids Carnival'), a('3-4:15pm','Open Climb'), a('3-4:30pm','Ospreys'), a('3-6pm','Early Check-Out'),
       a('4-5pm','Art & Crafts Social'), a('4:15-5pm','Egg Drop'), a('4:30-5:30pm','Cherry House Social'),
       a('5:00-5:45pm','Shabbat')],
@@ -749,7 +753,7 @@ function renderSchedule(){
       const hasDesc = !!it.desc;
       html += `<div class="item ${checked?'is-checked':''}${hasDesc?' has-desc':''}"${hasDesc?' onclick="toggleDesc(event,this)"':''}>
         <div class="time">${it.time||''}</div>
-        <div class="title">${escapeHtml(it.title)}${hasDesc?'<span class="chev">▸</span>':''}${hasDesc?`<div class="desc">${escapeHtml(it.desc)}</div>`:''}</div>
+        <div class="title">${titleHtml(it.title)}${hasDesc?'<span class="chev">▸</span>':''}${hasDesc?`<div class="desc">${escapeHtml(it.desc)}</div>`:''}</div>
         <button class="check ${checked?'checked':''}" onclick="toggleSignup('${id}')">${checked?'✓':''}</button>
       </div>`;
     });
@@ -810,7 +814,7 @@ function renderMine(){
       (day[key]||[]).forEach((it,idx)=>{
         const id = `${d.key}_${key}_${idx}`;
         if(signups.has(id)){
-          rows += `<div class="mini-item"><div class="t">${it.time||''}</div><div>${escapeHtml(it.title)}</div></div>`;
+          rows += `<div class="mini-item"><div class="t">${it.time||''}</div><div>${titleHtml(it.title)}</div></div>`;
         }
       });
     });
@@ -885,6 +889,12 @@ function renderAll(){
 
 function escapeHtml(s){
   return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* Titles ending in a single "*" need advance sign-up — shown as a chip instead of the raw asterisk. */
+function titleHtml(title){
+  const needsSignup = title.endsWith('*') && !title.startsWith('*');
+  return escapeHtml(needsSignup ? title.slice(0,-1) : title) + (needsSignup ? '<span class="signup-chip">SIGN-UP</span>' : '');
 }
 
 function openInfo(){ document.getElementById('infoModal').classList.remove('hidden'); }

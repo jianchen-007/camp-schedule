@@ -1,4 +1,4 @@
-const CACHE = 'camp-app-v5';
+const CACHE = 'camp-app-v6';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
@@ -13,21 +13,46 @@ self.addEventListener('activate', e => {
   );
 });
 
-// Cache-first so the app opens instantly offline; refresh cache in background.
+// The schedule changes daily during camp week, so serve fresh content whenever
+// there's signal: try the network (3s budget), cache the response, and fall
+// back to the saved copy only when offline or slow.
+const NETWORK_TIMEOUT_MS = 3000;
+
+function fetchAndCache(request) {
+  return fetch(request).then(res => {
+    if (res && res.ok && new URL(request.url).origin === location.origin) {
+      const copy = res.clone();
+      caches.open(CACHE).then(c => c.put(request, copy));
+    }
+    return res;
+  });
+}
+
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request, { ignoreSearch: true }).then(cached => {
-      const fetched = fetch(e.request)
+    new Promise(resolve => {
+      let settled = false;
+      const useCache = () => caches.match(e.request, { ignoreSearch: true });
+
+      const timer = setTimeout(() => {
+        useCache().then(cached => {
+          if (cached && !settled) { settled = true; resolve(cached); }
+          // No cached copy: leave the network request to settle this fetch.
+        });
+      }, NETWORK_TIMEOUT_MS);
+
+      fetchAndCache(e.request)
         .then(res => {
-          if (res && res.ok && new URL(e.request.url).origin === location.origin) {
-            const copy = res.clone();
-            caches.open(CACHE).then(c => c.put(e.request, copy));
-          }
-          return res;
+          clearTimeout(timer);
+          if (!settled) { settled = true; resolve(res); }
         })
-        .catch(() => cached);
-      return cached || fetched;
+        .catch(() => {
+          clearTimeout(timer);
+          useCache().then(cached => {
+            if (!settled) { settled = true; resolve(cached || Response.error()); }
+          });
+        });
     })
   );
 });

@@ -193,6 +193,34 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
 }
 .btn.danger{color:#c0392b;}
 
+/* Share */
+.share-block{max-width:440px; margin:0 auto;}
+.qr-card{
+  background:#ffffff; border:1px solid var(--border); border-radius:16px;
+  padding:18px 18px 14px; text-align:center; box-shadow:var(--shadow);
+  max-width:320px; margin:22px auto 0;
+}
+.qr-img{width:100%; max-width:264px; height:auto; display:block; margin:0 auto; border-radius:6px;}
+.qr-cap{font-size:12.5px; color:#5c6357; margin-top:10px; font-weight:600;}
+.link-row{
+  display:flex; align-items:center; gap:8px; margin:16px auto 0;
+  background:var(--pill-bg); border:1px solid var(--border);
+  border-radius:12px; padding:6px 6px 6px 14px;
+}
+.link-text{flex:1; min-width:0; font-size:13px; color:var(--text); font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.link-copy{
+  flex:none; border:none; background:var(--pill-active-bg); color:var(--pill-active-text);
+  padding:9px 15px; border-radius:9px; font-weight:700; font-size:13px; cursor:pointer;
+}
+.share-btns{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0 4px;}
+.share-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none;
+  border:1px solid var(--border); background:var(--bg-elev); color:var(--text);
+  padding:13px; border-radius:12px; font-size:14px; font-weight:700; cursor:pointer; box-shadow:var(--shadow);
+}
+.share-btn .sic{font-size:18px;}
+.share-btn:active{transform:translateY(1px);}
+
 /* Bottom nav */
 nav.bottom{
   position:sticky; bottom:0; z-index:20;
@@ -309,6 +337,7 @@ nav.bottom button.active{color:var(--accent);}
     <button id="navMenu" onclick="setView('menu')"><span class="ic">🍽️</span>Menu</button>
     <button id="navMap" onclick="setView('map')"><span class="ic">🗺️</span>Map</button>
     <button id="navMine" onclick="setView('mine')"><span class="ic">✅</span>My Sign-Ups</button>
+    <button id="navShare" onclick="setView('share')"><span class="ic">📤</span>Share</button>
   </nav>
 </div>
 
@@ -443,6 +472,11 @@ const DAYS = [
 ];
 
 function a(time,title,desc){return {time,title,desc};}
+
+/* Sharing: the live GitHub Pages URL everyone installs from. */
+const APP_URL = 'https://jianchen-007.github.io/camp-schedule/';
+const SHARE_TEXT = "Here's the Camp Week Schedule app — daily activities, menus, a camp map, and a personal sign-up tracker. Add it to your Home Screen and it works even with no signal:";
+const SHARE_MSG = SHARE_TEXT + ' ' + APP_URL;
 
 const SCHEDULE = {
   sat:{
@@ -974,10 +1008,58 @@ function clearSignups(){
   }
 }
 
+/* ---------------- Render: share ---------------- */
+function renderShare(){
+  const url = escapeHtml(APP_URL);
+  const waHref = 'https://wa.me/?text=' + encodeURIComponent(SHARE_MSG);
+  const smsHref = 'sms:?&body=' + encodeURIComponent(SHARE_MSG);
+  const mailHref = 'mailto:?subject=' + encodeURIComponent('Camp Week Schedule 2026')
+                 + '&body=' + encodeURIComponent(SHARE_MSG);
+  const html = `<div class="section"><div class="info-banner">Share this app with other campers — no app store, no account. They scan the code or tap the link, then add it to their Home Screen.</div></div>
+    <div class="share-block">
+      <div class="qr-card">
+        <img class="qr-img" src="qr-code.png" alt="QR code that opens the Camp Week Schedule app">
+        <div class="qr-cap">Point a phone camera here to open it</div>
+      </div>
+
+      <div class="link-row">
+        <span class="link-text" id="shareLink">${url}</span>
+        <button class="link-copy" onclick="copyAppLink(this)">Copy</button>
+      </div>
+
+      <div class="share-btns">
+        <a class="share-btn" href="${waHref}" target="_blank" rel="noopener"><span class="sic">💬</span>WhatsApp</a>
+        <a class="share-btn" href="${smsHref}"><span class="sic">📩</span>Text message</a>
+        <a class="share-btn" href="${mailHref}"><span class="sic">✉️</span>Email</a>
+        <button class="share-btn" onclick="shareApp()"><span class="sic">📤</span>More…</button>
+      </div>
+    </div>`;
+  document.getElementById('main').innerHTML = html;
+}
+
+function shareApp(){
+  if(navigator.share){
+    navigator.share({title:'Camp Week Schedule 2026', text:SHARE_TEXT, url:APP_URL}).catch(()=>{});
+  } else {
+    copyAppLink();
+  }
+}
+function copyAppLink(btn){
+  const done = ()=>{
+    if(btn){ const orig = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(()=>{ btn.textContent = orig; }, 1500); }
+    else { alert('Link copied to the clipboard!'); }
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(APP_URL).then(done).catch(()=>promptCopy(APP_URL));
+  } else {
+    promptCopy(APP_URL);
+  }
+}
+
 /* ---------------- View switching ---------------- */
 function setView(view){
   currentView = view;
-  ['navSchedule','navMenu','navMap','navMine'].forEach(id=>document.getElementById(id).classList.remove('active'));
+  ['navSchedule','navMenu','navMap','navMine','navShare'].forEach(id=>document.getElementById(id).classList.remove('active'));
   document.getElementById('nav'+view.charAt(0).toUpperCase()+view.slice(1)).classList.add('active');
   renderAll();
   document.getElementById('main').scrollTop = 0;
@@ -986,13 +1068,16 @@ function setView(view){
 
 function renderAll(){
   renderDayTabs();
-  document.getElementById('dayTabs').style.display = currentView==='map' ? 'none' : '';
-  document.getElementById('subtitle').textContent = currentView==='map'
-    ? 'Stanford Sierra Camp · Summer 2026'
-    : DAYS.find(d=>d.key===currentDay).label + ' · Summer 2026';
+  const dayless = currentView==='map' || currentView==='share';
+  document.getElementById('dayTabs').style.display = dayless ? 'none' : '';
+  const subtitle = document.getElementById('subtitle');
+  if(currentView==='map') subtitle.textContent = 'Stanford Sierra Camp · Summer 2026';
+  else if(currentView==='share') subtitle.textContent = 'Invite other campers · Summer 2026';
+  else subtitle.textContent = DAYS.find(d=>d.key===currentDay).label + ' · Summer 2026';
   if(currentView==='schedule') renderSchedule();
   else if(currentView==='menu') renderMenu();
   else if(currentView==='map') renderMap();
+  else if(currentView==='share') renderShare();
   else renderMine();
 }
 

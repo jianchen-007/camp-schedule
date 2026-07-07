@@ -163,6 +163,23 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
 .food-group:first-child{border-top:none;}
 .food-group .g-label{font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-dim); font-weight:700; margin-bottom:3px;}
 
+/* Map */
+.map-wrap{
+  overflow-x:auto; border-radius:14px; border:1px solid var(--border);
+  box-shadow:var(--shadow); background:var(--bg-elev); -webkit-overflow-scrolling:touch;
+}
+.map-wrap svg{display:block;}
+.map-label{
+  font-size:14.5px; font-weight:700; padding:10px 14px; margin-bottom:10px;
+  background:var(--bg-elev); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow);
+}
+.map-chips{display:flex; flex-wrap:wrap; gap:7px; margin-top:14px;}
+.map-chips button{
+  border:1px solid var(--border); background:var(--pill-bg); color:var(--text);
+  padding:7px 11px; border-radius:999px; font-size:12.5px; font-weight:600; cursor:pointer;
+}
+.map-chips button.active{background:var(--chip-signup); color:#fff; border-color:transparent;}
+
 /* My sign-ups */
 .day-group{margin-bottom:20px;}
 .day-group h3{font-size:14px; font-weight:800; margin:0 0 8px 2px;}
@@ -290,6 +307,7 @@ nav.bottom button.active{color:var(--accent);}
   <nav class="bottom">
     <button id="navSchedule" class="active" onclick="setView('schedule')"><span class="ic">🗓️</span>Schedule</button>
     <button id="navMenu" onclick="setView('menu')"><span class="ic">🍽️</span>Menu</button>
+    <button id="navMap" onclick="setView('map')"><span class="ic">🗺️</span>Map</button>
     <button id="navMine" onclick="setView('mine')"><span class="ic">✅</span>My Sign-Ups</button>
   </nav>
 </div>
@@ -820,6 +838,71 @@ function renderMenu(){
   document.getElementById('main').innerHTML = html;
 }
 
+/* ---------------- Render: map ---------------- */
+/* Hotspot coordinates from the camp's interactive map (whatzappening.com/interactive-map), viewBox 1170x556. */
+const MAP_SPOTS = [
+  {name:'White Fir Cluster', x:100, y:220},
+  {name:'Willow Cluster', x:176, y:155},
+  {name:'Sugar Pine Cluster', x:240, y:157},
+  {name:'Jeffrey Pine Cluster', x:298, y:215},
+  {name:'The Shop', x:186, y:312},
+  {name:'Snooper Chalet (CrawDeck)', x:390, y:428},
+  {name:'Staff Housing', x:450, y:300},
+  {name:'Main Lodge', x:732, y:250},
+  {name:'Alder Cluster', x:875, y:250},
+  {name:'Ponderosa Cluster', x:950, y:280},
+  {name:'Lodgepole Pine Cluster', x:863, y:310},
+  {name:'Aspen Cluster', x:1015, y:307},
+  {name:'Incense Cedar Cluster', x:922, y:335},
+  {name:'White Pine Cluster', x:975, y:365},
+  {name:'Juniper Cluster', x:1040, y:410}
+];
+const MAP_SVG_WIDTH = 1000; // rendered width in px; wider than phones so the map stays readable and pans
+let selectedSpot = -1;
+
+function renderMap(){
+  let circles = MAP_SPOTS.map((s,i)=>
+    `<circle cx="${s.x}" cy="${s.y}" r="16" fill="#fff" opacity="0.55" stroke="#1f4d3d" stroke-width="2" style="cursor:pointer" onclick="selectSpot(${i})"></circle>`
+  ).join('');
+  let html = `<div class="section"><div class="info-banner">Tap a circle on the map — or a name below — to locate it. Drag the map sideways to look around.</div></div>
+    <div class="map-label" id="mapLabel">📍 Where is everything?</div>
+    <div class="map-wrap" id="mapWrap">
+      <svg viewBox="0 0 1170 556" width="${MAP_SVG_WIDTH}" height="${Math.round(MAP_SVG_WIDTH*556/1170)}" xmlns="http://www.w3.org/2000/svg">
+        <image href="map.jpg" width="1170" height="556"></image>
+        ${circles}
+        <text id="mapText" x="0" y="0" font-size="26" font-weight="800" font-family="sans-serif"
+          fill="#fff" stroke="#1f4d3d" stroke-width="5" paint-order="stroke" style="pointer-events:none"></text>
+      </svg>
+    </div>
+    <div class="map-chips">${MAP_SPOTS.map((s,i)=>`<button id="spotChip${i}" onclick="selectSpot(${i})">${escapeHtml(s.name)}</button>`).join('')}</div>`;
+  document.getElementById('main').innerHTML = html;
+  if(selectedSpot >= 0) selectSpot(selectedSpot);
+}
+
+function selectSpot(i){
+  selectedSpot = i;
+  const s = MAP_SPOTS[i];
+  const svg = document.querySelector('#mapWrap svg');
+  svg.querySelectorAll('circle').forEach((c,idx)=>{
+    const on = idx===i;
+    c.setAttribute('fill', on ? '#e98301' : '#fff');
+    c.setAttribute('opacity', on ? '1' : '0.55');
+    c.setAttribute('r', on ? '19' : '16');
+  });
+  const t = document.getElementById('mapText');
+  const onRight = s.x > 585;
+  t.setAttribute('x', onRight ? s.x-28 : s.x+28);
+  t.setAttribute('y', s.y+9);
+  t.setAttribute('text-anchor', onRight ? 'end' : 'start');
+  t.textContent = s.name;
+  document.getElementById('mapLabel').textContent = '📍 ' + s.name;
+  document.querySelectorAll('.map-chips button').forEach((b,idx)=>b.classList.toggle('active', idx===i));
+  const wrap = document.getElementById('mapWrap');
+  const scale = MAP_SVG_WIDTH/1170;
+  const labelBias = onRight ? -90 : 90; // keep the label text inside the panned view
+  wrap.scrollTo({left: Math.max(0, s.x*scale - wrap.clientWidth/2 + labelBias), behavior:'smooth'});
+}
+
 /* ---------------- Render: my sign-ups ---------------- */
 function renderMine(){
   let html = '';
@@ -894,7 +977,7 @@ function clearSignups(){
 /* ---------------- View switching ---------------- */
 function setView(view){
   currentView = view;
-  ['navSchedule','navMenu','navMine'].forEach(id=>document.getElementById(id).classList.remove('active'));
+  ['navSchedule','navMenu','navMap','navMine'].forEach(id=>document.getElementById(id).classList.remove('active'));
   document.getElementById('nav'+view.charAt(0).toUpperCase()+view.slice(1)).classList.add('active');
   renderAll();
   document.getElementById('main').scrollTop = 0;
@@ -903,9 +986,13 @@ function setView(view){
 
 function renderAll(){
   renderDayTabs();
-  document.getElementById('subtitle').textContent = DAYS.find(d=>d.key===currentDay).label + ' · Summer 2026';
+  document.getElementById('dayTabs').style.display = currentView==='map' ? 'none' : '';
+  document.getElementById('subtitle').textContent = currentView==='map'
+    ? 'Stanford Sierra Camp · Summer 2026'
+    : DAYS.find(d=>d.key===currentDay).label + ' · Summer 2026';
   if(currentView==='schedule') renderSchedule();
   else if(currentView==='menu') renderMenu();
+  else if(currentView==='map') renderMap();
   else renderMine();
 }
 

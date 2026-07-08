@@ -222,6 +222,19 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
 }
 .share-btn .sic{font-size:18px;}
 .share-btn:active{transform:translateY(1px);}
+.rate-card{
+  text-align:center; margin-top:22px; padding:16px 14px 14px;
+  background:var(--bg-elev); border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow);
+}
+.rate-title{font-size:14px; font-weight:800;}
+.rate-stars{display:flex; justify-content:center; gap:4px; margin-top:8px;}
+.rate-star{
+  border:none; background:none; cursor:pointer; padding:2px 4px;
+  font-size:34px; line-height:1; color:var(--border);
+}
+.rate-star.on{color:#e5a821;}
+.rate-hint{font-size:12.5px; color:var(--text-dim); margin-top:6px;}
+.rate-send{flex:none; width:100%; margin-top:12px; background:var(--pill-active-bg); color:var(--pill-active-text); border-color:transparent;}
 .dev-contact{
   text-align:center; margin:22px auto 4px; font-size:13px; color:var(--text-dim); line-height:1.6;
   border-top:1px solid var(--border); padding-top:16px;
@@ -502,6 +515,10 @@ function saveSignups(){
   try{ localStorage.setItem(STORAGE_KEY, JSON.stringify([...signups])); }catch(e){}
 }
 
+const RATING_KEY = 'campAppRating';
+let myRating = 0;
+try{ myRating = parseInt(localStorage.getItem(RATING_KEY), 10) || 0; }catch(e){}
+
 let currentDay = (function(){
   const idx = new Date().getDay(); // 0=Sun..6=Sat
   const map = {0:'sun',1:'mon',2:'tue',3:'wed',4:'thu',5:'fri',6:'sat'};
@@ -755,6 +772,15 @@ function renderShare(){
         <button class="share-btn" onclick="shareApp()"><span class="sic">📤</span>More…</button>
       </div>
 
+      <div class="rate-card">
+        <div class="rate-title">Enjoying the app? Rate it!</div>
+        <div class="rate-stars" id="rateStars">
+          ${[1,2,3,4,5].map(n=>`<button class="rate-star${n<=myRating?' on':''}" onclick="setRating(${n})" aria-label="Rate ${n} star${n>1?'s':''}">★</button>`).join('')}
+        </div>
+        <div class="rate-hint" id="rateHint">${myRating?`You rated it ${myRating}/5 — tap a star to change.`:'Tap a star to rate.'}</div>
+        <button class="btn rate-send" id="rateSend" onclick="sendRating()" style="${myRating?'':'display:none;'}">Send my rating to Kevin</button>
+      </div>
+
       <div class="dev-contact">
         Questions, corrections, or ideas for this app?<br>
         Built by <strong>Kevin Chen</strong>, week 4 camper.
@@ -770,6 +796,21 @@ function shareApp(){
   } else {
     copyAppLink();
   }
+}
+
+/* Rating: saved on this device; "Send" emails it to the developer (no server). */
+function setRating(n){
+  myRating = n;
+  try{ localStorage.setItem(RATING_KEY, String(n)); }catch(e){}
+  document.querySelectorAll('#rateStars .rate-star').forEach((s,i)=>s.classList.toggle('on', i<n));
+  document.getElementById('rateHint').textContent = `You rated it ${n}/5 — tap a star to change.`;
+  document.getElementById('rateSend').style.display = '';
+}
+function sendRating(){
+  const stars = '★'.repeat(myRating) + '☆'.repeat(5-myRating);
+  const subject = `Camp app rating: ${stars} (${myRating}/5)`;
+  const body = `My rating for the Camp Week Schedule app: ${stars} (${myRating}/5)\n\nComments (optional):\n`;
+  location.href = 'mailto:222kevinchen@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 function copyAppLink(btn){
   const done = ()=>{

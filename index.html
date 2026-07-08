@@ -359,7 +359,7 @@ nav.bottom button.active{color:var(--accent);}
     <button id="navMenu" onclick="setView('menu')"><span class="ic">🍽️</span>Menu</button>
     <button id="navMap" onclick="setView('map')"><span class="ic">🗺️</span>Map</button>
     <button id="navMine" onclick="setView('mine')"><span class="ic">✅</span>My Sign-Ups</button>
-    <button id="navShare" onclick="setView('share')"><span class="ic">📤</span>Share</button>
+    <button id="navShare" onclick="setView('share')"><span class="ic">ℹ️</span>Info</button>
   </nav>
 </div>
 
@@ -860,7 +860,7 @@ function renderAll(){
   document.getElementById('dayTabs').style.display = dayless ? 'none' : '';
   const subtitle = document.getElementById('subtitle');
   if(currentView==='map') subtitle.textContent = 'Stanford Sierra Camp · Summer 2026';
-  else if(currentView==='share') subtitle.textContent = 'Invite other campers · Summer 2026';
+  else if(currentView==='share') subtitle.textContent = 'App info · Summer 2026';
   else subtitle.textContent = DAYS.find(d=>d.key===currentDay).label + ' · Summer 2026';
   if(currentView==='schedule') renderSchedule();
   else if(currentView==='menu') renderMenu();

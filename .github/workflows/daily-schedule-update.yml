@@ -20,6 +20,11 @@ on:
     - cron: '15 1 * * *'  # 6:15pm PT (01:15 UTC next day)
     - cron: '0 3 * * *'   # 8:00pm PT (03:00 UTC next day) — catches late uploads
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:                # self-test on pipeline changes; bot commits don't match
+      - '.github/workflows/daily-schedule-update.yml'
+      - 'scripts/update-schedule.mjs'
 
 concurrency:
   group: schedule-update

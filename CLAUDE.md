@@ -28,6 +28,7 @@ repo folder). Transcribe them into `index.html`:
 
 ## Status (update as the week goes)
 
-- Sat Jul 4 – Sat Jul 11, 2026. Detail descriptions complete through Tuesday.
-- Still missing: Tuesday-evening onward "Whatzappening" detail sheets (Wed/Thu/Fri
-  activities have titles/times from the master grid, no descriptions yet).
+- Sat Jul 4 – Sat Jul 11, 2026. Detail descriptions complete through Wednesday
+  afternoon (Tue evening + full Wed morning/afternoon added from Whatzappening sheets).
+- Still missing: Wednesday-evening onward "Whatzappening" detail sheets (Wed evening
+  + Thu/Fri activities have titles/times from the master grid, no descriptions yet).

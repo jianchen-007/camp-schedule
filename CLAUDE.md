@@ -1,30 +1,46 @@
 # Camp Week Schedule app — working notes for Claude
 
-Single-file PWA (`index.html`) deployed via GitHub Pages. Pushing to `main` IS the
-deployment; everyone's installed app updates on next open (network-first service worker).
+PWA (`index.html` + `data.json`) deployed via GitHub Pages. Pushing to `main` IS the
+deployment; everyone's installed app updates on next open (network-first service
+worker, plus a 🔄 reload button in the header).
 
 ## The usual task: fold in photographed camp sheets
 
-Jian photographs the camp's printed sheets and attaches them (or drops JPGs in the
-repo folder). Transcribe them into `index.html`:
+Jian photographs the camp's printed sheets and attaches them (or they land in the
+shared Drive folder — see Automation below). Transcribe them into `data.json`:
 
-- **"Whatzappening?!" daily sheets** → activity descriptions. Data lives in the
-  `SCHEDULE` object: per day (`sat`..`fri`), sections `sunrise` / `noon` / `sunset`,
-  entries `a('time','Title',"description")`.
+- **"Whatzappening?!" daily sheets** → activity descriptions. Data lives in
+  `data.json` under `schedule`: per day (`sat`..`fri`), sections
+  `sunrise` / `noon` / `sunset`, entries `{time, title, desc?}`.
 - **Titles ending in `*`** = advance sign-up required (shaded on printed sheets);
   the app renders the `*` as an orange SIGN-UP chip. Keep the convention.
 - **Kids Groups** get one combined description: `CRAWDADS: ...\n\nMERGANSERS: ...\n\n
   CHICKAREES: ...\n\nMARMOTS: ...`
-- **Menus** live in the `MENU` object; verify against the printed "Summer 2026
-  Weekly Menu" if changed. Map hotspots live in `MAP_SPOTS`.
+- **Menus** live in `data.json` under `menu`; verify against the printed "Summer 2026
+  Weekly Menu" if changed. Map hotspots live in `MAP_SPOTS` in `index.html`.
 - Photos are often rotated or upside-down — rotate before reading. Transcribe
   faithfully (keep the staff's jokes and tone); fix only obvious typos.
 
 ## Rules for every change
 
 1. Bump the cache version in `sw.js` (`camp-app-vN` → `vN+1`).
-2. Verify the page still renders (open index.html / check JS parses) before pushing.
+2. Verify the page still renders (serve over HTTP — `data.json` is fetched, so
+   `file://` won't load the schedule) before pushing.
 3. Commit with a descriptive message and push to `main`.
+
+## Automation (daily sheets from Google Drive)
+
+Staff drop the day's sheet (PDF/photo, any file name) into the shared Drive folder
+`1k5smIj_OZ34ZJmpBH5EFogbmuV99NgPN` around 5:45pm PT.
+`.github/workflows/daily-schedule-update.yml` runs at 6:15pm and 8:00pm PT (and via
+manual dispatch): `scripts/update-schedule.mjs` lists the folder, detects new files
+by Drive `modifiedTime` (state in `.bot/last-processed.json`), transcribes them with
+the Anthropic API, validates + merges into `data.json` (with a shrink-guard against
+data loss), bumps `sw.js`, and the workflow commits to `main`.
+
+Requires repo secrets `GDRIVE_SERVICE_ACCOUNT` (Viewer on the folder) and
+`ANTHROPIC_API_KEY`. Failed runs email the repo owner; nothing is published when
+validation fails.
 
 ## Status (update as the week goes)
 
@@ -32,3 +48,5 @@ repo folder). Transcribe them into `index.html`:
   afternoon (Tue evening + full Wed morning/afternoon added from Whatzappening sheets).
 - Still missing: Wednesday-evening onward "Whatzappening" detail sheets (Wed evening
   + Thu/Fri activities have titles/times from the master grid, no descriptions yet).
+- Automation pending: secrets not yet confirmed in repo settings; Drive folder was
+  empty as of Jul 8 — first real sheet will exercise the pipeline.

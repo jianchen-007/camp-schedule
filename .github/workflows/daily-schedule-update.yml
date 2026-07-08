@@ -1,0 +1,58 @@
+# Fully automated daily schedule updates.
+#
+# Camp staff drop the day's Whatzappening sheet (PDF or photo, any file name)
+# into the shared Google Drive folder around 5:45pm PT. This workflow checks
+# the folder shortly after, transcribes anything new with the Anthropic API,
+# updates data.json, bumps the service-worker cache, and pushes to main —
+# which IS the deployment (GitHub Pages).
+#
+# Requires two repository secrets:
+#   GDRIVE_SERVICE_ACCOUNT — service-account key JSON with Viewer access to the folder
+#   ANTHROPIC_API_KEY      — Anthropic API key
+#
+# Runs are cheap no-ops when the folder has nothing new. Trigger manually any
+# time from the Actions tab ("Run workflow").
+
+name: Auto-update schedule from Drive
+
+on:
+  schedule:
+    - cron: '15 1 * * *'  # 6:15pm PT (01:15 UTC next day)
+    - cron: '0 3 * * *'   # 8:00pm PT (03:00 UTC next day) — catches late uploads
+  workflow_dispatch:
+
+concurrency:
+  group: schedule-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch and transcribe new sheets
+        run: node scripts/update-schedule.mjs
+        env:
+          GDRIVE_SERVICE_ACCOUNT: ${{ secrets.GDRIVE_SERVICE_ACCOUNT }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit and deploy
+        run: |
+          if git diff --quiet && git ls-files --others --exclude-standard | grep -q . ; then :; fi
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Nothing new — no deploy."
+            exit 0
+          fi
+          git config user.name "camp-schedule-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json sw.js .bot/
+          git commit -m "Auto-update schedule from new Whatzappening sheet"
+          git push

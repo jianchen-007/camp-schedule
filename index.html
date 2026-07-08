@@ -220,6 +220,11 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
 }
 .share-btn .sic{font-size:18px;}
 .share-btn:active{transform:translateY(1px);}
+.dev-contact{
+  text-align:center; margin:22px auto 4px; font-size:13px; color:var(--text-dim); line-height:1.6;
+  border-top:1px solid var(--border); padding-top:16px;
+}
+.dev-contact a{display:inline-block; margin-top:4px; color:var(--accent); font-weight:700; text-decoration:none;}
 
 /* Bottom nav */
 nav.bottom{
@@ -1053,6 +1058,11 @@ function renderShare(){
         <a class="share-btn" href="${smsHref}"><span class="sic">📩</span>Text message</a>
         <a class="share-btn" href="${mailHref}"><span class="sic">✉️</span>Email</a>
         <button class="share-btn" onclick="shareApp()"><span class="sic">📤</span>More…</button>
+      </div>
+
+      <div class="dev-contact">
+        Questions, corrections, or ideas for this app?
+        <a href="mailto:222kevinchen@gmail.com?subject=${encodeURIComponent('Camp Week Schedule app')}">✉️ Email the developer</a>
       </div>
     </div>`;
   document.getElementById('main').innerHTML = html;

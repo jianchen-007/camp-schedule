@@ -87,6 +87,8 @@ header.top .sub{font-size:12px; color:var(--text-dim); margin-top:1px;}
   display:flex; align-items:center; justify-content:center; cursor:pointer;
   flex:none;
 }
+.icon-btn.spinning{animation:spin 0.7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
 
 .day-tabs{
   display:flex; gap:8px; overflow-x:auto; padding:6px 16px 12px;
@@ -328,6 +330,7 @@ nav.bottom button.active{color:var(--accent);}
       <div class="sub" id="subtitle">Summer 2026</div>
     </div>
     <div style="display:flex; gap:8px;">
+      <button class="icon-btn" id="reloadBtn" onclick="refreshApp(this)" aria-label="Reload for the latest schedule" title="Reload for the latest">🔄</button>
       <button class="icon-btn" onclick="openHowto()" aria-label="Add to Home Screen">📲</button>
       <button class="icon-btn" onclick="openInfo()" aria-label="Info">ⓘ</button>
     </div>
@@ -1121,6 +1124,21 @@ function escapeHtml(s){
 function titleHtml(title){
   const needsSignup = title.endsWith('*') && !title.startsWith('*');
   return escapeHtml(needsSignup ? title.slice(0,-1) : title) + (needsSignup ? '<span class="signup-chip">SIGN-UP</span>' : '');
+}
+
+/* Manual refresh: the service worker is network-first, so a plain reload
+   already fetches fresh content when online. We also ask the browser to
+   check for a newer service worker first, so a bumped cache version takes
+   effect. Offline reloads still fall back to the cached copy. */
+async function refreshApp(btn){
+  if(btn) btn.classList.add('spinning');
+  try{
+    if('serviceWorker' in navigator){
+      const reg = await navigator.serviceWorker.getRegistration();
+      if(reg && reg.update) await reg.update();
+    }
+  }catch(e){/* ignore — reload anyway */}
+  location.reload();
 }
 
 function openInfo(){ document.getElementById('infoModal').classList.remove('hidden'); }

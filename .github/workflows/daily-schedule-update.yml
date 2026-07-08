@@ -6,9 +6,9 @@
 # updates data.json, bumps the service-worker cache, and pushes to main —
 # which IS the deployment (GitHub Pages).
 #
-# Requires two repository secrets:
-#   GDRIVE_SERVICE_ACCOUNT — service-account key JSON with Viewer access to the folder
-#   ANTHROPIC_API_KEY      — Anthropic API key
+# Requires ANTHROPIC_API_KEY plus ONE Google credential secret:
+#   GDRIVE_SERVICE_ACCOUNT — service-account key JSON with Viewer access (private folder), or
+#   GDRIVE_API_KEY         — plain Google API key (folder must be "Anyone with the link: Viewer")
 #
 # Runs are cheap no-ops when the folder has nothing new. Trigger manually any
 # time from the Actions tab ("Run workflow").
@@ -42,6 +42,7 @@ jobs:
         run: node scripts/update-schedule.mjs
         env:
           GDRIVE_SERVICE_ACCOUNT: ${{ secrets.GDRIVE_SERVICE_ACCOUNT }}
+          GDRIVE_API_KEY: ${{ secrets.GDRIVE_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Commit and deploy

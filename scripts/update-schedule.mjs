@@ -5,8 +5,11 @@
 // data.json, and bumps the service-worker cache version. The workflow that
 // runs this script commits whatever changed. Zero npm dependencies.
 //
-// Env: GDRIVE_SERVICE_ACCOUNT (service-account key JSON, read-only Drive
-//      access to the folder), ANTHROPIC_API_KEY.
+// Env: ANTHROPIC_API_KEY, plus ONE of:
+//      GDRIVE_SERVICE_ACCOUNT — service-account key JSON with Viewer access
+//        to the folder (works with a private folder), or
+//      GDRIVE_API_KEY — a plain Google API key; requires the folder to be
+//        shared as "Anyone with the link: Viewer".
 // State: .bot/last-processed.json remembers which Drive files were handled,
 //      so staff can name files anything — new/updated files are detected by
 //      Drive's modifiedTime metadata.
@@ -54,29 +57,33 @@ async function driveToken(sa) {
   return (await res.json()).access_token;
 }
 
-async function listFolder(token) {
-  const params = new URLSearchParams({
+// auth = {token} (service account) or {apiKey} (public link-shared folder).
+function driveFetch(auth, path, params) {
+  if (auth.apiKey) params.set('key', auth.apiKey);
+  return fetch(`https://www.googleapis.com/drive/v3/${path}?${params}`, {
+    headers: auth.token ? { authorization: `Bearer ${auth.token}` } : {},
+  });
+}
+
+async function listFolder(auth) {
+  const res = await driveFetch(auth, 'files', new URLSearchParams({
     q: `'${FOLDER_ID}' in parents and trashed = false`,
     fields: 'files(id,name,mimeType,modifiedTime)',
     orderBy: 'modifiedTime',
     pageSize: '100',
     supportsAllDrives: 'true',
     includeItemsFromAllDrives: 'true',
-  });
-  const res = await fetch(`https://www.googleapis.com/drive/v3/files?${params}`, {
-    headers: { authorization: `Bearer ${token}` },
-  });
+  }));
   if (!res.ok) throw new Error(`Drive list failed: ${res.status} ${await res.text()}`);
   return (await res.json()).files || [];
 }
 
-async function downloadFile(token, file) {
+async function downloadFile(auth, file) {
   // Google-native docs get exported to PDF; everything else downloads as-is.
   const native = file.mimeType.startsWith('application/vnd.google-apps');
-  const url = native
-    ? `https://www.googleapis.com/drive/v3/files/${file.id}/export?mimeType=application/pdf`
-    : `https://www.googleapis.com/drive/v3/files/${file.id}?alt=media&supportsAllDrives=true`;
-  const res = await fetch(url, { headers: { authorization: `Bearer ${token}` } });
+  const res = native
+    ? await driveFetch(auth, `files/${file.id}/export`, new URLSearchParams({ mimeType: 'application/pdf' }))
+    : await driveFetch(auth, `files/${file.id}`, new URLSearchParams({ alt: 'media', supportsAllDrives: 'true' }));
   if (!res.ok) throw new Error(`download of ${file.name} failed: ${res.status}`);
   const mediaType = native ? 'application/pdf' : file.mimeType;
   return { data: Buffer.from(await res.arrayBuffer()).toString('base64'), mediaType };
@@ -205,14 +212,16 @@ function bumpSwVersion() {
 
 async function main() {
   const sa = JSON.parse(process.env.GDRIVE_SERVICE_ACCOUNT || 'null');
+  const gKey = process.env.GDRIVE_API_KEY;
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!sa || !apiKey) throw new Error('GDRIVE_SERVICE_ACCOUNT and ANTHROPIC_API_KEY must be set');
+  if (!apiKey) throw new Error('ANTHROPIC_API_KEY must be set');
+  if (!sa && !gKey) throw new Error('set GDRIVE_SERVICE_ACCOUNT or GDRIVE_API_KEY');
 
   let state = { processed: {} };
   try { state = JSON.parse(readFileSync(STATE_FILE, 'utf8')); } catch { /* first run */ }
 
-  const token = await driveToken(sa);
-  const files = await listFolder(token);
+  const auth = sa ? { token: await driveToken(sa) } : { apiKey: gKey };
+  const files = await listFolder(auth);
   const fresh = files.filter((f) => state.processed[f.id] !== f.modifiedTime);
   console.log(`Drive folder has ${files.length} file(s); ${fresh.length} new/updated.`);
   if (!fresh.length) return;
@@ -220,7 +229,7 @@ async function main() {
   let changed = false;
   for (const file of fresh) {
     console.log(`Processing "${file.name}" (${file.mimeType}, modified ${file.modifiedTime})`);
-    const block = contentBlock(await downloadFile(token, file));
+    const block = contentBlock(await downloadFile(auth, file));
     if (!block) {
       console.log(`  -> unsupported type, skipping (marking as seen)`);
       state.processed[file.id] = file.modifiedTime;

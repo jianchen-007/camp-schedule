@@ -1,4 +1,4 @@
-const CACHE = 'camp-app-v11';
+const CACHE = 'camp-app-v12';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './apple-touch-icon.png', './map.jpg', './qr-code.png'];
 
 self.addEventListener('install', e => {

@@ -17,6 +17,8 @@ name: Auto-update schedule from Drive
 
 on:
   schedule:
+    - cron: '45 0 * * *'  # 5:45pm PT (00:45 UTC next day) — staff publish around now
+    - cron: '0 1 * * *'   # 6:00pm PT (01:00 UTC next day)
     - cron: '15 1 * * *'  # 6:15pm PT (01:15 UTC next day)
     - cron: '0 3 * * *'   # 8:00pm PT (03:00 UTC next day) — catches late uploads
   workflow_dispatch:

@@ -44,9 +44,10 @@ validation fails.
 
 ## Status (update as the week goes)
 
-- Sat Jul 4 – Sat Jul 11, 2026. Detail descriptions complete through Wednesday
-  afternoon (Tue evening + full Wed morning/afternoon added from Whatzappening sheets).
-- Still missing: Wednesday-evening onward "Whatzappening" detail sheets (Wed evening
-  + Thu/Fri activities have titles/times from the master grid, no descriptions yet).
-- Automation pending: secrets not yet confirmed in repo settings; Drive folder was
-  empty as of Jul 8 — first real sheet will exercise the pipeline.
+- Sat Jul 4 – Sat Jul 11, 2026. Detail descriptions complete through Thursday
+  afternoon (Wed evening + Thu morning/afternoon added Jul 8 from the green sheet).
+- Still missing: Thursday-evening + Friday details (expected on Thursday's sheet).
+- Automation live: secrets verified, Drive listing works (green runs Jul 8). Folder
+  was still empty as of Jul 8 evening — sheets have arrived via chat photos so far;
+  if one lands in Drive after a manual transcription, the workflow re-processing it
+  should merge harmlessly.

@@ -1,0 +1,41 @@
+# One-click reset for a new camp week — run it from the Actions tab (works from
+# a phone browser): Actions → "New week reset" → Run workflow → enter the week
+# key (e.g. 2026-wk5). Strips last week's descriptions, clears Drive-processing
+# state, resets everyone's sign-ups (via the week key), and deploys.
+
+name: New week reset
+
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: 'New week key, e.g. 2026-wk5'
+        required: true
+
+concurrency:
+  group: schedule-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Reset data for the new week
+        run: node scripts/new-week.mjs "${{ github.event.inputs.week }}"
+
+      - name: Commit and deploy
+        run: |
+          git config user.name "camp-schedule-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json sw.js .bot/
+          git commit -m "Reset for new camp week: ${{ github.event.inputs.week }}"
+          git push

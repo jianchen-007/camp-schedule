@@ -242,6 +242,19 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
 }
 .dev-contact a{display:inline-block; margin-top:4px; color:var(--accent); font-weight:700; text-decoration:none;}
 
+/* CSV export */
+.csv-card{
+  background:var(--bg-elev); border:1px solid var(--border); border-radius:14px;
+  box-shadow:var(--shadow); padding:16px 14px; margin-top:14px;
+}
+.csv-title{font-size:15px; font-weight:800; margin-bottom:4px;}
+.csv-hint{font-size:12.5px; color:var(--text-dim); line-height:1.45; margin:0 0 10px;}
+.csv-toggle{
+  display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600;
+  margin-bottom:4px; cursor:pointer; user-select:none;
+}
+.csv-toggle input{width:17px; height:17px; accent-color:var(--chip-signup);}
+
 /* Bottom nav */
 nav.bottom{
   position:sticky; bottom:0; z-index:20;
@@ -778,6 +791,17 @@ function renderShare(){
         <button class="share-btn" onclick="shareApp()"><span class="sic">📤</span>More…</button>
       </div>
 
+      <div class="csv-card">
+        <div class="csv-title">📄 Take the schedule home</div>
+        <p class="csv-hint">Export the week as a CSV spreadsheet with your ✅ sign-ups marked. "Send" opens your share sheet — email it, text it, or save it to Google Drive, Dropbox, Files, and more.</p>
+        <label class="csv-toggle"><input type="checkbox" id="csvOnlyMine"> Only include my sign-ups</label>
+        <div class="share-btns">
+          <button class="share-btn" onclick="shareCsv()"><span class="sic">📤</span>Send / save to cloud…</button>
+          <button class="share-btn" onclick="downloadCsv()"><span class="sic">⬇️</span>Download file</button>
+          <button class="share-btn" style="grid-column:1 / -1;" onclick="copyCsvForSheets(this)"><span class="sic">📊</span>Copy for Google Sheets</button>
+        </div>
+      </div>
+
       <div class="rate-card">
         <div class="rate-title">Enjoying the app? Rate it!</div>
         <div class="rate-stars" id="rateStars">
@@ -802,6 +826,69 @@ function shareApp(){
     navigator.share({title:'Camp Week Schedule 2026', text:SHARE_TEXT, url:APP_URL}).catch(()=>{});
   } else {
     copyAppLink();
+  }
+}
+
+/* CSV export: the week's schedule (or just your sign-ups) as a spreadsheet. */
+function buildScheduleRows(){
+  const onlyMine = !!document.getElementById('csvOnlyMine')?.checked;
+  const rows = [['Day','Time','Activity','Sign-up required','My sign-up','Description']];
+  DAYS.forEach(d=>{
+    const day = SCHEDULE[d.key]||{};
+    ['sunrise','noon','sunset'].forEach(key=>{
+      (day[key]||[]).forEach((it,idx)=>{
+        const id = `${d.key}_${key}_${idx}`;
+        const mine = signups.has(id);
+        if(onlyMine && !mine) return;
+        const star = it.title.endsWith('*') && !it.title.startsWith('*');
+        rows.push([
+          d.label, it.time||'', star ? it.title.slice(0,-1) : it.title,
+          star ? 'Yes' : '', mine ? 'Yes' : '', (it.desc||'').replace(/\s*\n+\s*/g,' ')
+        ]);
+      });
+    });
+  });
+  return rows;
+}
+function rowsToCsv(rows){
+  return rows.map(r=>r.map(c=>{
+    c = String(c);
+    return /[",\n]/.test(c) ? '"'+c.replace(/"/g,'""')+'"' : c;
+  }).join(',')).join('\r\n');
+}
+function csvBlob(){
+  // BOM so Excel opens it as UTF-8
+  return new Blob(['﻿'+rowsToCsv(buildScheduleRows())], {type:'text/csv;charset=utf-8'});
+}
+async function shareCsv(){
+  const file = new File([csvBlob()], 'camp-week-schedule.csv', {type:'text/csv'});
+  if(navigator.canShare && navigator.canShare({files:[file]})){
+    try{
+      await navigator.share({files:[file], title:'Camp Week Schedule'});
+      return;
+    }catch(e){
+      if(e && e.name==='AbortError') return; // user closed the share sheet
+    }
+  }
+  downloadCsv(); // no file-sharing support (e.g. desktop browsers) — save instead
+}
+function downloadCsv(){
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(csvBlob());
+  a.download = 'camp-week-schedule.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 5000);
+}
+async function copyCsvForSheets(btn){
+  // Tab-separated pastes straight into a spreadsheet grid.
+  const tsv = buildScheduleRows().map(r=>r.map(c=>String(c).replace(/\t/g,' ')).join('\t')).join('\n');
+  try{
+    await navigator.clipboard.writeText(tsv);
+    btn.innerHTML = '<span class="sic">✅</span>Copied — paste into a blank sheet';
+    setTimeout(()=>{ btn.innerHTML = '<span class="sic">📊</span>Copy for Google Sheets'; }, 4000);
+    window.open('https://sheets.new', '_blank');
+  }catch(e){
+    window.prompt('Copy this, then paste into a Google Sheet:', tsv);
   }
 }
 
@@ -925,10 +1012,24 @@ async function loadData(){
     const data = await res.json();
     SCHEDULE = data.schedule || {};
     MENU = data.menu || {};
+    handleWeekRollover(data.week);
   }catch(e){
     console.warn('Could not load schedule data:', e);
   }
   renderAll();
+}
+
+/* When the app is refreshed for a new camp week (data.json "week" changes),
+   clear last week's sign-ups so everyone starts clean. */
+const WEEK_KEY = 'campWeekKey';
+function handleWeekRollover(week){
+  if(!week) return;
+  const stored = localStorage.getItem(WEEK_KEY);
+  if(stored && stored !== week && signups.size){
+    signups = new Set();
+    saveSignups();
+  }
+  try{ localStorage.setItem(WEEK_KEY, week); }catch(e){}
 }
 loadData();
 

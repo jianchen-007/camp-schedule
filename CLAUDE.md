@@ -49,6 +49,15 @@ service account hasn't been granted Viewer on the second folder, the workflow wi
 silently see nothing there — grant it, or rely on Jian's local session for that
 folder.
 
+## New week reset
+
+To refresh the app for the next camp week: Actions tab → "New week reset" → Run
+workflow with a new week key (e.g. `2026-wk5`), or locally
+`node scripts/new-week.mjs 2026-wk5` + commit/push. This strips all activity
+descriptions (the weekly skeleton of titles/times stays until new sheets arrive),
+clears `.bot/last-processed.json`, bumps the SW cache, and changes `data.json`'s
+`week` key — which makes every device clear last week's sign-ups on next open.
+
 ## Status (update as the week goes)
 
 - Sat Jul 4 – Sat Jul 11, 2026. Detail descriptions COMPLETE for the whole week

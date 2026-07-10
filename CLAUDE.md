@@ -44,10 +44,12 @@ validation fails.
 
 The script now watches TWO folders (staff used a second one, "QR Code Whatz 2026",
 id 1QsBxsYgTwzHoIrV3WkCE8THfSkaN5-LY, for the Jul 9 drop) and can extract text from
-.docx uploads (staff upload docx, which the pipeline previously skipped). ⚠️ If the
-service account hasn't been granted Viewer on the second folder, the workflow will
-silently see nothing there — grant it, or rely on Jian's local session for that
-folder.
+.docx uploads (staff upload docx, which the pipeline previously skipped). Folders
+are listed one request each and inaccessible ones are skipped with a warning.
+⚠️ The repo currently authenticates with GDRIVE_API_KEY (plain API key), which can
+only see folders shared as "Anyone with the link: Viewer". "Whatz App" is; "QR Code
+Whatz 2026" is NOT — ask camp staff to link-share it (or add a service account with
+Viewer), otherwise that folder is only covered by Jian's local session checks.
 
 ## New week reset
 

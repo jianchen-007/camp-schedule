@@ -72,17 +72,29 @@ function driveFetch(auth, path, params) {
 }
 
 async function listFolder(auth) {
-  const parents = FOLDER_IDS.map((id) => `'${id}' in parents`).join(' or ');
-  const res = await driveFetch(auth, 'files', new URLSearchParams({
-    q: `(${parents}) and trashed = false`,
-    fields: 'files(id,name,mimeType,modifiedTime)',
-    orderBy: 'modifiedTime',
-    pageSize: '100',
-    supportsAllDrives: 'true',
-    includeItemsFromAllDrives: 'true',
-  }));
-  if (!res.ok) throw new Error(`Drive list failed: ${res.status} ${await res.text()}`);
-  return (await res.json()).files || [];
+  // One request per folder: with API-key auth, a single combined query 403s
+  // outright if ANY referenced folder isn't link-shared. A folder this
+  // credential can't see shouldn't kill the run — the other may have sheets.
+  const files = [];
+  let anyOk = false;
+  for (const id of FOLDER_IDS) {
+    const res = await driveFetch(auth, 'files', new URLSearchParams({
+      q: `'${id}' in parents and trashed = false`,
+      fields: 'files(id,name,mimeType,modifiedTime)',
+      orderBy: 'modifiedTime',
+      pageSize: '100',
+      supportsAllDrives: 'true',
+      includeItemsFromAllDrives: 'true',
+    }));
+    if (!res.ok) {
+      console.warn(`Drive list for folder ${id} failed: ${res.status} — skipping it (not shared with this credential?)`);
+      continue;
+    }
+    anyOk = true;
+    files.push(...(((await res.json()).files) || []));
+  }
+  if (!anyOk) throw new Error('Drive list failed for ALL folders — check credentials/sharing');
+  return files;
 }
 
 async function downloadFile(auth, file) {

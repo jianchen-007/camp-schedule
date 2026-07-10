@@ -42,12 +42,18 @@ Requires repo secrets `GDRIVE_SERVICE_ACCOUNT` (Viewer on the folder) and
 `ANTHROPIC_API_KEY`. Failed runs email the repo owner; nothing is published when
 validation fails.
 
+The script now watches TWO folders (staff used a second one, "QR Code Whatz 2026",
+id 1QsBxsYgTwzHoIrV3WkCE8THfSkaN5-LY, for the Jul 9 drop) and can extract text from
+.docx uploads (staff upload docx, which the pipeline previously skipped). ⚠️ If the
+service account hasn't been granted Viewer on the second folder, the workflow will
+silently see nothing there — grant it, or rely on Jian's local session for that
+folder.
+
 ## Status (update as the week goes)
 
-- Sat Jul 4 – Sat Jul 11, 2026. Detail descriptions complete through Thursday
-  afternoon (Wed evening + Thu morning/afternoon added Jul 8 from the green sheet).
-- Still missing: Thursday-evening + Friday details (expected on Thursday's sheet).
-- Automation live: secrets verified, Drive listing works (green runs Jul 8). Folder
-  was still empty as of Jul 8 evening — sheets have arrived via chat photos so far;
-  if one lands in Drive after a manual transcription, the workflow re-processing it
-  should merge harmlessly.
+- Sat Jul 4 – Sat Jul 11, 2026. Detail descriptions COMPLETE for the whole week
+  except Friday evening (camp never published detail text for it; grid titles/times
+  are in place). Thu evening + Friday added Jul 9 from Drive doc "QR- 6 Stir_Fri"
+  (transcribed manually in Jian's Mac session; marked processed in
+  .bot/last-processed.json so the workflow won't redo it).
+- Automation live: secrets verified, Drive listing works (green runs Jul 8).

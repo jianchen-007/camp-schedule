@@ -16,8 +16,14 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
 
-const FOLDER_ID = '1k5smIj_OZ34ZJmpBH5EFogbmuV99NgPN';
+// Staff have used two share folders: "Whatz App" and "QR Code Whatz 2026"
+// (the Jul 9 sheet landed in the latter). Watch both.
+const FOLDER_IDS = [
+  '1k5smIj_OZ34ZJmpBH5EFogbmuV99NgPN',
+  '1QsBxsYgTwzHoIrV3WkCE8THfSkaN5-LY',
+];
 const STATE_FILE = '.bot/last-processed.json';
 const DATA_FILE = 'data.json';
 const SW_FILE = 'sw.js';
@@ -66,8 +72,9 @@ function driveFetch(auth, path, params) {
 }
 
 async function listFolder(auth) {
+  const parents = FOLDER_IDS.map((id) => `'${id}' in parents`).join(' or ');
   const res = await driveFetch(auth, 'files', new URLSearchParams({
-    q: `'${FOLDER_ID}' in parents and trashed = false`,
+    q: `(${parents}) and trashed = false`,
     fields: 'files(id,name,mimeType,modifiedTime)',
     orderBy: 'modifiedTime',
     pageSize: '100',
@@ -89,11 +96,44 @@ async function downloadFile(auth, file) {
   return { data: Buffer.from(await res.arrayBuffer()).toString('base64'), mediaType };
 }
 
+// Minimal .docx text extraction (a .docx is a zip; read word/document.xml via
+// the central directory so we don't trust local-header sizes). Zero deps.
+function docxToText(buf) {
+  const eocd = buf.lastIndexOf(Buffer.from('504b0506', 'hex'));
+  if (eocd < 0) throw new Error('not a zip');
+  let off = buf.readUInt32LE(eocd + 16);
+  const count = buf.readUInt16LE(eocd + 10);
+  for (let i = 0; i < count; i++) {
+    if (buf.readUInt32LE(off) !== 0x02014b50) break;
+    const method = buf.readUInt16LE(off + 10);
+    const csize = buf.readUInt32LE(off + 20);
+    const nlen = buf.readUInt16LE(off + 28);
+    const elen = buf.readUInt16LE(off + 30);
+    const clen = buf.readUInt16LE(off + 32);
+    const name = buf.toString('utf8', off + 46, off + 46 + nlen);
+    if (name === 'word/document.xml') {
+      const lho = buf.readUInt32LE(off + 42);
+      const start = lho + 30 + buf.readUInt16LE(lho + 26) + buf.readUInt16LE(lho + 28);
+      const raw = buf.subarray(start, start + csize);
+      const xml = (method === 0 ? raw : zlib.inflateRawSync(raw)).toString('utf8');
+      return xml
+        .replace(/<\/w:p>/g, '\n')
+        .replace(/<[^>]+>/g, '')
+        .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)));
+    }
+    off += 46 + nlen + elen + clen;
+  }
+  throw new Error('word/document.xml not found');
+}
+
 function contentBlock({ data, mediaType }) {
   if (mediaType === 'application/pdf')
     return { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data } };
   if (/^image\/(jpeg|png|gif|webp)$/.test(mediaType))
     return { type: 'image', source: { type: 'base64', media_type: mediaType, data } };
+  if (mediaType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    return { type: 'text', text: `Extracted text of the sheet:\n\n${docxToText(Buffer.from(data, 'base64'))}` };
   return null; // unsupported type — skipped by caller
 }
 

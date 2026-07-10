@@ -892,35 +892,43 @@
     },
     {
      "time": "7:50-9pm",
-     "title": "Guppy/Crawdad Night"
+     "title": "Guppy/Crawdad Night",
+     "desc": "Giggly Guppies and Cool Crawdads get ready for a jam-packed night of fun! We're going to color, read, and play the best games you've EVER played! Meet us in the Tallac Room and bring your smiles!"
     },
     {
      "time": "7:50-9pm",
-     "title": "Merganser/Chickaree Night"
+     "title": "Merganser/Chickaree Night",
+     "desc": "Swing on by the Angora Room for the evening of your LIVES. We will COLOR; we will play GAMES; we. will. DANCE!!!!! All Mergansers and Chickarees can meet us in the Angora Room at 7:50pm for an incredible night of fun!"
     },
     {
      "time": "8-9pm",
-     "title": "Faculty Speaker"
+     "title": "Faculty Speaker: Teaching, Politics, & Purpose",
+     "desc": "With Ira Lit. There are plenty of big questions circulating about the intersection of education, teaching, and politics. What are schools for? What makes for a good teacher? What roles should politics play in education? Who should decide these things and how? Join Professor Ira Lit in exploring these important puzzles and pursuits. Come with questions, curiosity, and an open mind."
     },
     {
      "time": "8-9:15pm",
-     "title": "Marmots"
+     "title": "Marmots",
+     "desc": "Marmots. We made it back to dry land and find ourselves amidst the renaissance?? It's fabulous. Art and creativity are flourishing and music is playing in the streets. At this point in our adventure, you're probably wanting to write/draw something meaningful to remember your travels. Embrace your inner artist and meet us in the dining hall at 8PM to make your very own postcards and wax seals. Also… word on the street is that the finest bakers in Europe are currently inventing puff pastry, so we're also gonna tap into that energy and bake cookies. Get excited."
     },
     {
      "time": "8:30-9:30pm",
-     "title": "Teens"
+     "title": "Teens",
+     "desc": "Meet in the Old Lodge for… Hot Ones Speed Friending. You'll rotate through quick rounds with other teens, answer spicy questions, and see how much you can learn about your new camp friends while going through 10 different hot sauces. 🔥"
     },
     {
      "time": "9-10:30pm",
-     "title": "Fountain Pretzel Night!"
+     "title": "Fountain Pretzel Night!",
+     "desc": "Fountain Pretzel Night! Come get a delicious soft pretzel available throughout tonight's Fountain hours!"
     },
     {
      "time": "9:45-10:45pm",
-     "title": "Trivia Night!"
+     "title": "Trivia Night: Music of the Decades",
+     "desc": "Come meet Hannah and Madeline in the Old Lodge at 9:45pm to test your knowledge of hit songs and artists across the generations! All you need are your wits about you and a good team name!"
     },
     {
      "time": "10-11pm",
-     "title": "Astrocruise*"
+     "title": "Astrocruise*",
+     "desc": "Have you ever wanted to draw imaginary lines between dots in the sky? Hoping to hear heroic tales and fantastic tragedies about those little arbitrary stick figures we call constellations? Well your pals Ethan and Priyanka have the opportunity for you! Sign up at the front office, bring some warm clothes, and meet us down by the Boat Dock for the final Astrocruise of the week!!!"
     }
    ]
   },
@@ -928,23 +936,27 @@
    "sunrise": [
     {
      "time": "6:30-8am",
-     "title": "Rowing*"
+     "title": "Rowing*",
+     "desc": "If you haven't seen the lake at sunrise yet this week, make sure to swing by the final morning of rowing! (And if you have, come on back for a final paddle!) Join Gabe and Sairah for a deep breath of morning calm one last time... until next year! Don't forget to sign up for a time beforehand!"
     },
     {
      "time": "7-8:15am",
-     "title": "SUP Yoga*"
+     "title": "SUP Yoga: Out of Your Element*",
+     "desc": "All levels welcome — falling in is INEVITABLE. Your mat is a paddleboard. Your studio is the lake. Tree pose now has CONSEQUENCES. SUP yoga is chaotic, soaking wet, and an absolutely unforgettable event with Prisha — splash landings celebrated, judgment strictly prohibited!! ARE YOU READY?!"
     },
     {
      "time": "7:15-8:15am",
-     "title": "Morning Exercise + Cold Plunge*"
+     "title": "Morning Exercise and Cold Plunge*",
+     "desc": "Join Indigo at the CrawDeck at 7:15am for a fun 45 minute bodyweight workout with an optional swim in the lake to cool down. Squats and smiles guaranteed!"
     },
     {
      "time": "7:45-8:45am",
-     "title": "Breakfast (Omelette Bar)"
+     "title": "Breakfast & Omelette Bar"
     },
     {
      "time": "8-11am",
-     "title": "Ski Dock*"
+     "title": "Ski Dock*",
+     "desc": "Sign up at the Ski Dock."
     },
     {
      "time": "9am",
@@ -952,39 +964,48 @@
     },
     {
      "time": "9-11:45am",
-     "title": "Intermediate Mountain Biking*"
+     "title": "Intermediate Mountain Biking*",
+     "desc": "Calling all riders for our intermediate ride of the week! Ready to step it up a notch? If you had fun on the beginner ride and are ready for a longer excursion, this ride is for you! Only requirement is that you bring lots of water and sunscreen for a morning out in the sun and get ready to enjoy the views of Lake Tahoe! Meet Ethan at the bottom of the lodge, ready to ride, sport-ily."
     },
     {
      "time": "9am-5pm",
-     "title": "Boat Dock"
+     "title": "Boat Dock",
+     "desc": "Boat Dock is open for our final day on the lake! Soak up every second in the sun on Fallen Leaf!"
     },
     {
      "time": "9:15-11:45am",
-     "title": "Guppies"
+     "title": "Guppies",
+     "desc": "Alas, we must part ways after an incredible week. Today we will focus on closing with a bang, designing our poster and preparing for the all-important Guppy parade. At 11:25, we will join the Crawdads to march from the Guppy Lagoon to the Angora deck. Parents, please station yourselves somewhere along the way to cheer on your Guppies! Bring a water bottle and sunscreen to prepare for the day!"
     },
     {
      "time": "9:30-10:45am",
-     "title": "Crafts: Print Making*"
+     "title": "Crafts: Print Making*",
+     "desc": "Ready to leave your mark? We'll be carving our very own stamps from rubber blocks and printing it with ink. If you've ever wanted to recreate the same design multiple times, this is the perfect craft for you! Join Nia at the picnic tables!"
     },
     {
      "time": "9:30-11am",
-     "title": "Arts: Acrylic Paint*"
+     "title": "Arts: Acrylic Paint*",
+     "desc": "Unleash your inner artist with Andriana at the Old Lodge Deck! Whether you're a beginner or seasoned painter, this acrylic session is all about playing with color and texture. Come in paint-friendly clothes and be ready to dive into a vibrant, expressive world."
     },
     {
      "time": "9:30-11:45am",
-     "title": "Kids Groups"
+     "title": "Kids Groups",
+     "desc": "CRAWDADS: Ahoy Crawdads crew! It's our FINAL day of pirate adventures, and we're going out with a bang! The Crawdads will set off on one last action-packed treasure hunt, where our brave pirates will work together to crack clues, complete challenges, and discover the hidden treasure chest. Once the treasure is found, the crew will head back to camp full of pirate pride to get ready for the BIG GuCrew parade! Campers will make pirate necklaces, gear up in their best pirate spirit, and prepare to march, cheer, and celebrate with the rest of camp. If there's extra time before the parade begins, the Crawdads will finish the week strong with a favorite game or an epic dance party to keep the energy high. It's going to be a loud, exciting, adventure-filled finale for the best pirate crew on the high seas!\n\nMERGANSERS: Every great mystery deserves a proper ending. This one ends with a wedding/trial extravmerganza. After a week of chasing leads, following clues, and cracking the case wide open, our Merganser detectives reconvene at 9:30am on the Angora Deck to close out the investigation in style. Perhaps the puzzle pieces will fall into place today. Put away the magnifying glass, dust off the fedora, and get ready for the most dazzling finale in detective history.\n\nCHICKAREES: The final hour is upon us, young sorcerers. The ancient rivalry between the Chickarees and the Marmots has been written in the stars since magic first came to these mountains — and today, the prophecy is fulfilled. Report to the Angora Deck at 9:30am, wands at the ready. Before battle commences, the legendary wizard Morgan will deliver his sacred address — clad in his enchanted armor, he will remind you of the most powerful spell in existence: the friends standing beside you. Then, with his words ringing in your ears, you will take the field. May your instincts be sharp, your teammates sharper, and your heart sharpest of all. Good luck, Chickarees. Make the ancestors proud.\n\nMARMOTS: PrrPrrr neeeaaaowww BOOOOMMM psshhhhh. Marmots, our time machine has finally brought us to the present day: Summer 2028. But wait… We overshot? And now are at the LA olympic games??? Today is the day we compete in the greatest sport of all time (which we can now say without any doubt). CAPTURE THE FLAG!! Meet at the picnic tables at 9:30AM with sunscreen and a water bottle to show off how much you've grown as a team and celebrate the end of an awesome week!"
     },
     {
      "time": "9:45-11:30am",
-     "title": "Pickleball Play"
+     "title": "Pickleball Play",
+     "desc": "Don't miss out on practicing your skills before the pickleball tournament this afternoon! Join Tommy at the basketball courts at 9:45am to get your last swings in!"
     },
     {
      "time": "10-11:15am",
-     "title": "Reflection Yoga"
+     "title": "Reflection Yoga: A Date with Yourself",
+     "desc": "Slow poses. Deep breaths. Zero rush. Reflection Yoga is your chance to step away from the noise and spend an hour simply being. Come to the Crawdeck and we'll move through a gentle flow, pause for mindfulness and gratitude, and end with a little guided journaling to capture whatever the mountain is trying to tell you. Just you, your thoughts, and a little Sierra magic with Prisha."
     },
     {
      "time": "10:45am-12pm",
-     "title": "Teens Group"
+     "title": "Teens",
+     "desc": "Meet at the picnic tables and we'll wrap the week up on a fitting note, appreciating the beauty of Mother Nature together with the kids naturalist Sydney! We will be cyanotyping shirts together, making some cool prints for you to rep after you leave Camp! Afterwards, we will channel all the experiences we had from the week towards your future self, writing yourself a letter for later in life. Get real with yourself and give yourself a gift for when you read it a few years or even decades from now. What do you want to remember from Camp one year from now?"
     },
     {
      "time": "",
@@ -998,75 +1019,92 @@
     },
     {
      "time": "1-5pm",
-     "title": "Ski Dock*"
+     "title": "Ski Dock*",
+     "desc": "Sign up at the Ski Dock."
     },
     {
      "time": "1:15-3:00pm",
-     "title": "Staph vs. Guest Volleyball"
+     "title": "Staph vs. Guest Volleyball",
+     "desc": "So, you think you have what it takes to challenge Sierra Camp Staph to a game of volleyball? Brave, brave souls. Meet us in the sand for the Staph v. Guest tournament! There will be back to back 6v6 games pinning the strongest of the Staph against the greatest of the guests. Both sides will battle for victory in this exciting finale of the week. All guests are welcome, so come on down to the Steinbeck Memorial Volleyball Stadium to join in on the court or cheer from the sidelines."
     },
     {
      "time": "1:30-2:30pm",
-     "title": "Faculty Speaker Discussion"
+     "title": "Faculty Speaker Discussion",
+     "desc": "Ready to debrief last night's wonderful lecture? Join our faculty speaker and other guests for an hour-long follow-up discussion to Thursday's topic, featuring your questions, thoughts, and insights. We'll be meeting on the Fountain Deck at 1:30pm!"
     },
     {
      "time": "1:30-3:30pm",
-     "title": "Sailing Regatta*"
+     "title": "Sailing Regatta*",
+     "desc": "The biggest event of the week is finally here. Get ready to race your fellow campers down Fallen Leaf and show off all your new sailing skills in the Regatta. Sailors of all levels who've been on the water this week are welcome, and we'll wrap up with a brief awards moment on the boat dock."
     },
     {
      "time": "1:45-2:45pm",
-     "title": "Basketball Tournament"
+     "title": "Basketball Tournament",
+     "desc": "Steph Curry was here last week, but this week it's all on YOU. Meet Addie and Harrshwin down at the Basketball Court at 1:45pm (with a partner or alone; we'll find a teammate for you!) for this year's 2-on-2 basketball tournament! All are welcome, and make sure to wear active clothes and close-toed shoes."
     },
     {
      "time": "2-3pm",
-     "title": "Kids Talent Show*"
+     "title": "Kids Talent Show*",
+     "desc": "Grab your microphone, your dancin' shoes, your hoola hoop, your gymnastics mat, your best standup jokes. Bring a friend, a parent, a Fountain treat, or just yourself. It's time for the best performance of the week – KIDS TALENT SHOW! Sign ups are outside the office, Tamsin and Tavi are ready to introduce your act; come show us what you've got or watch your friends shine on the Angora Deck!"
     },
     {
      "time": "2:45-3:45pm",
-     "title": "Bread Bake*"
+     "title": "Bread Bake*",
+     "desc": "Mmmmm, what's that redolent scent? It's… you guessed it, fresh-baked bread! Join Sydney and Hannah in a delightfully delectable afternoon of beautiful bread-baking. We'll be making challah and saffron buns in every shape and size you can imagine! Sign up at the office. Meet on the dining room deck at 2:45pm to get baking!"
     },
     {
      "time": "2:45-4:15pm",
-     "title": "Pickleball Tournament*"
+     "title": "Pickleball Tournament*",
+     "desc": "The moment has come: time to show us what you've got in the pickleball circuit... Grab a partner or come solo, but please sign up outside the office! Join Audrey at the tennis courts for one last afternoon of friendly competition."
     },
     {
      "time": "2:45-3:45pm",
-     "title": "Psychology Discussion"
+     "title": "Psychology Discussion: Topics in Social Psychology",
+     "desc": "Why does it feel so hard to connect across difference, even when we genuinely want to? Stanford social psychologist Claude M. Steele has spent decades studying the hidden forces that shape how we experience identity in everyday life, from stereotype threat and its effects on performance, to what he calls \"churn\": the mental agitation and physical stress we can experience in diverse settings. Too often, Steele argues, we respond to these tensions by avoiding them altogether. Join Chiara at the Fountain Deck for a conversation about seeing full humanity across difference, and what trust-building as a game played on the ground can actually look like."
     },
     {
      "time": "3-4pm",
-     "title": "Hip Hop Dance"
+     "title": "Dance: Hip Hop",
+     "desc": "Whether you've never stepped into a dance studio or have been dancing all your life, come join Steele for an hour full of movement, music, and fun! We will groove, master some basic steps that you can pull out at your next wedding, birthday, or family dance party, and learn some choreography that will make us the stars of silent disco. This class is open to kids and adults of all ages. See you in the Angora room!"
     },
     {
      "time": "3-4pm",
-     "title": "Kids Carnival"
+     "title": "Kids Carnival",
+     "desc": "Stop by the front of the Lodge to meet our very own traveling carnival! We have tons of games and activities for all to partake in."
     },
     {
      "time": "3-4:15pm",
-     "title": "Open Climb"
+     "title": "Open Climb",
+     "desc": "Head on up to the rock wall and join Paolo for our last open climb of the week! Can't wait to see you there!"
     },
     {
      "time": "3-4:30pm",
-     "title": "Ospreys"
+     "title": "Ospreys",
+     "desc": "Welcome back to Camp, Ospreys. Join us one final time this week for the boatster masquerade ball. Come to the flag pole dressed to the nines or dig for an outfit in the rally closet with us as we gather on the Boatster for an afternoon of mystery, celebration, and reflection. We'll bring the beads, you bring your mask! And stay sharp — anyone could show up to an anonymous ball…"
     },
     {
      "time": "3-6pm",
-     "title": "Early Check-Out"
+     "title": "Early Check-Out*"
     },
     {
      "time": "4-5pm",
-     "title": "Art & Crafts Social"
+     "title": "Arts & Crafts Social",
+     "desc": "Come collect your arts and crafts for the week and celebrate everything you've created! Join us at the Old Lodge, transformed into a gallery of your work, with jazz playing in the background. Walk through the space, take in everyone's pieces, and enjoy good conversation with your instructors, Nia and Andriana. All are welcome!"
     },
     {
      "time": "4:15-5pm",
-     "title": "Egg Drop"
+     "title": "Egg Drop",
+     "desc": "You've had several summers to think this through: how will you drop that egg from the Dining Room Deck upstairs and deliver it safely to the ground? Scavenge around camp for (RECYCLED) materials to build your device before you meet Harrshwin & Mara on the deck at 4:15PM. You'll be looking to win some sweet prizes if your egg survives unscathed and your device is either the lightest, the most environmentally friendly, or the most creative. Good luck and remember to check the rules (at the Office) to make sure your device is made out of approved materials!"
     },
     {
      "time": "4:30-5:30pm",
-     "title": "Cherry House Social"
+     "title": "Cherry House Social",
+     "desc": "In our final afternoon at Camp, come chat with the Bunnett Family and some wonderful staph and guests over by the homey Cherry House. Recap your wonderful week, exchange emails to stay in touch, and sample Stanford's finest reds and whites."
     },
     {
      "time": "5:00-5:45pm",
-     "title": "Shabbat"
+     "title": "Shabbat",
+     "desc": "Come join Marcus on the Fountain Deck at 5pm for a relaxing end to a magical week. We'll be singing songs, eating challah, and reflecting in community on our time together. Whether you are new to Shabbat or it is part of your weekly practice — all are welcome!"
     }
    ],
    "sunset": [

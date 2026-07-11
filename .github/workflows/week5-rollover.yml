@@ -1,9 +1,12 @@
 # Scheduled rollover to week 5 (Jul 11-18, 2026), prepared in advance from the
 # "WIP 2026 Editing" Google Sheet. Fires Saturday Jul 11 at 12pm PT (19:00 UTC;
 # GitHub crons can run up to ~40 min late). Applies the week-5 skeleton from
-# scripts/week5-schedule.json, resets the week key (clears everyone's week-4
-# sign-ups on next open), clears Drive-processing state so week-5 Whatzappening
-# sheets get picked up, and deploys. Menus carry over (season-wide menu).
+# scripts/week5-schedule.json (sign-up stars inherited from week 4), resets the
+# week key (clears everyone's week-4 sign-ups on next open), and deploys.
+# Menus carry over (season-wide menu); the sat2 check-out tab is preserved.
+#
+# Uses the SAME week key the recurring weekly-reset workflow would derive
+# (wk-2026-07-11), so its Saturday-2pm run no-ops cleanly that day.
 #
 # Test anytime via Run workflow with dry_run=true (prints the result, no push).
 
@@ -44,7 +47,7 @@ jobs:
           fi
 
       - name: Reset week state
-        run: node scripts/new-week.mjs 2026-wk5
+        run: node scripts/new-week.mjs "wk-2026-07-11"
 
       - name: Apply week-5 schedule from the prepared sheet
         run: |
@@ -52,10 +55,12 @@ jobs:
             const fs = require('fs');
             const d = JSON.parse(fs.readFileSync('data.json'));
             const w = JSON.parse(fs.readFileSync('scripts/week5-schedule.json'));
+            const sat2 = d.schedule.sat2;  // keep the check-out Saturday tab
             d.schedule = w.schedule;
+            if (sat2) d.schedule.sat2 = sat2;
             fs.writeFileSync('data.json', JSON.stringify(d, null, 1) + '\n');
-            const n = Object.values(w.schedule).reduce((a, day) => a + Object.values(day).reduce((b, s) => b + s.length, 0), 0);
-            console.log('Applied week-5 schedule:', n, 'activities');
+            const n = Object.values(d.schedule).reduce((a, day) => a + Object.values(day).reduce((b, s) => b + s.length, 0), 0);
+            console.log('Applied week-5 schedule:', n, 'activities across', Object.keys(d.schedule).length, 'days');
           "
 
       - name: Commit and deploy

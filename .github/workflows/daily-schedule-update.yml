@@ -11,7 +11,8 @@
 #   GDRIVE_API_KEY         — plain Google API key (folder must be "Anyone with the link: Viewer")
 #
 # Runs are cheap no-ops when the folder has nothing new. Trigger manually any
-# time from the Actions tab ("Run workflow").
+# time from the Actions tab ("Run workflow"), or by pushing a change to this
+# file or scripts/update-schedule.mjs (the push trigger below self-tests).
 
 name: Auto-update schedule from Drive
 

@@ -1,0 +1,951 @@
+{
+ "schedule": {
+  "sat": {
+   "sunrise": [
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast"
+    },
+    {
+     "time": "8-10am",
+     "title": "Check-Out / Return Keys"
+    }
+   ],
+   "noon": [],
+   "sunset": [
+    {
+     "time": "3pm",
+     "title": "Check-in! Welcome!!"
+    },
+    {
+     "time": "3-5pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "5:45-6:45pm",
+     "title": "Dinner"
+    },
+    {
+     "time": "7-7:45pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "7:15-8pm",
+     "title": "New Camper Orientation"
+    },
+    {
+     "time": "8-9pm",
+     "title": "Intro Meeting"
+    },
+    {
+     "time": "9-10pm",
+     "title": "Ski Dock & Activity Sign-Ups"
+    },
+    {
+     "time": "9:15-9:45pm",
+     "title": "Hiking Meeting"
+    }
+   ]
+  },
+  "sun": {
+   "sunrise": [
+    {
+     "time": "6:30-8am",
+     "title": "Rowing*"
+    },
+    {
+     "time": "7-8am",
+     "title": "Sunrise Yoga*"
+    },
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast"
+    },
+    {
+     "time": "8-10am",
+     "title": "Advanced Ski/Board Clinic*"
+    },
+    {
+     "time": "9am-3pm",
+     "title": "Naturalist Hike*"
+    },
+    {
+     "time": "9am-5pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "9:15-11:45am",
+     "title": "Guppies"
+    },
+    {
+     "time": "9:30-11:30am",
+     "title": "Arts & Crafts: Bisqueware*"
+    },
+    {
+     "time": "9:30-11:45am",
+     "title": "Kids Groups"
+    },
+    {
+     "time": "9:45-11:15am",
+     "title": "Tennis: Beginners Clinic*"
+    },
+    {
+     "time": "10am",
+     "title": "Teens Overnight Leaves"
+    },
+    {
+     "time": "10am",
+     "title": "Church Service"
+    },
+    {
+     "time": "10-11am",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "10-11:45am",
+     "title": "Ospreys"
+    }
+   ],
+   "noon": [
+    {
+     "time": "12-12:45pm",
+     "title": "BBQ Lunch"
+    },
+    {
+     "time": "1-2pm",
+     "title": "Open Climb"
+    },
+    {
+     "time": "1-2:30pm",
+     "title": "Ospreys"
+    },
+    {
+     "time": "1-3:30",
+     "title": "Outrigger Canoe*"
+    },
+    {
+     "time": "1-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "1:30-4pm",
+     "title": "Beginner Sailing*"
+    },
+    {
+     "time": "1:45-4:30pm",
+     "title": "Beginner Mountain Bike*"
+    },
+    {
+     "time": "2-3:30pm",
+     "title": "Art: Mosaic Magic*"
+    },
+    {
+     "time": "2-4pm",
+     "title": "Kids Groups (excluding Guppies)"
+    },
+    {
+     "time": "2:30-3:30pm",
+     "title": "Beginner Social Volleyball"
+    },
+    {
+     "time": "2:30-4pm",
+     "title": "Bread Bake*"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Language Hour"
+    },
+    {
+     "time": "4:15-5:15pm",
+     "title": "Book Talk: Arrow of God"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Story Hour"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Social Hike/Couples Photo"
+    }
+   ],
+   "sunset": [
+    {
+     "time": "5:45-6:45pm",
+     "title": "Dinner"
+    },
+    {
+     "time": "6:30-7:30pm",
+     "title": "Family Portraits*"
+    },
+    {
+     "time": "6:30-7:30PM",
+     "title": "Multicultural Engagement Dinner"
+    },
+    {
+     "time": "7-7:45pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "7:50-9pm",
+     "title": "Guppy/Crawdad Puppet Show"
+    },
+    {
+     "time": "7:50-9pm",
+     "title": "Chickaree/Merganser Night"
+    },
+    {
+     "time": "8-9pm",
+     "title": "Faculty Speaker Lecture"
+    },
+    {
+     "time": "8-9:15pm",
+     "title": "Marmots"
+    },
+    {
+     "time": "8:15-10:15pm",
+     "title": "Ospreys"
+    },
+    {
+     "time": "9-10:30pm",
+     "title": "Fountain Pretzel Night"
+    },
+    {
+     "time": "10-11pm",
+     "title": "Astrocruise*"
+    }
+   ]
+  },
+  "mon": {
+   "sunrise": [
+    {
+     "time": "6:30-8am",
+     "title": "Rowing*"
+    },
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast"
+    },
+    {
+     "time": "8-11am",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "8:15am-4pm",
+     "title": "Long Hike*"
+    },
+    {
+     "time": "9am-5pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "9:15am-3pm",
+     "title": "Guppies"
+    },
+    {
+     "time": "9:30-10:45am",
+     "title": "Advanced Tennis Clinic*"
+    },
+    {
+     "time": "9:30am-3:30pm",
+     "title": "Kids Groups"
+    },
+    {
+     "time": "10-11am",
+     "title": "Pickleball Play"
+    },
+    {
+     "time": "10-11:30am",
+     "title": "Craft: Shrinky Dink*"
+    },
+    {
+     "time": "10:15-11:15am",
+     "title": "Faculty Speaker Debrief/Follow-Up"
+    },
+    {
+     "time": "10:30-11:30am",
+     "title": "Cardio Yoga"
+    },
+    {
+     "time": "11:30am",
+     "title": "Teen Overnight Returns"
+    },
+    {
+     "time": "11:30am-4pm",
+     "title": "Ospreys"
+    }
+   ],
+   "noon": [
+    {
+     "time": "12-12:45pm",
+     "title": "Adult Lunch"
+    },
+    {
+     "time": "1-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "1-2pm",
+     "title": "Staph 2 Guest"
+    },
+    {
+     "time": "1-2:45pm",
+     "title": "Beginner Sail*"
+    },
+    {
+     "time": "1:30-3:30",
+     "title": "Craft: Bisqueware*"
+    },
+    {
+     "time": "2:30-4:15pm",
+     "title": "Naturalist Kayak*"
+    },
+    {
+     "time": "2:30-4:30pm",
+     "title": "Open Climb"
+    },
+    {
+     "time": "3-4:30pm",
+     "title": "Teen Sail"
+    },
+    {
+     "time": "4-5pm",
+     "title": "Multicultural Engagement Social"
+    },
+    {
+     "time": "4-5:30pm",
+     "title": "Social Volleyball"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Story Hour"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Boatster Cruise*"
+    }
+   ],
+   "sunset": [
+    {
+     "time": "5:45-6:45pm",
+     "title": "Dinner"
+    },
+    {
+     "time": "7-7:45pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "7:30-8:30pm",
+     "title": "Bingo Night!"
+    },
+    {
+     "time": "10-11pm",
+     "title": "Astrocruise*"
+    }
+   ]
+  },
+  "tue": {
+   "sunrise": [
+    {
+     "time": "6:30-8am",
+     "title": "Rowing*"
+    },
+    {
+     "time": "7-8am",
+     "title": "Morning Exercise"
+    },
+    {
+     "time": "7:15-8:15am",
+     "title": "Forest Yoga: Back to the Trees*"
+    },
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast (Omelette Bar)"
+    },
+    {
+     "time": "8-10am",
+     "title": "MCE Ski/Board Clinic*"
+    },
+    {
+     "time": "9am-5pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "9:15-11:45am",
+     "title": "Guppies"
+    },
+    {
+     "time": "9:30-11:00am",
+     "title": "Open Tennis Clinic"
+    },
+    {
+     "time": "9:30-11am",
+     "title": "Washoe History: Past and Present"
+    },
+    {
+     "time": "9:30-11:45am",
+     "title": "Crawdads, Mergansers, Chickarees, and Marmots"
+    },
+    {
+     "time": "9:30am-1:30pm",
+     "title": "Outdoor Climb*"
+    },
+    {
+     "time": "9:30am-3:30pm",
+     "title": "Medium Hike*"
+    },
+    {
+     "time": "9:45-10:45am",
+     "title": "Craft: Resin Coasters/Trays*"
+    },
+    {
+     "time": "10-11am",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "11am-12pm",
+     "title": "Pickleball Clinic and Play*"
+    },
+    {
+     "time": "11am-12pm",
+     "title": "Ospreys"
+    },
+    {
+     "time": "11:30am-4pm",
+     "title": "Teens"
+    }
+   ],
+   "noon": [
+    {
+     "time": "12-12:45pm",
+     "title": "Lunch"
+    },
+    {
+     "time": "1-2:30pm",
+     "title": "Ospreys"
+    },
+    {
+     "time": "1-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "1:30-3:30pm",
+     "title": "Not-Quite-Beginner Sailing*"
+    },
+    {
+     "time": "1:30-3:30pm",
+     "title": "Art: Intro to Oil Painting*"
+    },
+    {
+     "time": "2-4pm",
+     "title": "Kids Groups"
+    },
+    {
+     "time": "2:15-3:45pm",
+     "title": "Craft: Shibori Dye*"
+    },
+    {
+     "time": "2:15-3:45pm",
+     "title": "Pickleball Play"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Nature Boatster*"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Adult Improv"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Book Talk: Worlds of Wonders"
+    },
+    {
+     "time": "3:45-5pm",
+     "title": "Family Sail*"
+    },
+    {
+     "time": "4-5pm",
+     "title": "Open Climb"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Story Hour"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Women's Boatster Cruise*"
+    }
+   ],
+   "sunset": [
+    {
+     "time": "5:45-6:45pm",
+     "title": "Dinner"
+    },
+    {
+     "time": "6:30-7:30pm",
+     "title": "Family Portraits*"
+    },
+    {
+     "time": "7-7:45pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "7-8pm",
+     "title": "Guest-to-Guest*"
+    },
+    {
+     "time": "7:30-10:00pm",
+     "title": "Fountain Pretzel Night"
+    },
+    {
+     "time": "8:30-9:30pm",
+     "title": "Improv Show"
+    }
+   ]
+  },
+  "wed": {
+   "sunrise": [
+    {
+     "time": "6:30-8am",
+     "title": "Rowing*"
+    },
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast"
+    },
+    {
+     "time": "9-10am",
+     "title": "Linen Bar"
+    },
+    {
+     "time": "10am-12pm",
+     "title": "Games Day & Ski Show"
+    }
+   ],
+   "noon": [
+    {
+     "time": "12-12:45pm",
+     "title": "BBQ in Front of Lodge"
+    },
+    {
+     "time": "12:30-3pm",
+     "title": "Guest vs Guest Volleyball*"
+    },
+    {
+     "time": "1-2pm",
+     "title": "Wilderness Skills Workshop"
+    },
+    {
+     "time": "1-3pm",
+     "title": "Outrigger*"
+    },
+    {
+     "time": "1-5pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "1-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "1:30-3:30pm",
+     "title": "Kids Sail*"
+    },
+    {
+     "time": "2:30-3:30pm",
+     "title": "Dance: Line Dancing"
+    },
+    {
+     "time": "2-5pm",
+     "title": "Wimbledon Wednesday*"
+    },
+    {
+     "time": "2:15-3:45pm",
+     "title": "Orienteering*"
+    },
+    {
+     "time": "2:30-3:30pm",
+     "title": "Family Craft: Jewelry Making*"
+    },
+    {
+     "time": "2:30-3:30pm",
+     "title": "Partner Yoga: Mirror Yoga"
+    },
+    {
+     "time": "2:30-3:30pm",
+     "title": "Family Improv Workshop"
+    },
+    {
+     "time": "2:45-4:45pm",
+     "title": "Open Climb"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Language Hour"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Music Lesson: Playin' the Blues"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Story Hour"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Boatster Cruise*"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Family Portraits*"
+    },
+    {
+     "time": "5:45-7:45pm",
+     "title": "Teen Free Ski"
+    }
+   ],
+   "sunset": [
+    {
+     "time": "5:45-6:45pm",
+     "title": "Dinner"
+    },
+    {
+     "time": "7-7:45pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "7:30-8:45pm",
+     "title": "Campfire"
+    },
+    {
+     "time": "9-10pm",
+     "title": "The Play"
+    },
+    {
+     "time": "10-11pm",
+     "title": "Astrocruise*"
+    }
+   ]
+  },
+  "thu": {
+   "sunrise": [
+    {
+     "time": "6:30-8am",
+     "title": "Rowing*"
+    },
+    {
+     "time": "7:15-8:15am",
+     "title": "Morning Exercise"
+    },
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast"
+    },
+    {
+     "time": "7:45-8:45am",
+     "title": "Women's Breakfast"
+    },
+    {
+     "time": "8-11am",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "8:15am-12pm",
+     "title": "Advanced Mountain Biking*"
+    },
+    {
+     "time": "8:15am-4pm",
+     "title": "Long Hike*"
+    },
+    {
+     "time": "9am-5pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "9:15am-3pm",
+     "title": "Guppies"
+    },
+    {
+     "time": "9:30am-11:30am",
+     "title": "Arts: Oil Painting - Fruit & Still Life*"
+    },
+    {
+     "time": "9:30am-3:30pm",
+     "title": "Kids Groups"
+    },
+    {
+     "time": "9:30am-3:30pm",
+     "title": "Medium Hike*"
+    },
+    {
+     "time": "9:45-11:15am",
+     "title": "Couples Tennis"
+    },
+    {
+     "time": "10-11am",
+     "title": "Open Climb"
+    },
+    {
+     "time": "10-11am",
+     "title": "Fountain Trivia"
+    },
+    {
+     "time": "10:30-11:45am",
+     "title": "Teens"
+    }
+   ],
+   "noon": [
+    {
+     "time": "12-12:45pm",
+     "title": "Adult Lunch"
+    },
+    {
+     "time": "1pm",
+     "title": "Osprey Overnight Leaves"
+    },
+    {
+     "time": "1-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "2-4pm",
+     "title": "Arts: Watercolor Landscapes*"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Yoga: Beach and Shallow Water"
+    },
+    {
+     "time": "4:30-5:30pm",
+     "title": "Kids + Adults Volleyball"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Story Hour"
+    },
+    {
+     "time": "5-6pm",
+     "title": "Boatster Cruise*"
+    }
+   ],
+   "sunset": [
+    {
+     "time": "5:45-6:45pm",
+     "title": "Dinner"
+    },
+    {
+     "time": "7-7:45pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "7:50-9pm",
+     "title": "Guppy/Crawdad Night"
+    },
+    {
+     "time": "7:50-9pm",
+     "title": "Merganser/Chickaree Night"
+    },
+    {
+     "time": "8-9pm",
+     "title": "Faculty Speaker"
+    },
+    {
+     "time": "8-9:15pm",
+     "title": "Marmots"
+    },
+    {
+     "time": "8:30-9:30pm",
+     "title": "Teens"
+    },
+    {
+     "time": "9-10:30pm",
+     "title": "Fountain Pretzel Night!"
+    },
+    {
+     "time": "9:45-10:45pm",
+     "title": "Trivia Night!"
+    },
+    {
+     "time": "10-11pm",
+     "title": "Astrocruise*"
+    }
+   ]
+  },
+  "fri": {
+   "sunrise": [
+    {
+     "time": "6:30-8am",
+     "title": "Rowing*"
+    },
+    {
+     "time": "7-8:15am",
+     "title": "SUP Yoga"
+    },
+    {
+     "time": "7:15-8:15am",
+     "title": "Morning Exercise + Cold Plunge"
+    },
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast (Omelette Bar)"
+    },
+    {
+     "time": "8-11am",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "9am",
+     "title": "Osprey Overnight Returns"
+    },
+    {
+     "time": "9-11:45am",
+     "title": "Intermediate Mountain Biking*"
+    },
+    {
+     "time": "9am-5pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "9:15-11:45am",
+     "title": "Guppies"
+    },
+    {
+     "time": "9:30-10:45am",
+     "title": "Crafts: Print Making*"
+    },
+    {
+     "time": "9:30-11am",
+     "title": "Arts: Acrylic Paint*"
+    },
+    {
+     "time": "9:30-11:45am",
+     "title": "Kids Groups"
+    },
+    {
+     "time": "9:45-11:30am",
+     "title": "Pickleball Play"
+    },
+    {
+     "time": "10-11:15am",
+     "title": "Reflection Yoga"
+    },
+    {
+     "time": "10:45am-12pm",
+     "title": "Teens Group"
+    },
+    {
+     "time": "",
+     "title": "***EARLY CHECK-OUT Sign-Up Ends at Noon***"
+    }
+   ],
+   "noon": [
+    {
+     "time": "12-12:45pm",
+     "title": "Lunch"
+    },
+    {
+     "time": "1-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "1:15-3:00pm",
+     "title": "Staph Vs. Guest Volleyball"
+    },
+    {
+     "time": "1:30-2:30pm",
+     "title": "Faculty Speaker Discussion"
+    },
+    {
+     "time": "1:30-3:30pm",
+     "title": "Sailing Regatta*"
+    },
+    {
+     "time": "1:45-2:45pm",
+     "title": "Basketball Tournament"
+    },
+    {
+     "time": "2-3pm",
+     "title": "Kids Talent Show*"
+    },
+    {
+     "time": "2:45-3:45",
+     "title": "Bread Bake*"
+    },
+    {
+     "time": "2:45-4:15pm",
+     "title": "Pickleball Tournament*"
+    },
+    {
+     "time": "2:45-3:45pm",
+     "title": "Psychology Discussion"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Hip Hop Dance"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Kids Carnival"
+    },
+    {
+     "time": "3-4:15pm",
+     "title": "Open Climb"
+    },
+    {
+     "time": "3-4:30pm",
+     "title": "Ospreys"
+    },
+    {
+     "time": "3-6pm",
+     "title": "EARLY CHECK-OUT*"
+    },
+    {
+     "time": "4-5pm",
+     "title": "Art & Crafts Social"
+    },
+    {
+     "time": "4:15-5pm",
+     "title": "Egg Drop"
+    },
+    {
+     "time": "4:30-5:30pm",
+     "title": "Cherry House Social"
+    },
+    {
+     "time": "5:00-5:45pm",
+     "title": "Shabbat"
+    }
+   ],
+   "sunset": [
+    {
+     "time": "5:45-6:45pm",
+     "title": "BBQ Dinner"
+    },
+    {
+     "time": "6-7pm",
+     "title": "Music Hour"
+    },
+    {
+     "time": "7-7:45pm",
+     "title": "Boat Dock"
+    },
+    {
+     "time": "8-8:30pm",
+     "title": "Slide Show"
+    },
+    {
+     "time": "8:30-9:15pm",
+     "title": "Staph Talent Show"
+    },
+    {
+     "time": "9:15-10pm",
+     "title": "Silent Disco"
+    },
+    {
+     "time": "9:15-10:45pm",
+     "title": "Last Chance Fountain"
+    }
+   ]
+  }
+ }
+}

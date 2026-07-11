@@ -1,0 +1,72 @@
+# Scheduled rollover to week 5 (Jul 11-18, 2026), prepared in advance from the
+# "WIP 2026 Editing" Google Sheet. Fires Saturday Jul 11 at 12pm PT (19:00 UTC;
+# GitHub crons can run up to ~40 min late). Applies the week-5 skeleton from
+# scripts/week5-schedule.json, resets the week key (clears everyone's week-4
+# sign-ups on next open), clears Drive-processing state so week-5 Whatzappening
+# sheets get picked up, and deploys. Menus carry over (season-wide menu).
+#
+# Test anytime via Run workflow with dry_run=true (prints the result, no push).
+
+name: Week 5 rollover (Sat Jul 11, 12pm PT)
+
+on:
+  schedule:
+    - cron: '0 19 11 7 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'true = show what would change, do not push'
+        default: 'false'
+
+concurrency:
+  group: schedule-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  rollover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Guard - 2026 only (yearly cron would refire in 2027)
+        run: |
+          if [ "$(date -u +%Y)" != "2026" ]; then
+            echo "Not 2026 - this workflow is retired."; exit 1
+          fi
+
+      - name: Reset week state
+        run: node scripts/new-week.mjs 2026-wk5
+
+      - name: Apply week-5 schedule from the prepared sheet
+        run: |
+          node -e "
+            const fs = require('fs');
+            const d = JSON.parse(fs.readFileSync('data.json'));
+            const w = JSON.parse(fs.readFileSync('scripts/week5-schedule.json'));
+            d.schedule = w.schedule;
+            fs.writeFileSync('data.json', JSON.stringify(d, null, 1) + '\n');
+            const n = Object.values(w.schedule).reduce((a, day) => a + Object.values(day).reduce((b, s) => b + s.length, 0), 0);
+            console.log('Applied week-5 schedule:', n, 'activities');
+          "
+
+      - name: Commit and deploy
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "DRY RUN - would commit:"
+            git diff --stat
+            exit 0
+          fi
+          git config user.name "camp-schedule-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json sw.js .bot/
+          git commit -m "Roll over to week 5 (Jul 11-18) from the WIP 2026 sheet"
+          git push || (git pull --rebase origin main && git push)

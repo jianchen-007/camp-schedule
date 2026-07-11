@@ -9,7 +9,8 @@
     },
     {
      "time": "8-10am",
-     "title": "Check-Out / Return Keys"
+     "title": "Check-Out / Return Keys",
+     "desc": "Drop off your keys, settle your bill, and bid farewell to your Office staph. Bills can only be paid with CASH, ACH, or CHECK. Please make checks out to SAA Sierra Programs. If you want to give a tip to the Staph (the large majority of what they're paid), please make the check out to SAA SIERRA PROGRAMS as well! They are so grateful to you! We hope you had a great week at SSC and that your trip home is a safe one. Please leave the Everything Book in your cabin for next week's guests to enjoy. Our hardworking staph begins cabin cleaning at 10am, so please help them by checking out by then. We miss you already and can't wait to see you in 2027! Thank you for a magnificent week!"
     }
    ],
    "noon": [],
@@ -1115,7 +1116,8 @@
     },
     {
      "time": "6-7pm",
-     "title": "Music Hour"
+     "title": "Music Hour",
+     "desc": "Come jam out and pretend you are at a music festival with the incredibly talented Staphers! It will be an evening of song exchanging and foot tapping tunes."
     },
     {
      "time": "7-7:45pm",
@@ -1123,19 +1125,23 @@
     },
     {
      "time": "8-8:30pm",
-     "title": "Slide Show"
+     "title": "Slide Show",
+     "desc": "You might've seen them running across, in between, and all over camp with their cameras—and at last, photographers Priyanka and Oscar are excited to share their larger than life pictures with you all. Head over to the Cathedral Room to watch a carefully curated slideshow of camp memories!"
     },
     {
      "time": "8:30-9:15pm",
-     "title": "Staph Talent Show"
+     "title": "Staph Talent Show",
+     "desc": "Fridays are the best. Staph of 2026 is even better. They have LOVED spending the week with you and are beyond excited to treat you to one final show, to give you some lasting memories until next summer. Grab a seat in the Angora room and watch as our staphers showcase their varied and sometimes surprising talents."
     },
     {
      "time": "9:15-10pm",
-     "title": "Silent Disco"
+     "title": "Silent Disco",
+     "desc": "One last night in the mountain air, under the stars? We better spend it dancing! Throw on your costumes, lace up your dancing shoes and grab a pair of silent disco headphones – it's time to boogie by the Cathedral steps. Tutus and neon encouraged."
     },
     {
      "time": "9:15-10:45pm",
-     "title": "Last Chance Fountain"
+     "title": "Last Chance Fountain",
+     "desc": "This is the final call for all the treasures of The Fountain. Have you been good all week and you deserve one last milkshake? That shirt you've been eyeing is still there! We will not be open on Saturday, so now is your moment to soak up the tastiest treats and best souvenirs from your favorite week of the summer. (P.S. Hey you! Yes you, Early Checkouts, Cash Only please!)"
     }
    ]
   }

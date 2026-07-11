@@ -21,8 +21,8 @@ if (!week || !/^[\w-]+$/.test(week)) {
 
 const data = JSON.parse(readFileSync('data.json', 'utf8'));
 if (data.week === week) {
-  console.error(`data.json is already on ${week} — refusing to double-reset.`);
-  process.exit(1);
+  console.log(`data.json is already on ${week} — nothing to do.`);
+  process.exit(0);
 }
 let stripped = 0;
 for (const day of Object.values(data.schedule))

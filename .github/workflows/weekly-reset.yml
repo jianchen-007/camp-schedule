@@ -1,0 +1,46 @@
+# New-week reset: every Saturday at 2pm PT, after check-out (ends 10am) and
+# before the next group checks in (3pm), strip last week's activity details
+# and wait for the new week's Whatzappening sheets to land in Drive. The week
+# key is the Saturday's date, so re-runs on the same day are no-ops and the
+# daily updater fills the fresh skeleton as staff publish sheets.
+
+name: Weekly new-week reset
+
+on:
+  schedule:
+    - cron: '0 21 * * 6'  # Saturday 2:00pm PT (21:00 UTC)
+  workflow_dispatch:
+
+concurrency:
+  group: schedule-update   # never race the Drive updater
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Reset for the new week
+        run: node scripts/new-week.mjs "wk-$(date -u +%Y-%m-%d)"
+
+      - name: Commit and deploy
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "Already reset — nothing to deploy."
+            exit 0
+          fi
+          git config user.name "camp-schedule-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json sw.js .bot/
+          git commit -m "New week reset: fresh slate for arriving guests"
+          git push || (git pull --rebase origin main && git push)

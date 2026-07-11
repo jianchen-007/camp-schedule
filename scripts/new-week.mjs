@@ -2,9 +2,12 @@
 //
 // Keeps the weekly skeleton (titles/times repeat week to week) but strips all
 // activity descriptions, sets the new week key (which makes every device clear
-// last week's sign-ups on next open), clears the Drive-processing state so the
-// new week's sheets get picked up, and bumps the service-worker cache.
+// last week's sign-ups on next open), and bumps the service-worker cache.
 // The daily updater then fills in descriptions as staff publish sheets.
+// Drive-processing state is intentionally KEPT: last week's files may still
+// sit in the folder, and wiping the state would make the updater re-process
+// them and re-add the descriptions we just stripped. New uploads have new
+// file IDs, so they are picked up regardless.
 //
 // Usage: node scripts/new-week.mjs 2026-wk5
 
@@ -29,11 +32,9 @@ for (const day of Object.values(data.schedule))
 data.week = week;
 writeFileSync('data.json', JSON.stringify(data, null, 1) + '\n');
 
-writeFileSync('.bot/last-processed.json', JSON.stringify({ processed: {} }, null, 1) + '\n');
-
 const sw = readFileSync('sw.js', 'utf8');
 const bumped = sw.replace(/camp-app-v(\d+)/, (_, n) => `camp-app-v${Number(n) + 1}`);
 if (bumped === sw) throw new Error('could not find cache version in sw.js');
 writeFileSync('sw.js', bumped);
 
-console.log(`Reset for ${week}: ${stripped} descriptions stripped, Drive state cleared, sign-ups will reset on devices, SW bumped.`);
+console.log(`Reset for ${week}: ${stripped} descriptions stripped, sign-ups will reset on devices, SW bumped (Drive state kept).`);

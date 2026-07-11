@@ -10,7 +10,8 @@ Jian photographs the camp's printed sheets and attaches them (or they land in th
 shared Drive folder — see Automation below). Transcribe them into `data.json`:
 
 - **"Whatzappening?!" daily sheets** → activity descriptions. Data lives in
-  `data.json` under `schedule`: per day (`sat`..`fri`), sections
+  `data.json` under `schedule`: per day (`sat`..`fri`, plus `sat2` = final
+  check-out Saturday shown after Friday), sections
   `sunrise` / `noon` / `sunset`, entries `{time, title, desc?}`.
 - **Titles ending in `*`** = advance sign-up required (shaded on printed sheets);
   the app renders the `*` as an orange SIGN-UP chip. Keep the convention.

@@ -500,13 +500,14 @@ nav.bottom button.active{color:var(--accent);}
 
 <script>
 const DAYS = [
-  {key:'sat', label:'Saturday', short:'SAT'},
+  {key:'sat', label:'Saturday Jul 4', short:'SAT 4'},
   {key:'sun', label:'Sunday', short:'SUN'},
   {key:'mon', label:'Monday', short:'MON'},
   {key:'tue', label:'Tuesday', short:'TUE'},
   {key:'wed', label:'Wednesday', short:'WED'},
   {key:'thu', label:'Thursday', short:'THU'},
-  {key:'fri', label:'Friday', short:'FRI'}
+  {key:'fri', label:'Friday', short:'FRI'},
+  {key:'sat2', label:'Saturday Jul 11', short:'SAT 11'}
 ];
 
 /* Sharing: the live GitHub Pages URL everyone installs from. */
@@ -539,9 +540,12 @@ let myRating = 0;
 try{ myRating = parseInt(localStorage.getItem(RATING_KEY), 10) || 0; }catch(e){}
 
 let currentDay = (function(){
-  const idx = new Date().getDay(); // 0=Sun..6=Sat
+  const now = new Date();
+  // Camp week is Sat Jul 4 - Sat Jul 11, 2026: two Saturdays. On/after the
+  // 11th, Saturday means the check-out Saturday at the end of the tabs.
+  if(now.getDay() === 6 && now >= new Date(2026, 6, 11)) return 'sat2';
   const map = {0:'sun',1:'mon',2:'tue',3:'wed',4:'thu',5:'fri',6:'sat'};
-  return map[idx] || 'sat';
+  return map[now.getDay()] || 'sat';
 })();
 let currentView = 'schedule';
 
@@ -624,7 +628,7 @@ function renderMenu(){
     html += `</div></div>`;
   });
   if(!menu.lunch){
-    html += `<div class="empty-note">No lunch is served on check-in day.</div>`;
+    html += `<div class="empty-note">${currentDay==='sat2' ? 'Only breakfast is served on check-out day.' : 'No lunch is served on check-in day.'}</div>`;
   }
   document.getElementById('main').innerHTML = html;
 }

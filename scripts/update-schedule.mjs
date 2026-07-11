@@ -29,7 +29,7 @@ const DATA_FILE = 'data.json';
 const SW_FILE = 'sw.js';
 const MODEL = 'claude-fable-5';
 
-const DAY_KEYS = ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri'];
+const DAY_KEYS = ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat2'];
 const SECTION_KEYS = ['sunrise', 'noon', 'sunset'];
 const MEAL_KEYS = ['breakfast', 'lunch', 'dinner'];
 
@@ -153,7 +153,7 @@ const PROMPT = `You maintain data.json for a camp-week schedule PWA (Stanford Si
 
 Transcribe the sheet and produce updates:
 - Sheets are often rotated or upside-down - read them in whatever orientation works.
-- Match sheet content to the day keys sat/sun/mon/tue/wed/thu/fri using the day headers printed on the sheet (e.g. "Wednesday Evening", "Thursday Morning/Afternoon").
+- Match sheet content to the day keys sat/sun/mon/tue/wed/thu/fri (plus sat2 = the final check-out Saturday, Jul 11) using the day headers printed on the sheet (e.g. "Wednesday Evening", "Thursday Morning/Afternoon").
 - Sections: morning activities (before ~noon) -> "sunrise", afternoon (~noon-5:45pm) -> "noon", evening (5:45pm onward) -> "sunset". Follow the existing placement in data.json when an activity already exists.
 - Each activity: {"time": "6:30-8am", "title": "Rowing*", "desc": "..."}. Omit "desc" if the sheet gives none. Titles that require advance sign-up (shaded on the printed sheet) keep a trailing "*" - preserve existing "*" markers when merging.
 - Merge INTO the existing day: keep existing activities (update their desc/time if the sheet revises them), add new ones in chronological order. Do not drop activities that the sheet simply doesn't mention.

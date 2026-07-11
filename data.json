@@ -2,17 +2,7 @@
  "week": "2026-wk4",
  "schedule": {
   "sat": {
-   "sunrise": [
-    {
-     "time": "7:45-8:45am",
-     "title": "Breakfast"
-    },
-    {
-     "time": "8-10am",
-     "title": "Check-Out / Return Keys",
-     "desc": "Drop off your keys, settle your bill, and bid farewell to your Office staph. Bills can only be paid with CASH, ACH, or CHECK. Please make checks out to SAA Sierra Programs. If you want to give a tip to the Staph (the large majority of what they're paid), please make the check out to SAA SIERRA PROGRAMS as well! They are so grateful to you! We hope you had a great week at SSC and that your trip home is a safe one. Please leave the Everything Book in your cabin for next week's guests to enjoy. Our hardworking staph begins cabin cleaning at 10am, so please help them by checking out by then. We miss you already and can't wait to see you in 2027! Thank you for a magnificent week!"
-    }
-   ],
+   "sunrise": [],
    "noon": [],
    "sunset": [
     {
@@ -1144,45 +1134,26 @@
      "desc": "This is the final call for all the treasures of The Fountain. Have you been good all week and you deserve one last milkshake? That shirt you've been eyeing is still there! We will not be open on Saturday, so now is your moment to soak up the tastiest treats and best souvenirs from your favorite week of the summer. (P.S. Hey you! Yes you, Early Checkouts, Cash Only please!)"
     }
    ]
+  },
+  "sat2": {
+   "sunrise": [
+    {
+     "time": "7:45-8:45am",
+     "title": "Breakfast"
+    },
+    {
+     "time": "8-10am",
+     "title": "Check-Out / Return Keys",
+     "desc": "Drop off your keys, settle your bill, and bid farewell to your Office staph. Bills can only be paid with CASH, ACH, or CHECK. Please make checks out to SAA Sierra Programs. If you want to give a tip to the Staph (the large majority of what they're paid), please make the check out to SAA SIERRA PROGRAMS as well! They are so grateful to you! We hope you had a great week at SSC and that your trip home is a safe one. Please leave the Everything Book in your cabin for next week's guests to enjoy. Our hardworking staph begins cabin cleaning at 10am, so please help them by checking out by then. We miss you already and can't wait to see you in 2027! Thank you for a magnificent week!"
+    }
+   ],
+   "noon": [],
+   "sunset": []
   }
  },
  "menu": {
   "sat": {
-   "breakfast": {
-    "name": null,
-    "groups": [
-     [
-      "Bakery & Cereal",
-      [
-       "Strawberry Bread",
-       "Coffee Cake",
-       "Selection of Fresh Fruit, Cereals & Yogurts",
-       "Assorted Fresh Bagels & Toppings",
-       "House Made Granola",
-       "Oatmeal & Overnight Oats Bar",
-       "Waffle Bar"
-      ]
-     ],
-     [
-      "Hot Breakfast",
-      [
-       "Scrambled Eggs & Specialty Eggs",
-       "Sausage & Bacon",
-       "Hash Browns",
-       "Challah French Toast",
-       "Buttermilk Biscuits & Sausage Gravy"
-      ]
-     ],
-     [
-      "Beverages",
-      [
-       "Hiker Bar",
-       "Assorted Juices and Local Roast Coffees",
-       "Herbal Teas, Milk, and Hot Chocolate"
-      ]
-     ]
-    ]
-   },
+   "breakfast": null,
    "lunch": null,
    "dinner": {
     "name": null,
@@ -1870,6 +1841,45 @@
      ]
     ]
    }
+  },
+  "sat2": {
+   "breakfast": {
+    "name": null,
+    "groups": [
+     [
+      "Bakery & Cereal",
+      [
+       "Strawberry Bread",
+       "Coffee Cake",
+       "Selection of Fresh Fruit, Cereals & Yogurts",
+       "Assorted Fresh Bagels & Toppings",
+       "House Made Granola",
+       "Oatmeal & Overnight Oats Bar",
+       "Waffle Bar"
+      ]
+     ],
+     [
+      "Hot Breakfast",
+      [
+       "Scrambled Eggs & Specialty Eggs",
+       "Sausage & Bacon",
+       "Hash Browns",
+       "Challah French Toast",
+       "Buttermilk Biscuits & Sausage Gravy"
+      ]
+     ],
+     [
+      "Beverages",
+      [
+       "Hiker Bar",
+       "Assorted Juices and Local Roast Coffees",
+       "Herbal Teas, Milk, and Hot Chocolate"
+      ]
+     ]
+    ]
+   },
+   "lunch": null,
+   "dinner": null
   }
  }
 }

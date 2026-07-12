@@ -25,6 +25,10 @@ const FOLDER_IDS = [
   '1QsBxsYgTwzHoIrV3WkCE8THfSkaN5-LY',
 ];
 const STATE_FILE = '.bot/last-processed.json';
+// Staff keep template copies of prior-week sheets ("Copy of 3 Mo_Tue ... DO NOT
+// EDIT"), planning spreadsheets, and notes in the same folder. Never transcribe
+// those — merging an old week's descriptions into a fresh week is misinformation.
+const SKIP_NAME = /do not edit|^notes|wip 2026/i;
 const DATA_FILE = 'data.json';
 const SW_FILE = 'sw.js';
 const MODEL = 'claude-fable-5';
@@ -279,24 +283,41 @@ async function main() {
   if (!fresh.length) return;
 
   let changed = false;
+  let failures = 0;
   for (const file of fresh) {
     console.log(`Processing "${file.name}" (${file.mimeType}, modified ${file.modifiedTime})`);
-    const block = contentBlock(await downloadFile(auth, file));
-    if (!block) {
-      console.log(`  -> unsupported type, skipping (marking as seen)`);
+    if (SKIP_NAME.test(file.name)) {
+      console.log(`  -> template/notes file (name matches skip-list), marking as seen`);
       state.processed[file.id] = file.modifiedTime;
       continue;
     }
-    const currentData = readFileSync(DATA_FILE, 'utf8');
-    const updates = await transcribe(apiKey, block, currentData, file.name);
-    validateUpdates(updates);
-    const data = JSON.parse(currentData);
-    applyUpdates(data, updates);
-    writeFileSync(DATA_FILE, JSON.stringify(data, null, 1) + '\n');
-    state.processed[file.id] = file.modifiedTime;
-    changed = true;
-    console.log(`  -> ${updates.summary || 'updated'}`);
+    // One poison file must not discard the whole run: catch per-file errors,
+    // leave the file unmarked so the next run retries it, and keep going.
+    try {
+      const block = contentBlock(await downloadFile(auth, file));
+      if (!block) {
+        console.log(`  -> unsupported type, skipping (marking as seen)`);
+        state.processed[file.id] = file.modifiedTime;
+        continue;
+      }
+      const currentData = readFileSync(DATA_FILE, 'utf8');
+      const updates = await transcribe(apiKey, block, currentData, file.name);
+      validateUpdates(updates);
+      const data = JSON.parse(currentData);
+      applyUpdates(data, updates);
+      writeFileSync(DATA_FILE, JSON.stringify(data, null, 1) + '\n');
+      state.processed[file.id] = file.modifiedTime;
+      changed = true;
+      console.log(`  -> ${updates.summary || 'updated'}`);
+    } catch (e) {
+      failures++;
+      console.warn(`  -> FAILED on "${file.name}": ${e.message} — will retry next run`);
+    }
   }
+  if (failures && !changed && !Object.keys(state.processed).length) {
+    throw new Error(`${failures} file(s) failed and nothing succeeded`);
+  }
+  if (failures) console.warn(`${failures} file(s) failed this run; they stay unmarked and will retry.`);
 
   if (changed) bumpSwVersion();
   mkdirSync('.bot', { recursive: true });

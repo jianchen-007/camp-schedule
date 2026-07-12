@@ -22,6 +22,8 @@ on:
     - cron: '0 1 * * *'   # 6:00pm PT (01:00 UTC next day)
     - cron: '15 1 * * *'  # 6:15pm PT (01:15 UTC next day)
     - cron: '0 3 * * *'   # 8:00pm PT (03:00 UTC next day) — catches late uploads
+    - cron: '30 4 * * *'  # 9:30pm PT — GitHub drops cron slots under load; extra safety nets
+    - cron: '0 6 * * *'   # 11:00pm PT
   workflow_dispatch:
   push:
     branches: [main]

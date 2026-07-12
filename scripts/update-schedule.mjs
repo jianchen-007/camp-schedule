@@ -25,10 +25,14 @@ const FOLDER_IDS = [
   '1QsBxsYgTwzHoIrV3WkCE8THfSkaN5-LY',
 ];
 const STATE_FILE = '.bot/last-processed.json';
-// Staff keep template copies of prior-week sheets ("Copy of 3 Mo_Tue ... DO NOT
-// EDIT"), planning spreadsheets, and notes in the same folder. Never transcribe
-// those — merging an old week's descriptions into a fresh week is misinformation.
-const SKIP_NAME = /do not edit|^notes|wip 2026/i;
+// Staff keep planning spreadsheets and notes in the same folder — never
+// transcribe those. The "Copy of N ... DO NOT EDIT" docs ARE the published
+// weekly sheets (staff copy last week's docs and edit them for the new week;
+// "DO NOT EDIT" addresses other staff, not us), so they are processed normally.
+// Caution from Jul 11: copies made for the NEXT week can briefly hold the OLD
+// week's text right after the Saturday reset — acceptable, since staff edits
+// bump modifiedTime and get re-transcribed.
+const SKIP_NAME = /^notes|wip 2026/i;
 const DATA_FILE = 'data.json';
 const SW_FILE = 'sw.js';
 const MODEL = 'claude-fable-5';

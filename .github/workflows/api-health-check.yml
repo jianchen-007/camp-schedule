@@ -1,0 +1,26 @@
+# Minimal Anthropic API health check — verifies the repo's ANTHROPIC_API_KEY
+# can actually complete a request (catches invalid keys, empty credit balance,
+# and monthly spend limits, which have each bitten this pipeline once).
+# Costs a fraction of a cent per run. Manual dispatch only.
+
+name: API health check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: One-token test call
+        run: |
+          RESPONSE=$(curl -s -w '\n%{http_code}' https://api.anthropic.com/v1/messages \
+            -H "x-api-key: ${{ secrets.ANTHROPIC_API_KEY }}" \
+            -H "anthropic-version: 2023-06-01" \
+            -H "content-type: application/json" \
+            -d '{"model":"claude-sonnet-5","max_tokens":1,"messages":[{"role":"user","content":"hi"}]}')
+          CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          echo "HTTP $CODE"
+          echo "$BODY" | head -c 400
+          [ "$CODE" = "200" ] || exit 1

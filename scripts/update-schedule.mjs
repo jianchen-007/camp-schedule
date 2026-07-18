@@ -35,7 +35,10 @@ const STATE_FILE = '.bot/last-processed.json';
 const SKIP_NAME = /^notes|wip 2026/i;
 const DATA_FILE = 'data.json';
 const SW_FILE = 'sw.js';
-const MODEL = 'claude-fable-5';
+// Sonnet is plenty for transcribe-and-merge and ~5x cheaper than the flagship —
+// the full data.json rides along as context on every call, so model choice is
+// the biggest cost lever (the July spend limit was hit twice on the flagship).
+const MODEL = 'claude-sonnet-5';
 
 const DAY_KEYS = ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat2'];
 const SECTION_KEYS = ['sunrise', 'noon', 'sunset'];
@@ -282,7 +285,22 @@ async function main() {
 
   const auth = sa ? { token: await driveToken(sa) } : { apiKey: gKey };
   const files = await listFolder(auth);
-  const fresh = files.filter((f) => state.processed[f.id] !== f.modifiedTime);
+  // Stale-file guard: data.json's week key is the current camp-week's Saturday
+  // (wk-YYYY-MM-DD). A file last modified BEFORE that Saturday belongs to a
+  // previous week — transcribing it into the fresh week would re-add old
+  // content (this nearly happened Jul 10 and again with week-5 leftovers).
+  // Mark stale files as seen without spending API budget on them.
+  const weekKey = (JSON.parse(readFileSync(DATA_FILE, 'utf8')).week || '').match(/(\d{4}-\d{2}-\d{2})/);
+  const weekStart = weekKey ? Date.parse(weekKey[1] + 'T07:00:00Z') : 0; // Sat 00:00 PT
+  const fresh = [];
+  for (const f of files.filter((f) => state.processed[f.id] !== f.modifiedTime)) {
+    if (weekStart && Date.parse(f.modifiedTime) < weekStart) {
+      console.log(`Skipping "${f.name}" — last modified ${f.modifiedTime}, before this week began (marking as seen)`);
+      state.processed[f.id] = f.modifiedTime;
+      continue;
+    }
+    fresh.push(f);
+  }
   console.log(`Drive folder has ${files.length} file(s); ${fresh.length} new/updated.`);
   if (!fresh.length) return;
 

@@ -594,7 +594,8 @@
     },
     {
      "time": "6:30-7:30pm",
-     "title": "Family Portraits*"
+     "title": "Family Portraits*",
+     "desc": "Hug your family tight and show up at the bottom of Chicken Hill for your family portrait with Oscar. He's super excited to capture all your special moments at Camp and capture your family portrait by the water."
     },
     {
      "time": "7-7:45pm",
@@ -602,15 +603,18 @@
     },
     {
      "time": "7-8pm",
-     "title": "Guest-to-Guest*"
+     "title": "Guest-to-Guest*",
+     "desc": "Want to learn more about the amazing things your fellow guests are engaged in beyond Sierra Camp? Want to share about a particularly exciting part of your family, career, or past? Join Madeline on the Fountain Deck for Guest-to-Guest, ready to share yourself or simply listen to the others' stories! If you're hoping to present, be sure to sign up at the office beforehand."
     },
     {
      "time": "7:30-10pm",
-     "title": "Fountain Pretzel Night"
+     "title": "Fountain Pretzel Night",
+     "desc": "Fountain Pretzel Night! Come get a delicious soft pretzel available throughout tonight's Fountain hours!"
     },
     {
      "time": "8:30-9:30pm",
-     "title": "Improv Show"
+     "title": "Improv Show",
+     "desc": "Come on down to the Cathedral Room at 8:30pm to see Staph improvisers play games and make up crazy stories on the spot, based on your suggestions! This show has never been seen before… and will never be seen again. Don't miss it!"
     }
    ]
   },
@@ -618,7 +622,8 @@
    "sunrise": [
     {
      "time": "6:30-8am",
-     "title": "Rowing*"
+     "title": "Rowing*",
+     "desc": "Get out on the smooth, glassy water of Fallen Leaf Lake. Rowers of all skill levels, come join Jason & Teddy for a morning paddle. Be sure to sign up for a time in the sign-up book!"
     },
     {
      "time": "7:45-8:45am",
@@ -626,73 +631,90 @@
     },
     {
      "time": "9-10am",
-     "title": "Linen Bar"
+     "title": "Linen Bar",
+     "desc": "Meet Addie, Quinn, Kogen, Heather, Kelsey & Morgan outside Jeffrey Pine F (by the Boat Dock) and trade your dirty linens for clean ones. They guarantee you've never experienced a cleaning service as refined and sociable as Linen Bar."
     },
     {
      "time": "10am-12pm",
-     "title": "Games Day & Ski Show"
+     "title": "Games Day & Ski Show",
+     "desc": "Could this be the year that YOU win the egg toss? Will you finally clinch the victory in the limbo? Have you been sitting on an idea for the coolest sand castle ever? Would you rather just lounge in the sand and enjoy the sun? Come to Baby Beach for an epic Games Day and the incredible Ski Show!"
     }
    ],
    "noon": [
     {
      "time": "12-12:45pm",
-     "title": "BBQ in Front of Lodge"
+     "title": "BBQ in Front of Lodge",
+     "desc": "Join us at the picnic tables for a tasty BBQ lunch!"
     },
     {
      "time": "12:30-3pm",
-     "title": "Guest vs Guest Volleyball*"
+     "title": "Guest vs Guest Volleyball*",
+     "desc": "It is time for the battle of the Golden Spike! The annual Guest v. Guest Beach Volleyball Showdown will take place at the Steinbeck Memorial Volleyball Stadium, led by Addie & Sydney. This tournament is for guests who have previous experience and are ready for some hot competition. Teams will compete 4vs4 and will be mixed based on skill level. Everyone is welcome to come and cheer on the competition. See you there; don't forget sunscreen!"
     },
     {
      "time": "1-2pm",
-     "title": "Wilderness Skills Workshop"
+     "title": "Wilderness Skills Workshop",
+     "desc": "Before heading out, ensure you're equipped for the challenges life has in store. This workshop will refine your skills in areas like knot tying, tree identification, leave no trace, and more! Meet Isaiah at the firepit to learn more about what you can do to help. If you have a specific topic you'd like to learn about, find Isaiah ahead of time so he can prepare the lesson."
     },
     {
      "time": "1-3pm",
-     "title": "Outrigger Canoe*"
+     "title": "Outrigger Canoe*",
+     "desc": "Join our Outrigger Canoe enthusiasts, Yaara & Tommy, for a unique opportunity to experience this special sport. Come be inspired by the rich history and current practices of outrigger canoeing! Meet on Baby Beach and don't forget to sign up at the office."
     },
     {
      "time": "1-5pm",
-     "title": "Boat Dock"
+     "title": "Boat Dock",
+     "desc": "We're open! Come on by and enjoy the lake!"
     },
     {
      "time": "1-5pm",
-     "title": "Ski Dock*"
+     "title": "Ski Dock*",
+     "desc": "Sign up at the Ski Dock."
     },
     {
      "time": "1:30-3:30pm",
-     "title": "Kids Sail*"
+     "title": "Kids Sail*",
+     "desc": "Calling all kids (9 & up)! Practice and sign off on skills so that you can become an able seaman and walk the plank! No sailing experience required - just come ready to have fun on the water! Oh, and wear a swimsuit!"
     },
     {
      "time": "2-5pm",
-     "title": "Wimbledon Wednesday*"
+     "title": "Wimbledon Wednesday*",
+     "desc": "It's the greatest stage in tennis: the manicured lawns, the gasps from the crowd, the strawberries and cream. It's Wimbledon Wednesday. Come meet Robert over at the tennis courts at 2pm to test your metal against the other doubles teams vying for our sport's crowning achievement. All skill levels are welcome, and feel free to come with or without a partner. Make sure to also bring a racket and sunscreen!"
     },
     {
      "time": "2:15-3:45pm",
-     "title": "Orienteering*"
+     "title": "Orienteering*",
+     "desc": "Ever have that feeling you may have taken the wrong turn on the trail? Simply want to know what all those arrows on a compass are? Do the words \"scavenger hunt\" get your adrenaline going? If you answered yes to any of the above, come to Orienteering! Isaiah will teach you the basics of compass use, map-reading, and some useful tips for navigating the wilderness. Then, in the second half of the session, you'll be sent off to complete a wacky orienteering scavenger hunt around Camp using your newfound skills, while your time is tracked! Meet at the fire pit in front of the lodge and please wear comfortable hiking shoes. Also, bring water, sun protection, and a taste for adventure!"
     },
     {
      "time": "2:30-3:30pm",
-     "title": "Dance: Line Dancing"
+     "title": "Dance: Line Dancing",
+     "desc": "Whether you've never stepped into a dance studio or have been dancing all your life, come join Elise for an hour full of movement, music, and fun! The hour-long class is designed to get you on beat, improve coordination, flexibility, core strength, musicality, and artistry. Above all, come to experience the joy of dancing! Meet at the Angora Room at 2:30pm."
     },
     {
      "time": "2:30-3:30pm",
-     "title": "Family Craft: Jewelry Making*"
+     "title": "Family Craft: Jewelry Making*",
+     "desc": "Add some new pieces to your jewelry collection! We've got beads in every shape and color for you to string together your next masterpiece. Join Andriana & Nia at the picnic tables to design your very own bracelets, necklaces, earrings, and keychains."
     },
     {
      "time": "2:30-3:30pm",
-     "title": "Partner Yoga: Mirror Yoga"
+     "title": "Partner Yoga: Mirror Yoga",
+     "desc": "All levels welcome — come solo or bring your person\n\nFifty candles, fairy lights, and a slow dreamy flow — welcome to the most BEAUTIFUL class on the mountain. Halfway through we do mirror yoga with a partner, which is equal parts moving and hilarious. Come alone and we'll pair you up with a friend and maybe Heather. You'll leave knowing someone a little better — maybe even yourself!! Meet at the CrawDeck."
     },
     {
      "time": "2:30-3:30pm",
-     "title": "Family Improv Workshop"
+     "title": "Family Improv Workshop",
+     "desc": "Want to learn more about improv? Want to fight monsters, hop dimensions, save the world, fly to outer space, or tell other crazy and outlandish stories? Just want to have fun playing some good old-fashioned improv games? If you answered \"Yes And\" to any of these, find Aylin on the Angora Deck (by the ping pong table!) at 2:30pm. All ages welcome, and no improv experience necessary — just enthusiasm, an open mind, and a willingness to play!"
     },
     {
      "time": "2:45-4:45pm",
-     "title": "Open Climb"
+     "title": "Open Climb",
+     "desc": "Come one come all! Whether you're a newbie or you hold the week's speed record, come join us at the wall to get stronger and enjoy some of Camp's most beautiful views! Join Jack at the rock wall at 2:30pm and bring sunscreen and water!"
     },
     {
      "time": "3-4pm",
-     "title": "Language Hour"
+     "title": "Language Hour",
+     "desc": "Join Gabe & Tavi on the Old Lodge deck to learn the basics of Italian, Spanish, French, Chinese & American Sign Language and a bit about each culture! All ages welcome."
     },
     {
      "time": "3-4pm",
@@ -700,19 +722,23 @@
     },
     {
      "time": "5-6pm",
-     "title": "Story Hour"
+     "title": "Story Hour",
+     "desc": "Meet Edie & Madeline on the Cathedral Steps to get your story-fill for the day. They'll be epic, delightful, suspenseful, sparkly, and adventurous. Guaranteed."
     },
     {
      "time": "5-6pm",
-     "title": "History-Themed Boatster Cruise*"
+     "title": "History-Themed Boatster Cruise*",
+     "desc": "\"I only went out for a [Boatster cruise] and finally concluded to stay until sundown, for going out, I found, was really going in.\" -John Muir. Join Ethan and Teddy for an afternoon on the lake discussing the history of Fallen Leaf, including stories about Steinbeck, Lucky Baldwin and more. Food, drinks, osprey, mountains, and poetry supplied!"
     },
     {
      "time": "5-6pm",
-     "title": "Family Portraits*"
+     "title": "Family Portraits*",
+     "desc": "Missed the previous family portrait opportunities? Today is your last chance for a family portrait this week, so sign up in the book and meet Oscar at the bottom of the kitchen hill by the stone wall."
     },
     {
      "time": "5:45-7:45pm",
-     "title": "Teen Free Ski"
+     "title": "Teen Free Ski",
+     "desc": "Teens! Come one, come all, and bring your friends for some good ol' fashioned Fallen Leaf fun down at the ski dock. Hang with Indigo & Kyle and get cooking on waterskiing, wakeboarding, kneeboarding, or tubing. Brand-new to the lake or signed the ski years ago? All are welcome to roll through for some evening free time out on the boats with other teens and dock staph."
     }
    ],
    "sunset": [

@@ -86,9 +86,16 @@ async function listFolder(auth) {
   // One request per folder: with API-key auth, a single combined query 403s
   // outright if ANY referenced folder isn't link-shared. A folder this
   // credential can't see shouldn't kill the run — the other may have sheets.
+  // Staff sometimes reorganize the share into subfolders ("WHATZ FOR CURRENT
+  // WEEK", Jul 21) — walk into any subfolder found and return only real files.
   const files = [];
+  const queue = [...FOLDER_IDS];
+  const visited = new Set();
   let anyOk = false;
-  for (const id of FOLDER_IDS) {
+  while (queue.length && visited.size < 20) {
+    const id = queue.shift();
+    if (visited.has(id)) continue;
+    visited.add(id);
     const res = await driveFetch(auth, 'files', new URLSearchParams({
       q: `'${id}' in parents and trashed = false`,
       fields: 'files(id,name,mimeType,modifiedTime)',
@@ -102,7 +109,10 @@ async function listFolder(auth) {
       continue;
     }
     anyOk = true;
-    files.push(...(((await res.json()).files) || []));
+    for (const f of ((await res.json()).files) || []) {
+      if (f.mimeType === 'application/vnd.google-apps.folder') queue.push(f.id);
+      else files.push(f);
+    }
   }
   if (!anyOk) throw new Error('Drive list failed for ALL folders — check credentials/sharing');
   return files;
@@ -311,6 +321,15 @@ async function main() {
     if (SKIP_NAME.test(file.name)) {
       console.log(`  -> template/notes file (name matches skip-list), marking as seen`);
       state.processed[file.id] = file.modifiedTime;
+      continue;
+    }
+    // Sheets named for another camp week (e.g. next week's masters in the
+    // "WHATZ ORIGINALS" subfolder) wait until their week: skip WITHOUT marking
+    // so they are reconsidered every run. Week 4 began Sat 2026-07-04.
+    const expectedWeek = weekStart ? Math.round((weekStart - Date.parse('2026-07-04T07:00:00Z')) / 604800000) + 4 : 0;
+    const wkMatch = file.name.match(/wk\s*-?\s*(\d+)/i);
+    if (expectedWeek && wkMatch && Number(wkMatch[1]) !== expectedWeek) {
+      console.log(`  -> sheet is labeled week ${wkMatch[1]}, current camp week is ${expectedWeek} — leaving for its week`);
       continue;
     }
     // One poison file must not discard the whole run: catch per-file errors,

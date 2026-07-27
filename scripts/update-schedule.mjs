@@ -327,7 +327,7 @@ async function main() {
     // "WHATZ ORIGINALS" subfolder) wait until their week: skip WITHOUT marking
     // so they are reconsidered every run. Week 4 began Sat 2026-07-04.
     const expectedWeek = weekStart ? Math.round((weekStart - Date.parse('2026-07-04T07:00:00Z')) / 604800000) + 4 : 0;
-    const wkMatch = file.name.match(/wk\s*-?\s*(\d+)/i);
+    const wkMatch = file.name.match(/w(?:ee)?k\s*-?\s*(\d+)/i); // staff write both "WK 6" and "week 7"
     if (expectedWeek && wkMatch && Number(wkMatch[1]) !== expectedWeek) {
       console.log(`  -> sheet is labeled week ${wkMatch[1]}, current camp week is ${expectedWeek} — leaving for its week`);
       continue;

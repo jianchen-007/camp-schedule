@@ -18,12 +18,15 @@ name: Auto-update schedule from Drive
 
 on:
   schedule:
-    - cron: '45 0 * * *'  # 5:45pm PT (00:45 UTC next day) — staff publish around now
-    - cron: '0 1 * * *'   # 6:00pm PT (01:00 UTC next day)
-    - cron: '15 1 * * *'  # 6:15pm PT (01:15 UTC next day)
-    - cron: '0 3 * * *'   # 8:00pm PT (03:00 UTC next day) — catches late uploads
-    - cron: '30 4 * * *'  # 9:30pm PT — GitHub drops cron slots under load; extra safety nets
-    - cron: '0 6 * * *'   # 11:00pm PT
+    # Off-peak minute marks on purpose: GitHub sheds :00/:15/:30/:45 cron jobs
+    # under load (we lost whole evenings to this) — odd minutes fire far more
+    # reliably.
+    - cron: '47 0 * * *'  # ~5:47pm PT (next day UTC) — staff publish around now
+    - cron: '3 1 * * *'   # ~6:03pm PT
+    - cron: '21 1 * * *'  # ~6:21pm PT
+    - cron: '7 3 * * *'   # ~8:07pm PT — catches late uploads
+    - cron: '33 4 * * *'  # ~9:33pm PT — safety net
+    - cron: '9 6 * * *'   # ~11:09pm PT — last call
   workflow_dispatch:
   push:
     branches: [main]

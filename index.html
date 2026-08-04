@@ -235,6 +235,14 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
 .rate-star.on{color:#e5a821;}
 .rate-hint{font-size:12.5px; color:var(--text-dim); margin-top:6px;}
 .rate-agg{font-size:13.5px; font-weight:700; margin-top:10px; min-height:1em;}
+
+/* Feedback */
+.fb-input{
+  width:100%; margin-top:12px; padding:10px 12px; border-radius:10px; border:1px solid var(--border);
+  background:var(--pill-bg); color:var(--text); font-size:14px; font-family:inherit; resize:vertical;
+}
+.fb-send{margin-top:8px; width:100%; justify-content:center;}
+.fb-hint{font-size:12px; color:var(--text-dim); margin-top:6px; min-height:14px; text-align:center;}
 .rate-agg .agg-star{color:#e5a821;}
 .dev-contact{
   text-align:center; margin:22px auto 4px; font-size:13px; color:var(--text-dim); line-height:1.6;
@@ -814,6 +822,9 @@ function renderShare(){
         </div>
         <div class="rate-hint" id="rateHint">${myRating?`You rated it ${myRating}/5.`:'Tap a star to rate — it’s anonymous.'}</div>
         <div class="rate-agg" id="rateAgg"></div>
+        <textarea id="fbText" class="fb-input" rows="3" maxlength="1000" placeholder="Want to say more? Ideas, corrections, favorite features… (optional)"></textarea>
+        <button class="share-btn fb-send" onclick="sendFeedback()"><span class="sic">💬</span>Send feedback</button>
+        <div class="fb-hint" id="fbHint"></div>
       </div>
 
       <div class="dev-contact">
@@ -895,6 +906,39 @@ async function copyCsvForSheets(btn){
   }catch(e){
     window.prompt('Copy this, then paste into a Google Sheet:', tsv);
   }
+}
+
+/* Feedback: free-text notes from campers. If FEEDBACK_URL is set (an Apps
+   Script web app that appends to a private Google Sheet — see
+   scripts/feedback-sink.gs), feedback posts there silently; otherwise it
+   falls back to opening a pre-filled email to the developer. */
+const FEEDBACK_URL = ''; // paste the Apps Script /exec URL here once deployed
+async function sendFeedback(){
+  const ta = document.getElementById('fbText');
+  const hint = document.getElementById('fbHint');
+  const text = ta.value.trim();
+  if(!text){ hint.textContent = 'Write a little something first 🙂'; return; }
+  if(FEEDBACK_URL){
+    try{
+      await fetch(FEEDBACK_URL, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'text/plain'},
+        body: JSON.stringify({
+          feedback: text,
+          rating: myRating || null,
+          week: localStorage.getItem(WEEK_KEY) || null,
+          when: new Date().toISOString()
+        })
+      });
+      ta.value = '';
+      hint.textContent = 'Sent — thank you! 💚';
+      return;
+    }catch(e){ /* offline or blocked — fall through to email */ }
+  }
+  const subject = encodeURIComponent('Camp Week Schedule app — feedback');
+  const body = encodeURIComponent(text + (myRating ? `\n\n(My rating: ${myRating}/5)` : ''));
+  window.location.href = `mailto:222kevinchen@gmail.com?subject=${subject}&body=${body}`;
+  hint.textContent = 'Opening your email app to send it…';
 }
 
 /* Rating: your stars are saved on this device, and every rating you send

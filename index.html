@@ -517,6 +517,33 @@ const DAYS = [
   {key:'fri', label:'Friday', short:'FRI'},
   {key:'sat2', label:'Check-out Saturday', short:'SAT OUT'}
 ];
+const VIRTUAL_DAY = {key:'today-tomorrow', label:'Today + Tomorrow', short:'TOD→TOM'};
+
+function dayKeyFromDate(now){
+  if(now.getDay() === 6) return now.getHours() < 13 ? 'sat2' : 'sat';
+  const map = {0:'sun',1:'mon',2:'tue',3:'wed',4:'thu',5:'fri'};
+  return map[now.getDay()] || 'sat';
+}
+function getNextDayKey(dayKey){
+  const idx = DAYS.findIndex(d=>d.key===dayKey);
+  return idx >= 0 && idx < DAYS.length-1 ? DAYS[idx+1].key : null;
+}
+function getVirtualDayKey(now){
+  const today = dayKeyFromDate(now);
+  return now.getHours() >= 17 && getNextDayKey(today) ? VIRTUAL_DAY.key : null;
+}
+function getDefaultDayKey(now){
+  return getVirtualDayKey(now) || dayKeyFromDate(now);
+}
+function getDayByKey(key){
+  return key===VIRTUAL_DAY.key ? VIRTUAL_DAY : DAYS.find(d=>d.key===key);
+}
+function getDayLabel(key){
+  return getDayByKey(key)?.label || '';
+}
+function isVirtualDayKey(key){
+  return key===VIRTUAL_DAY.key;
+}
 
 /* Sharing: the live GitHub Pages URL everyone installs from. */
 const APP_URL = 'https://jianchen-007.github.io/camp-schedule/';
@@ -547,19 +574,21 @@ const RATING_NS = 'camp-schedule-jianchen-2026';
 let myRating = 0;
 try{ myRating = parseInt(localStorage.getItem(RATING_KEY), 10) || 0; }catch(e){}
 
-let currentDay = (function(){
-  const now = new Date();
-  // Camp weeks run Saturday to Saturday: check-out ends 10am, check-in starts
-  // 3pm. On a Saturday morning "today" means the check-out tab at the end of
-  // the week; from 1pm on it means the arrival tab for the incoming guests.
-  if(now.getDay() === 6) return now.getHours() < 13 ? 'sat2' : 'sat';
-  const map = {0:'sun',1:'mon',2:'tue',3:'wed',4:'thu',5:'fri'};
-  return map[now.getDay()] || 'sat';
-})();
+let currentDay = getDefaultDayKey(new Date());
 let currentView = 'schedule';
 
 /* ---------------- Render: day tabs ---------------- */
 function dayCount(dayKey){
+  if(isVirtualDayKey(dayKey)){
+    const now = new Date();
+    const today = dayKeyFromDate(now);
+    const tomorrow = getNextDayKey(today);
+    let c=0;
+    for(const id of signups){
+      if(id.startsWith(today+'_') || (tomorrow && id.startsWith(tomorrow+'_'))) c++;
+    }
+    return c;
+  }
   let c=0;
   for(const id of signups){ if(id.startsWith(dayKey+'_')) c++; }
   return c;
@@ -568,6 +597,9 @@ function dayCount(dayKey){
 function renderDayTabs(){
   const el = document.getElementById('dayTabs');
   el.innerHTML = '';
+  const now = new Date();
+  const virtualKey = getVirtualDayKey(now);
+  const todayKey = dayKeyFromDate(now);
   DAYS.forEach(d=>{
     const btn = document.createElement('button');
     btn.className = 'day-pill' + (d.key===currentDay?' active':'');
@@ -575,27 +607,31 @@ function renderDayTabs(){
     btn.innerHTML = d.short + (c>0 ? `<span class="cnt">${c}</span>` : '');
     btn.onclick = ()=>{ currentDay = d.key; renderAll(); };
     el.appendChild(btn);
+    if(currentView==='schedule' && virtualKey && d.key === todayKey){
+      const fp = document.createElement('button');
+      fp.className = 'day-pill' + (VIRTUAL_DAY.key===currentDay ? ' active' : '');
+      const vc = dayCount(VIRTUAL_DAY.key);
+      fp.innerHTML = VIRTUAL_DAY.short + (vc>0 ? `<span class="cnt">${vc}</span>` : '');
+      fp.onclick = ()=>{ currentDay = VIRTUAL_DAY.key; renderAll(); };
+      el.appendChild(fp);
+    }
   });
 }
 
-/* ---------------- Render: schedule ---------------- */
-function renderSchedule(){
-  const day = SCHEDULE[currentDay] || {};
-  const dayLabel = DAYS.find(d=>d.key===currentDay).label;
-  let html = `<div class="section"><div class="info-banner">Tap the checkbox to mark an activity you're signed up for. It's saved on this device, offline. Activities with a ▸ have details — tap the row to read them.</div></div>`;
-
-  const sections = [['sunrise','Sunrise'],['noon','Noon'],['sunset','Sunset']];
+function buildScheduleHtmlForDay(dayKey, displayLabel, sections){
+  const day = SCHEDULE[dayKey] || {};
+  let html='';
   let any=false;
   sections.forEach(([key,label])=>{
-    const items = day[key];
-    if(!items || items.length===0) return;
-    any=true;
-    html += `<div class="section"><div class="section-head ${key}"><span class="dot"></span>${label}</div><div class="card">`;
+    const items = day[key] || [];
+    if(!items.length) return;
+    any = true;
+    html += `<div class="section"><div class="section-head ${key}"><span class="dot"></span>${escapeHtml(displayLabel)} · ${label}</div><div class="card">`;
     items.forEach((it,idx)=>{
-      const id = `${currentDay}_${key}_${idx}`;
+      const id = `${dayKey}_${key}_${idx}`;
       const checked = signups.has(id);
       const hasDesc = !!it.desc;
-      html += `<div class="item ${checked?'is-checked':''}${hasDesc?' has-desc':''}"${hasDesc?' onclick="toggleDesc(event,this)"':''}>
+      html += `<div class="item ${checked ? 'is-checked' : ''}${hasDesc ? ' has-desc' : ''}"${hasDesc ? ' onclick="toggleDesc(event,this)"' : ''}>
         <div class="time">${it.time||''}</div>
         <div class="title">${titleHtml(it.title)}${hasDesc?'<span class="chev">▸</span>':''}${hasDesc?`<div class="desc">${escapeHtml(it.desc)}</div>`:''}</div>
         <button class="check ${checked?'checked':''}" onclick="toggleSignup('${id}')">${checked?'✓':''}</button>
@@ -603,8 +639,31 @@ function renderSchedule(){
     });
     html += `</div></div>`;
   });
-  if(!any){
-    html += `<div class="empty-note">No scheduled activities listed for ${dayLabel}.</div>`;
+  return {html, any};
+}
+
+/* ---------------- Render: schedule ---------------- */
+function renderSchedule(){
+  const dayLabel = getDayLabel(currentDay);
+  let html = `<div class="section"><div class="info-banner">Tap the checkbox to mark an activity you're signed up for. It's saved on this device, offline. Activities with a ▸ have details — tap the row to read them.</div></div>`;
+  if(isVirtualDayKey(currentDay)){
+    const now = new Date();
+    const todayKey = dayKeyFromDate(now);
+    const tomorrowKey = getNextDayKey(todayKey);
+    const todayLabel = getDayLabel(todayKey);
+    const tomorrowLabel = tomorrowKey ? getDayLabel(tomorrowKey) : '';
+    const todayResult = buildScheduleHtmlForDay(todayKey, `${todayLabel} remaining`, [['sunset','Sunset']]);
+    const tomorrowResult = tomorrowKey ? buildScheduleHtmlForDay(tomorrowKey, tomorrowLabel, [['sunrise','Sunrise'],['noon','Noon'],['sunset','Sunset']]) : {html:'', any:false};
+    html += todayResult.html + tomorrowResult.html;
+    if(!todayResult.any && !tomorrowResult.any){
+      html += `<div class="empty-note">No remaining activities listed for ${todayLabel} or upcoming activities for ${tomorrowLabel}.</div>`;
+    }
+  } else {
+    const {html: dayHtml, any} = buildScheduleHtmlForDay(currentDay, dayLabel, [['sunrise','Sunrise'],['noon','Noon'],['sunset','Sunset']]);
+    html += dayHtml;
+    if(!any){
+      html += `<div class="empty-note">No scheduled activities listed for ${dayLabel}.</div>`;
+    }
   }
   document.getElementById('main').innerHTML = html;
 }

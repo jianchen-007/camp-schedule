@@ -88,12 +88,17 @@ async function listFolder(auth) {
   // credential can't see shouldn't kill the run — the other may have sheets.
   // Staff sometimes reorganize the share into subfolders ("WHATZ FOR CURRENT
   // WEEK", Jul 21) — walk into any subfolder found and return only real files.
+  // Per staff request: sheets under "WHATZ ORIGINALS" are advance drafts —
+  // their content merges in but does NOT finalize a day (the app keeps the
+  // "subject to change" banner until the current-week folder covers that day).
+  const ORIGINALS_ID = '1KW-kXhQpZ19l5njK2jAfh_I4zyQOXTE_';
   const files = [];
-  const queue = [...FOLDER_IDS];
+  const queue = FOLDER_IDS.map((id) => ({ id, origin: 'current' }));
   const visited = new Set();
   let anyOk = false;
   while (queue.length && visited.size < 20) {
-    const id = queue.shift();
+    const { id, origin: parentOrigin } = queue.shift();
+    const origin = id === ORIGINALS_ID ? 'originals' : parentOrigin;
     if (visited.has(id)) continue;
     visited.add(id);
     const res = await driveFetch(auth, 'files', new URLSearchParams({
@@ -110,8 +115,8 @@ async function listFolder(auth) {
     }
     anyOk = true;
     for (const f of ((await res.json()).files) || []) {
-      if (f.mimeType === 'application/vnd.google-apps.folder') queue.push(f.id);
-      else files.push(f);
+      if (f.mimeType === 'application/vnd.google-apps.folder') queue.push({ id: f.id, origin });
+      else files.push(Object.assign(f, { origin }));
     }
   }
   if (!anyOk) throw new Error('Drive list failed for ALL folders — check credentials/sharing');
@@ -261,6 +266,47 @@ function validateUpdates(u) {
   }
 }
 
+// ---- provenance: which activities are camp regulars vs this-week specials ----
+// The WIP master grid (scripts/wip-baseline.json) defines the normal weekly
+// programme. Anything the daily sheets add beyond it gets special:true, which
+// the app renders as a "THIS WEEK" chip. Fuzzy matching mirrors the audit
+// tooling: exact normalized title, then containment, then 60% word overlap.
+const BASELINE = JSON.parse(readFileSync('scripts/wip-baseline.json', 'utf8')).schedule;
+const TITLE_ALIASES = { 'kids groups': 'crawdads mergansers chickarees and marmots' };
+const MEAL_RE = /\b(lunch|dinner|breakfast|bbq)\b/; // meals get renamed weekly, never specials
+const stem = (w) => (w.endsWith('s') && w.length > 3 ? w.slice(0, -1) : w);
+function normTitle(s) {
+  const t = String(s).toLowerCase().replace(/\*+$/, '').replace(/[^a-z0-9]+/g, ' ').trim();
+  return TITLE_ALIASES[t] || t;
+}
+const wordSet = (t) => new Set(t.split(' ').map(stem));
+function inBaseline(day, sec, title) {
+  const t = normTitle(title);
+  if (!t || String(title).startsWith('***') || MEAL_RE.test(t)) return true;
+  const pool = (BASELINE[day]?.[sec] || []).map((x) => normTitle(x.title));
+  if (pool.includes(t)) return true;
+  if (pool.some((p) => p && (t.includes(p) || p.includes(t)))) return true;
+  const tw = wordSet(t);
+  return pool.some((p) => {
+    const pw = wordSet(p);
+    const overlap = [...pw].filter((w) => tw.has(w)).length;
+    return pw.size && overlap / pw.size >= 0.6;
+  });
+}
+function classify(data) {
+  let specials = 0;
+  for (const [day, sections] of Object.entries(data.schedule)) {
+    if (day === 'sat2') continue;
+    for (const [sec, items] of Object.entries(sections)) {
+      for (const it of items) {
+        if (inBaseline(day, sec, it.title)) delete it.special;
+        else { it.special = true; specials++; }
+      }
+    }
+  }
+  return specials;
+}
+
 function applyUpdates(data, u) {
   for (const [day, sections] of Object.entries(u.schedule || {})) {
     const existing = data.schedule[day] || {};
@@ -346,6 +392,14 @@ async function main() {
       validateUpdates(updates);
       const data = JSON.parse(currentData);
       applyUpdates(data, updates);
+      // A processed sheet finalizes its days — unless it came from the
+      // ORIGINALS folder (advance drafts stay "subject to change").
+      data.confirmed = data.confirmed || {};
+      if (file.origin !== 'originals') {
+        for (const day of Object.keys(updates.schedule || {})) data.confirmed[day] = true;
+      }
+      const specials = classify(data);
+      if (specials) console.log(`  (${specials} activity(ies) flagged as this-week specials)`);
       writeFileSync(DATA_FILE, JSON.stringify(data, null, 1) + '\n');
       state.processed[file.id] = file.modifiedTime;
       changed = true;

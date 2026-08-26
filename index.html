@@ -147,6 +147,14 @@ main{flex:1; padding:4px 16px 24px; max-width:640px; width:100%; margin:0 auto;}
   display:inline-block; background:var(--chip-signup); color:#fff; font-size:9.5px; font-weight:800;
   border-radius:5px; padding:1px 5px; margin-left:6px; vertical-align:1.5px; letter-spacing:0.04em; white-space:nowrap;
 }
+.special-chip{
+  display:inline-block; background:var(--sunset); color:#fff; font-size:9.5px; font-weight:800;
+  border-radius:5px; padding:1px 5px; margin-left:6px; vertical-align:1.5px; letter-spacing:0.04em; white-space:nowrap;
+}
+.tentative-banner{
+  font-size:12.5px; color:var(--text-dim); background:var(--pill-bg); border:1px dashed var(--border);
+  border-radius:10px; padding:9px 12px; margin-bottom:16px; line-height:1.4;
+}
 
 .empty-note{
   text-align:center; color:var(--text-dim); font-size:14px; padding:30px 20px;
@@ -388,6 +396,7 @@ nav.bottom button.active{color:var(--accent);}
   <div class="modal">
     <h2>Good to know</h2>
     <p><strong>Activities marked with * require advance sign-up</strong> in the sign-up notebook (they're the shaded ones on the printed sheet). This app just tracks what you personally plan to do — it doesn't sign you up with the camp office.</p>
+    <p><strong><span style="background:var(--sunset);color:#fff;border-radius:5px;padding:1px 5px;font-size:10px;font-weight:800;">THIS WEEK</span> marks special events</strong> — one-offs and guest-led activities that aren't part of the regular weekly programme. Days showing a ⏳ banner are still the preliminary template and may change until that day's Whatzappening is published (~6pm the evening before).</p>
     <p><strong>Office hours:</strong> Saturday 8–10am and 3–10pm; Sunday–Friday 8am–noon and 1–10pm.</p>
     <p><strong>Fountain &amp; Boat Dock hours:</strong> check the Guest Display board by the Office.</p>
     <p><strong>Ski Dock sign-ups</strong> take place at the Ski Dock every day of the week.</p>
@@ -550,7 +559,7 @@ const APP_URL = 'https://jianchen-007.github.io/camp-schedule/';
 const SHARE_TEXT = "Here's the Camp Week Schedule app — daily activities, menus, a camp map, and a personal sign-up tracker. Add it to your Home Screen and it works even with no signal:";
 const SHARE_MSG = SHARE_TEXT + ' ' + APP_URL;
 
-let SCHEDULE = {}, MENU = {};
+let SCHEDULE = {}, MENU = {}, CONFIRMED = {};
 
 
 
@@ -633,7 +642,7 @@ function buildScheduleHtmlForDay(dayKey, displayLabel, sections){
       const hasDesc = !!it.desc;
       html += `<div class="item ${checked ? 'is-checked' : ''}${hasDesc ? ' has-desc' : ''}"${hasDesc ? ' onclick="toggleDesc(event,this)"' : ''}>
         <div class="time">${it.time||''}</div>
-        <div class="title">${titleHtml(it.title)}${hasDesc?'<span class="chev">▸</span>':''}${hasDesc?`<div class="desc">${escapeHtml(it.desc)}</div>`:''}</div>
+        <div class="title">${titleHtml(it.title, it.special)}${hasDesc?'<span class="chev">▸</span>':''}${hasDesc?`<div class="desc">${escapeHtml(it.desc)}</div>`:''}</div>
         <button class="check ${checked?'checked':''}" onclick="toggleSignup('${id}')">${checked?'✓':''}</button>
       </div>`;
     });
@@ -646,6 +655,9 @@ function buildScheduleHtmlForDay(dayKey, displayLabel, sections){
 function renderSchedule(){
   const dayLabel = getDayLabel(currentDay);
   let html = `<div class="section"><div class="info-banner">Tap the checkbox to mark an activity you're signed up for. It's saved on this device, offline. Activities with a ▸ have details — tap the row to read them.</div></div>`;
+  if(currentDay !== 'sat2' && !CONFIRMED[currentDay]){
+    html += `<div class="tentative-banner">⏳ <strong>Preliminary schedule</strong> — this day is from the weekly template and is subject to change. It's finalized when the day's Whatzappening is published (usually by ~6pm the evening before).</div>`;
+  }
   if(isVirtualDayKey(currentDay)){
     const now = new Date();
     const todayKey = dayKeyFromDate(now);
@@ -782,7 +794,7 @@ function renderMine(){
       (day[key]||[]).forEach((it,idx)=>{
         const id = `${d.key}_${key}_${idx}`;
         if(signups.has(id)){
-          rows += `<div class="mini-item"><div class="t">${it.time||''}</div><div>${titleHtml(it.title)}</div></div>`;
+          rows += `<div class="mini-item"><div class="t">${it.time||''}</div><div>${titleHtml(it.title, it.special)}</div></div>`;
         }
       });
     });
@@ -1070,9 +1082,11 @@ function escapeHtml(s){
 }
 
 /* Titles ending in a single "*" need advance sign-up — shown as a chip instead of the raw asterisk. */
-function titleHtml(title){
+function titleHtml(title, special){
   const needsSignup = title.endsWith('*') && !title.startsWith('*');
-  return escapeHtml(needsSignup ? title.slice(0,-1) : title) + (needsSignup ? '<span class="signup-chip">SIGN-UP</span>' : '');
+  return escapeHtml(needsSignup ? title.slice(0,-1) : title)
+    + (needsSignup ? '<span class="signup-chip">SIGN-UP</span>' : '')
+    + (special ? '<span class="special-chip">THIS WEEK</span>' : '');
 }
 
 /* Manual refresh: the service worker is network-first, so a plain reload
@@ -1119,6 +1133,7 @@ async function loadData(){
     if(!res.ok) throw new Error('HTTP '+res.status);
     const data = await res.json();
     SCHEDULE = data.schedule || {};
+    CONFIRMED = data.confirmed || {};
     MENU = data.menu || {};
     handleWeekRollover(data.week);
   }catch(e){

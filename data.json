@@ -380,10 +380,6 @@
      "desc": "Hit the sand courts for some easygoing bump, setting, and spiking. All ages welcome. Matt is excited for some friendly 4v4 competition this afternoon – see you there!"
     },
     {
-     "time": "4:15-6pm",
-     "title": "Margarita Monday"
-    },
-    {
      "time": "5-6pm",
      "title": "Story Hour",
      "desc": "This afternoon, buckle up to leave SSC and blast off into the world of stories! The destination is anywhere and everywhere --- we can go to far off planets, to the homes of rabbits, to a battle between witches and warlocks...the possibilities are endless! Just show up at the Cathedral Steps at 5pm to meet Prisha & Murph for this storytelling journey!"
@@ -407,10 +403,6 @@
      "time": "7:30-8:30pm",
      "title": "Bingo Night!",
      "desc": "Break out your neon leg warmers; track down your headbands and hot pink leotard – it's time for THE ONE, THE ONLY bingo event of the week. We've done disco and now we're ready to move on – step into the next decade with us. You Wanna Dance With Somebody? Get ready to Walk on Sunshine. See you in the Cathedral Room at 7:30pm for great tunes, better dancing, and prizes galore."
-    },
-    {
-     "time": "8:45-9:45pm",
-     "title": "Karaoke Night!"
     },
     {
      "time": "10-11pm",
@@ -557,10 +549,6 @@
     },
     {
      "time": "3-4pm",
-     "title": "Adult Improv"
-    },
-    {
-     "time": "3-4pm",
      "title": "Book Talk: Worlds of Wonders",
      "desc": "Surrounded by the beauty of Desolation Wilderness and Fallen Leaf Lake, SSC is the perfect time to reflect on Aimee Nezhukumatathil's work. As a collection of nonfiction essays about wildlife, World of Wonders is sure to teach readers something fascinating about a far-off creature or overlooked plant. As a way of framing the author's life, this book is a guide to recognizing how the natural world surrounds our own stories. Even when we feel the farthest removed from nature, it is comfortingly ever-present. Light-hearted but sure, Nezhukumatathil's prose is reminiscent of her award-winning poetry. I hope readers enjoy her attention to detail, her wit and her means of tackling difficult subjects, and of course, her sense of wonder.\n\nCome ready to discuss your favorite essay or favorite quote, to hear what others think of World of Wonders, or to write or paint how you connect your own experiences to the plants and animals on the lake. All are welcome! Meet at the fountain deck!"
     },
@@ -570,21 +558,9 @@
      "desc": "Ay captain! This is the best time to get the whole family out on the water. Whether you're ready to pass the tiller to your kid or you'll all be learning starboard from port together, these hours will not be forgotten. All experience levels are welcome—just bring swimsuits, and life jackets are provided. Find Cash down at boat dock!"
     },
     {
-     "time": "4pm",
-     "title": "\"The Crawdad Attachment Paradox: Why Children Form Deeper Bonds with Crustaceans than Immediate Family\""
-    },
-    {
-     "time": "4-5pm",
-     "title": "10th Annual Stand-Up-Paddle Race!*"
-    },
-    {
      "time": "4-5pm",
      "title": "Open Climb",
      "desc": "Come one, come all to the Sierra Camp rock wall! Whether you've never been climbing or you're Alex Honnold, Open Climb has a space for you. Join Paolo at the rock wall and ASCEND! All you need is yourself, some clothes for moving (including closed-toed shoes), and plenty of water. Parents and older kids are invited, along with younger kids under parental supervision. Bring just yourself or the whole family to see Sierra Camp from a whole new angle!"
-    },
-    {
-     "time": "4-5pm",
-     "title": "Belly Dance Blast - Lead by guest Stephanie"
     },
     {
      "time": "5-6pm",
@@ -725,18 +701,6 @@
      "time": "3-4pm",
      "title": "Language Hour",
      "desc": "Join Gabe & Tavi on the Old Lodge deck to learn the basics of Italian, Spanish, French, Chinese & American Sign Language and a bit about each culture! All ages welcome."
-    },
-    {
-     "time": "3-4pm",
-     "title": "Music Lesson: Playin' the Blues"
-    },
-    {
-     "time": "4:15-5:45pm",
-     "title": "Wine Wednesday"
-    },
-    {
-     "time": "4:30-5:45pm",
-     "title": "Week 8 Reciprocate (WeRe): Into the Sierra-Verse 🕸️"
     },
     {
      "time": "5-6pm",
@@ -1916,5 +1880,14 @@
    "lunch": null,
    "dinner": null
   }
+ },
+ "confirmed": {
+  "sat": true,
+  "sun": true,
+  "mon": true,
+  "tue": true,
+  "wed": true,
+  "thu": true,
+  "fri": true
  }
 }

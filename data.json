@@ -1886,8 +1886,6 @@
   "sun": true,
   "mon": true,
   "tue": true,
-  "wed": true,
-  "thu": true,
-  "fri": true
+  "wed": true
  }
 }

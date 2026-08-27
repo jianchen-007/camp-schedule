@@ -375,7 +375,13 @@ async function main() {
     const expectedWeek = weekStart ? Math.round((weekStart - Date.parse('2026-07-04T07:00:00Z')) / 604800000) + 4 : 0;
     const wkMatch = file.name.match(/w(?:ee)?k\s*-?\s*(\d+)/i); // staff write both "WK 6" and "week 7"
     if (expectedWeek && wkMatch && Number(wkMatch[1]) !== expectedWeek) {
-      console.log(`  -> sheet is labeled week ${wkMatch[1]}, current camp week is ${expectedWeek} — leaving for its week`);
+      if (Number(wkMatch[1]) < expectedWeek) {
+        // A past week never comes back — mark it seen so it stops nagging.
+        console.log(`  -> sheet is labeled week ${wkMatch[1]} (past; current is ${expectedWeek}) — marking as seen`);
+        state.processed[file.id] = file.modifiedTime;
+      } else {
+        console.log(`  -> sheet is labeled week ${wkMatch[1]}, current camp week is ${expectedWeek} — leaving for its week`);
+      }
       continue;
     }
     // One poison file must not discard the whole run: catch per-file errors,

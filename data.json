@@ -768,7 +768,7 @@
     {
      "time": "7:45-8:45am",
      "title": "Women's Breakfast",
-     "desc": "All our beautiful, strong, intelligent, and empowered Sierra Camp women - come join your fellow girl bosses at Women's Breakfast led by Melanie, Isa, Madeline and Aylin. We will be creating a space to meet other female-identifying members of the community and discuss our thoughts over breakfast! Bring your food down to the Fountain Deck and we'll see you there. Anyone who identifies as a woman is welcome to join!"
+     "desc": "All our beautiful, strong, intelligent, and empowered Sierra Camp women - come join your fellow girl bosses at Women's Breakfast led by Melanie, Isa, and Madeline. We will be creating a space to meet other female-identifying members of the community and discuss our thoughts over breakfast! Bring your food down to the Fountain Deck and we'll see you there. Anyone who identifies as a woman is welcome to join!"
     },
     {
      "time": "8-11am",
@@ -854,7 +854,7 @@
     {
      "time": "3-4pm",
      "title": "Yoga: Beach & Shallow Water - Toes in The Sand (All Levels Welcome)",
-     "desc": "It starts gently — barefoot on the beach, meditation by the waves, slow flow, good vibes. And then we WADE IN. Shallow water yoga hits completely differently when gravity is suddenly negotiable. Come to Baby Beach for the zen with Prisha and stay for the splash!! 🌊"
+     "desc": "It starts gently—chair yoga, barefoot on the beach, meditation by the waves, slow flow, good vibes. And then we WADE IN. Shallow water yoga hits completely different when gravity is suddenly negotiable. Feel free to paddleboard or Funyak to Baby Beach and meet us there. Come for the zen with Prisha, stay for the splash! 🌊"
     },
     {
      "time": "4:30-5:30pm",
@@ -1886,6 +1886,7 @@
   "sun": true,
   "mon": true,
   "tue": true,
-  "wed": true
+  "wed": true,
+  "thu": true
  }
 }

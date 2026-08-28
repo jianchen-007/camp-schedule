@@ -893,13 +893,13 @@
     },
     {
      "time": "8-9pm",
-     "title": "Faculty Speaker Lecture: A Cry for Justice: The Chicano Mural Movement at Stanford University w/ Rose Salseda",
-     "desc": "This talk casts light on the dynamic art history of over 20 murals and large-scale paintings made by students and renowned professional artists at Stanford since the early 1970s. Located at Stern Dining Hall, Casa Zapata, and El Centro Chicano y Latino, the artworks directly connect to efforts that improved campus life, diversified the university and its curricula, and linked the university to political movements across the world. Ultimately, the art history underscores how students and staff made the university into a vital hub for the cultivation and expansion of a shared humanity."
+     "title": "Faculty Speaker Lecture: 100 million years in the making: The Sierra and Tahoe Basin origins story w/ Steve Graham",
+     "desc": "The magnificent scenery surrounding Fallen Leaf Lake is the product of 100 million years of geologic history. During the Cretaceous Period, one hundred million years ago, the Sierra Nevada resembled the modern Indonesian volcanic archipelago, but by 50 million years ago, volcanic activity had long since ceased and the Sierra was deeply eroded, exposing the granite roots of the volcanoes and gold-bearing veins that fostered the 1849 Gold Rush. Still later, from 20 million years to the present day, tectonic stretching of the western US has created the distinctive basin-and-range topography that characterizes the Great Basin from the Wasatch Front at Salt Lake City all the way west to the east face of the Sierra Nevada. The most recent chapter of the story featured a powerfully erosive glacial cap up to 4000 feet thick, which during the Ice Age over the last two million years, sculpted the Sierra into an awe-inspiring landscape including Yosemite Valley and the Sierra's many lakes, including Fallen Leaf Lake."
     },
     {
      "time": "8-9:15pm",
      "title": "Marmots",
-     "desc": "Marmots. We made it back to dry land and find ourselves amidst the renaissance?? It's fabulous. Art and creativity are flourishing and music is playing in the streets. At this point in our adventure, you're probably wanting to write/draw something meaningful to remember your travels. Embrace your inner artist and meet us in the dining hall at 8PM to make your very own postcards and wax seals. Also… word on the street is that the finest bakers in Europe are currently inventing puff pastry, so we're also gonna tap into that energy and bake cookies. Get excited."
+     "desc": "Marmots. Embrace your inner artist and meet us at the picnic tables at 8pm to make your very own postcards. Also…word on the street is that the finest bakers in Europe are currently inventing new delicacies, so treats will be provided. Get excited!"
     },
     {
      "time": "8:30-9:30pm",
@@ -912,14 +912,14 @@
      "desc": "Fountain Pretzel Night! Come get a delicious soft pretzel available throughout tonight's Fountain hours!"
     },
     {
+     "time": "9:30-10:30pm",
+     "title": "Astrocruise*",
+     "desc": "Have you ever wanted to draw imaginary lines between dots in the sky? Hoping to hear heroic tales and fantastic tragedies about those little arbitrary stick figures we call constellations? Well your pals Ethan and Priyanka have the opportunity for you! Sign up at the front office, bring some warm clothes, and meet us down by the Boat Dock for the final Astrocruise of the week!!"
+    },
+    {
      "time": "9:45-10:45pm",
      "title": "Trivia Night: Music of the Decades",
      "desc": "Come meet Hannah and Madeline in the Old Lodge at 9:45pm to test your knowledge of hit songs and artists across the generations! All you need are your wits about you and a good team name!"
-    },
-    {
-     "time": "10-11pm",
-     "title": "Astrocruise*",
-     "desc": "Have you ever wanted to draw imaginary lines between dots in the sky? Hoping to hear heroic tales and fantastic tragedies about those little arbitrary stick figures we call constellations? Well your pals Ethan and Priyanka have the opportunity for you! Sign up at the front office, bring some warm clothes, and meet us down by the Boat Dock for the final Astrocruise of the week!!"
     }
    ]
   },
@@ -990,8 +990,8 @@
     },
     {
      "time": "10-11:15am",
-     "title": "Reflection Yoga: A Date with Yourself*",
-     "desc": "Slow poses. Deep breaths. Zero rush. Reflection Yoga is your chance to step away from the noise and spend an hour simply being. Come to the Crawdeck and we'll move through a gentle flow, pause for mindfulness and gratitude, and end with a little guided journaling to capture whatever the mountain is trying to tell you. Just you, your thoughts, and a little Sierra magic with Prisha."
+     "title": "Reflection Yoga & Meditation: A Date with Yourself*",
+     "desc": "It starts gently—slow yoga, deep breaths, and a chance to step away from the noise. Then we explore moving meditations inspired by traditions from around the world, from the flowing movements of Tai Chi to dance meditation and Sufi spinning. We'll wrap up with guided journaling (supplies provided, or bring your own) and leave with a little more clarity, a little more calm, and maybe a little Sierra magic. Meet at the CrawDeck!"
     },
     {
      "time": "10:45-12pm",
@@ -1887,6 +1887,7 @@
   "mon": true,
   "tue": true,
   "wed": true,
-  "thu": true
+  "thu": true,
+  "fri": true
  }
 }

@@ -20,31 +20,37 @@
     },
     {
      "time": "3-5pm",
-     "title": "Boat Dock"
+     "title": "Boat Dock",
+     "desc": "Come check out the SSC arsenal of boats and water crafts."
     },
     {
-     "time": "5:45-6:45pm",
+     "time": "5:30-6:45pm",
      "title": "Dinner"
     },
     {
-     "time": "7-7:45pm",
-     "title": "Boat Dock"
+     "time": "6:30-7:30pm",
+     "title": "Boat Dock",
+     "desc": "We're open again! Swing by the Boat Dock for some post-dinner fun!"
     },
     {
-     "time": "7:15-8pm",
-     "title": "New Camper Orientation"
+     "time": "6:45-7:30pm",
+     "title": "New Camper Orientation",
+     "desc": "First time at Camp? WELCOME HOME! Meet Dave Bunnett by the Flagpole for an introduction to your beautiful home for the week!"
     },
     {
-     "time": "8-9pm",
-     "title": "Intro Meeting"
+     "time": "7:30-7:45pm",
+     "title": "Intro Meeting",
+     "desc": "Join Dave and Stef in the Cathedral Room as they introduce you to your new Camp Family!"
     },
     {
-     "time": "9-10pm",
-     "title": "Ski Dock & Activity Sign-Ups"
+     "time": "7:45pm",
+     "title": "Ski Dock & Activity Sign-Ups*",
+     "desc": "On the round table outside the front office is the place to sign up for Sunday's activities, including rowing, sailing, Naturalist programming, family portraits, Bread Bake, Boatster and Astrocruises. Sign up for skiing in the Foyer just after introskits."
     },
     {
-     "time": "9:15-9:45pm",
-     "title": "Hiking Meeting"
+     "time": "7:45-8:15pm",
+     "title": "Hiking Meeting",
+     "desc": "Meet hiking leaders in the Tallac Room to learn the basics of map reading, compass use, and where this week's led hikes will take you."
     }
    ]
   },
@@ -52,14 +58,16 @@
    "sunrise": [
     {
      "time": "6:30-8am",
-     "title": "Rowing*"
+     "title": "Rowing*",
+     "desc": "Get out on the smooth, glassy water of Fallen Leaf Lake. Rowers of all skill levels, come join us for a morning paddle. Be sure to sign up for a time in the sign-up book!"
     },
     {
      "time": "7-8am",
-     "title": "Sunrise Yoga*"
+     "title": "Sunrise Yoga*",
+     "desc": "The camp is quiet, the light is GOLDEN, and the Surya Namaskar is waiting. Sunrise Yoga is your excuse to drag yourself out of that sleeping bag and greet the day before anyone else does (with Prisha of course!). The sun is rising with or without you — don't make it rise alone!! Meet on the Crawdeck!"
     },
     {
-     "time": "7:45-8:45am",
+     "time": "7:30-8:45am",
      "title": "Breakfast"
     },
     {
@@ -67,8 +75,8 @@
      "title": "Advanced Ski/Board Clinic*"
     },
     {
-     "time": "9am-3pm",
-     "title": "Naturalist Hike*"
+     "time": "9-11am",
+     "title": "Ski Dock*"
     },
     {
      "time": "9am-5pm",
@@ -83,33 +91,49 @@
      "title": "Arts & Crafts: Bisqueware*"
     },
     {
-     "time": "9:30-11:45am",
-     "title": "Kids Groups"
-    },
-    {
-     "time": "9:45-11:15am",
-     "title": "Tennis: Beginners Clinic*"
-    },
-    {
      "time": "10am",
      "title": "Teens Overnight Leaves"
     },
     {
      "time": "10am",
-     "title": "Church Service"
+     "title": "Church Service",
+     "desc": "The lovely Fallen Leaf Chapel is but a short walk from Camp, just over the bridge."
     },
     {
-     "time": "10-11am",
-     "title": "Ski Dock*"
+     "time": "10am-12pm",
+     "title": "Tennis: Beginners Clinic*",
+     "desc": "Never held a racket before? Not sure how to whip a Federer forehand? Rarely hitting your serves into that diagonal box that only seems to get smaller? Fear no more. In the Beginner Tennis Clinic, Robert will walk you through all the basics—the continental grip, proper footwork technique, basic technique and strategy. This clinic warmly welcomes all introductory skill levels, from years-rusty to never played before—this is your sign. Welcome to the sport you can play for life! Meet at the Tennis Courts! (USTA 1.5-2.5 recommended)"
+    },
+    {
+     "time": "10-11:45am",
+     "title": "Kids Groups",
+     "desc": "Check out the \"Welcome to Microbopper Week, 2025\" sheet to find groups and drop-off locations —we've got a wonderful week in store!"
     },
     {
      "time": "10-11:45am",
      "title": "Ospreys"
+    },
+    {
+     "time": "10am-2pm",
+     "title": "Naturalist Hike*",
+     "desc": "Join Isaiah for the chillest guided hike of the week! Expect 3-5 miles on trails you've hopefully never seen before, with plenty of time to soak in the views. As a geologist, Isaiah gives you the opportunity to gain deeper connections with the land by learning about its past and future. This hike is perfect for folks looking for an easier hike, wanting to see new things, or simply wanting to get outside and chat."
+    },
+    {
+     "time": "10:30-11:30am",
+     "title": "Faculty Speaker Lecture: Tiffany Steinwart, Cultivating Calm: Exploring Spiritual Wellness",
+     "desc": "We could all use more calm amid life's chaos. This lecture offers both a scholarly and practical exploration of spirituality, aimed at holistic well-being. We will examine what spirituality looks like in many different forms, the benefits it can provide, and we will explore a range of contemplative practices for daily life in an effort to cultivate resilience, equanimity, and balance.",
+     "special": true
+    },
+    {
+     "time": "10:30am-12pm",
+     "title": "Open Climb",
+     "desc": "Come one, come all to the Sierra Camp rock wall! Whether you've never been climbing or you're Alex Honnold, Open Climb has a space for you. Join Mara at the rock wall and ASCEND! All you need is yourself, some clothes for moving (including closed-toed shoes), and plenty of water. Parents and older kids are invited, along with younger kids under parental supervision. Bring just yourself or the whole family to see Sierra Camp from a whole new angle!",
+     "special": true
     }
    ],
    "noon": [
     {
-     "time": "12-12:45pm",
+     "time": "12-1pm",
      "title": "BBQ Lunch"
     },
     {
@@ -125,36 +149,55 @@
      "title": "Outrigger Canoe*"
     },
     {
-     "time": "1-5pm",
-     "title": "Ski Dock*"
-    },
-    {
-     "time": "1:30-4pm",
-     "title": "Beginner Sailing*"
-    },
-    {
-     "time": "1:45-4:30pm",
-     "title": "Beginner Mountain Bike*"
-    },
-    {
-     "time": "2-3:30pm",
-     "title": "Art: Mosaic Magic*"
+     "time": "1:15-4:15pm",
+     "title": "Beginner Mountain Bike*",
+     "desc": "Want to get a workout in, but don't want to go for a run? How about a spin? Do you need a bike for your on-the-go lifestyle? Then the beginner ride is just the ride for you! Anyone can do it! Come join Ethan for the first bike ride of the week. Packing list: water, sunscreen, and your commitment to having fun! Meet at the bottom of the lodge at 1:15pm. See ya there!"
     },
     {
      "time": "2-4pm",
-     "title": "Kids Groups (excluding Guppies)"
-    },
-    {
-     "time": "2:30-3:30pm",
-     "title": "Beginner Social Volleyball"
+     "title": "Ski Dock*",
+     "desc": "Sign up in the Foyer on Saturday night, or over at the Ski Dock for the rest of the week!"
     },
     {
      "time": "2:30-4pm",
      "title": "Bread Bake*"
     },
     {
+     "time": "2:30-4:30pm",
+     "title": "Art: Mosaic Magic*",
+     "desc": "Come join Andriana on the Old Lodge Deck for a hands-on mosaic session! We'll be working with colorful ceramic, and glass pieces to create your very own mosaic coaster. No experience needed, just bring clothes you don't mind getting a little dusty and your creative eye. Classical music, and calm, focused vibes guaranteed."
+    },
+    {
      "time": "3-4pm",
      "title": "Language Hour"
+    },
+    {
+     "time": "3-4pm",
+     "title": "Naturalist Boatster*",
+     "desc": "Fallen Leaf Lake is the perfect stage to learn about the natural history of the Tahoe (dáɁaw) region. Join Sydney and Isaiah for a boatster cruise (with refreshments) and learn about the mountains, plants, and animals that make camp such a special place.",
+     "special": true
+    },
+    {
+     "time": "3-4pm",
+     "title": "Volleyball Clinic",
+     "desc": "Come meet at the volleyball courts at 3pm! This activity is for players of all levels who just want to play some games for fun—less for competition. We will be playing 4vs4 and 6vs6. Bring your own beverages for some fun relaxation on the courts and in the sun! Music will be provided for your soul food.",
+     "special": true
+    },
+    {
+     "time": "3-4:45pm",
+     "title": "Beginner's Sailing*",
+     "desc": "A little birdie told me you wanted to try out sailing! Cash will be at the boat dock to get you comfortable with the basics so you can start taking boats out on your own. You'll learn how to rig, use points of sail, and get some assisted lake practice. No sailing experience needed, just bring sunscreen, a swimsuit, and your biggest smile."
+    },
+    {
+     "time": "3-4:45pm",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room!\n\nGUPPIES C, D, & E: Guppies, ready for some afternoon activities? Meet in your respective Willow rooms ready to keep the fun going! Pick up at 4:45 is also in your Willow cabin. Guppies C and E will also be taking a ride on Boatster! All you need is some sunscreen, water, and your smiling selves!\n\nCRAWDADS C: Meet in Willow F and get ready for some afternoon fun! Pick up at 4:45 is also at Willow F. Clack clack!",
+     "special": true
+    },
+    {
+     "time": "3:30-4:30pm",
+     "title": "Social Hike/Couples Photo",
+     "desc": "We call it a \"hike,\" but it's more of a stroll – meet at the Fountain Deck at 3:30PM and venture to Lower Falls with us for some beautiful scenery and chats with fellow guests and staph! Get your photo taken by our Photo Instructor, Priyanka, with a beautiful backdrop behind you, too - see you there!"
     },
     {
      "time": "4:15-5:15pm",
@@ -163,10 +206,6 @@
     {
      "time": "5-6pm",
      "title": "Story Hour"
-    },
-    {
-     "time": "5-6pm",
-     "title": "Social Hike/Couples Photo"
     }
    ],
    "sunset": [
@@ -1690,5 +1729,8 @@
    "dinner": null
   }
  },
- "confirmed": {}
+ "confirmed": {
+  "sat": true,
+  "sun": true
+ }
 }

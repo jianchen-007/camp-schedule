@@ -366,20 +366,23 @@
    ],
    "sunset": [
     {
-     "time": "5:45-6:45pm",
+     "time": "5:30-6:45pm",
      "title": "Dinner"
     },
     {
-     "time": "7-7:45pm",
+     "time": "6:30-7:30pm",
      "title": "Boat Dock"
     },
     {
-     "time": "7:30-8:30pm",
-     "title": "Bingo Night!"
+     "time": "7-8pm",
+     "title": "Disney Bingo!!",
+     "desc": "I can show you the world! For shining shimmering splendor, swing by the Cathedral room.",
+     "special": true
     },
     {
-     "time": "10-11pm",
-     "title": "Astrocruise*"
+     "time": "8-9pm",
+     "title": "Astrocruise*",
+     "desc": "Come join us for an astronomically fun astrocruise! Meet at 8pm on the Boat Dock and bring warm clothes. Remember to sign up first!"
     }
    ]
   },
@@ -387,23 +390,29 @@
    "sunrise": [
     {
      "time": "6:30-8am",
-     "title": "Rowing*"
+     "title": "Rowing*",
+     "desc": "Rumor has it that the best place to see the lake is on the lake. Sign-up in the Stanford Room and we'll get you out there."
     },
     {
      "time": "7-8am",
      "title": "Morning Exercise"
     },
     {
-     "time": "7:15-8:15am",
-     "title": "Forest Yoga: Back to the Trees*"
+     "time": "7-8am",
+     "title": "Forest Yoga: Back to the Trees*",
+     "desc": "No studio. Just you, the trees, and the peaceful sounds of the Sierra from the Crawdeck. Forest Yoga brings the practice outdoors—grounded, mindful, and fully present with nature around you. Test your balance, work your core, and reconnect with yourself as the forest becomes your backdrop. Your phone doesn't work out here. Honestly? GOOD."
     },
     {
-     "time": "7:45-8:45am",
+     "time": "7:30-8:45am",
      "title": "Breakfast (Omelette Bar)"
     },
     {
      "time": "8-10am",
      "title": "MCE Ski/Board Clinic*"
+    },
+    {
+     "time": "9-11am",
+     "title": "Ski Dock*"
     },
     {
      "time": "9am-5pm",
@@ -418,28 +427,43 @@
      "title": "Open Tennis Clinic"
     },
     {
-     "time": "9:30-11am",
-     "title": "Washoe History: Past and Present"
-    },
-    {
-     "time": "9:30-11:45am",
-     "title": "Crawdads, Mergansers, Chickarees, and Marmots"
-    },
-    {
      "time": "9:30am-1:30pm",
-     "title": "Outdoor Climb*"
+     "title": "Natural Rock Outdoor Climb*",
+     "desc": "Get stoked to climb on REAL ROCKS!!! The climbing guides are so excited to take you climbing on some awesome rocks with gorgeous views! Meet at 9:30am in the Stanford Room with water, sunscreen, layers, hiking shoes and a packed lunch for a 30 minute hike to the rock face. Whether you've never climbed before or you're basically a pro, this adventure is for you! Sign-ups are required for this trip, but all climbers are welcome."
     },
     {
      "time": "9:30am-3:30pm",
      "title": "Medium Hike*"
     },
     {
+     "time": "9:30-11:45am",
+     "title": "Crawdads, Mergansers, Chickarees, and Marmots"
+    },
+    {
      "time": "9:45-10:45am",
      "title": "Craft: Resin Coasters/Trays*"
     },
     {
-     "time": "10-11am",
-     "title": "Ski Dock*"
+     "time": "10-11:30am",
+     "title": "Art: Intro to Oil Painting*",
+     "desc": "Ever wanted to try oil painting? Now's your chance! Join Andriana at the Old Lodge Deck for a chill introduction to the basics, think color mixing, soft blending, and working slowly. We'll focus on a simple subject, such as flowers or fruit. Wear something you won't mind getting paint on!",
+     "special": true
+    },
+    {
+     "time": "10-11:45am",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room!\n\nGUPPIES C, D, E, & F: All rested up after our hike day of fun? Show us your stuff at your Willow cabin this morning – we will get the day started with all kinds of Guppies fun! As always, sunscreen and water are great to bring along. Pick up will be back in your Willow cabin at 11:45. Guppies D will also be taking a ride on Boatster!\n\nCRAWDADS C: We had fun in the sun yesterday, Clack, and now we will start the morning strong with some active activities. Meet at your Lodge room with some water, sunscreen, and energy, ready to play! Pick up will be back in your Lodge room at 11:45."
+    },
+    {
+     "time": "10:15am-12pm",
+     "title": "Short Hike*",
+     "desc": "Join for a short trek this morning. Meet on the Fountain Deck ready to roll at 10:15! Be sure to sign up in the activity sign-up book in front of the office first.",
+     "special": true
+    },
+    {
+     "time": "10:15-11:15am",
+     "title": "Washoe History: Past and Present",
+     "desc": "Lake Tahoe (dáɁaw) is the cultural and spiritual center of the Wá∙šiw (Wahoe) tribe. For at least the past 2000 years, the four bands of the Washoe tribe have lived in and cared for the greater Tahoe region. Through partnerships with local organizations and the recent acquisition of the 10,000-acre WélmeltiɁ Preserve, the tribe remains central to land management and conservation in the Tahoe (dáɁaw) region. Meet Isaiah at the firepit to learn about the Washoe tribe's history, culture, and future."
     },
     {
      "time": "11am-12pm",
@@ -456,7 +480,7 @@
    ],
    "noon": [
     {
-     "time": "12-12:45pm",
+     "time": "12-1pm",
      "title": "Lunch"
     },
     {
@@ -464,20 +488,15 @@
      "title": "Ospreys"
     },
     {
-     "time": "1-5pm",
-     "title": "Ski Dock*"
+     "time": "1:30-2:45pm",
+     "title": "Adult Social Volleyball",
+     "desc": "Hit the sand courts for some easygoing bump, setting, and spiking. We're excited for some friendly 4v4 competition this afternoon – see you there!",
+     "special": true
     },
     {
-     "time": "1:30-3:30pm",
-     "title": "Not-Quite-Beginner Sailing*"
-    },
-    {
-     "time": "1:30-3:30pm",
-     "title": "Art: Intro to Oil Painting*"
-    },
-    {
-     "time": "2-4pm",
-     "title": "Kids Groups"
+     "time": "2-3:45pm",
+     "title": "Not-Quite-Beginner Sail*",
+     "desc": "If beginner sail was a ~breeze~ or your skills are at the next level, come to this next level of sailing lessons! We will use a variety of boats and cover some upper level skills and some introductory racing skills. Please wear a swimsuit and warm clothing if necessary – life jackets are provided."
     },
     {
      "time": "2:15-3:45pm",
@@ -498,6 +517,27 @@
     {
      "time": "3-4pm",
      "title": "Book Talk: Worlds of Wonders"
+    },
+    {
+     "time": "3-4:45pm",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room!\n\nGUPPIES C, D, E, & F: Guppies, time for some more adventures! Meet in your respective Willow rooms ready to bring the energy!\n\nCRAWDADS C: Meet in your lodge room and enjoy the surprises we have in store!"
+    },
+    {
+     "time": "3-4:45pm",
+     "title": "Couple's Tennis",
+     "desc": "What's better than playing tennis? Playing tennis as a team, of course! Bring a friend or significant other to form the most dynamic duo in Camp and hit us with your best shots. Don't miss out on some fantastic doubles games, so bring a partner or find one on the court and hit it off! (Sunscreen and a water bottle may be good ideas, too).",
+     "special": true
+    },
+    {
+     "time": "3-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "3:30-4:30pm",
+     "title": "Adult Boatster Cruise*",
+     "desc": "Missed your chance yesterday to partake in some social hour Boatster magic? Seize the day, the moment, the opportunity! Sign up and meet down on the Boat Dock at 3:30pm sharp.",
+     "special": true
     },
     {
      "time": "3:45-5pm",
@@ -1731,6 +1771,8 @@
  },
  "confirmed": {
   "sat": true,
-  "sun": true
+  "sun": true,
+  "mon": true,
+  "tue": true
  }
 }

@@ -181,7 +181,7 @@ Transcribe the sheet and produce updates:
 - Sheets are often rotated or upside-down - read them in whatever orientation works.
 - Match sheet content to the day keys sat/sun/mon/tue/wed/thu/fri (plus sat2 = the final check-out Saturday, Jul 11) using the day headers printed on the sheet (e.g. "Wednesday Evening", "Thursday Morning/Afternoon").
 - Sections: morning activities (before ~noon) -> "sunrise", afternoon (~noon-5:45pm) -> "noon", evening (5:45pm onward) -> "sunset". Follow the existing placement in data.json when an activity already exists.
-- Each activity: {"time": "6:30-8am", "title": "Rowing*", "desc": "..."}. Omit "desc" if the sheet gives none. Titles that require advance sign-up (shaded on the printed sheet) keep a trailing "*" - preserve existing "*" markers when merging.
+- Each activity: {"time": "6:30-8am", "title": "Rowing*", "desc": "..."}. Omit "desc" if the sheet gives none. Never include any other keys (e.g. drop any "special" flag you see in the current data - the app recomputes it). Titles that require advance sign-up (shaded on the printed sheet) keep a trailing "*" - preserve existing "*" markers when merging.
 - Merge INTO the existing day: keep existing activities (update their desc/time if the sheet revises them), add new ones in chronological order. Do not drop activities that the sheet simply doesn't mention.
 - Transcribe descriptions faithfully - keep the staff's jokes and tone; fix only obvious typos.
 - Kids Groups get one combined desc: "CRAWDADS: ...\\n\\nMERGANSERS: ...\\n\\nCHICKAREES: ...\\n\\nMARMOTS: ..."
@@ -243,6 +243,10 @@ function validateUpdates(u) {
           if (typeof it.title !== 'string' || !it.title) throw new Error(`missing title in ${day}.${sec}`);
           if (typeof it.time !== 'string') throw new Error(`bad time for "${it.title}"`);
           if (it.desc !== undefined && typeof it.desc !== 'string') throw new Error(`bad desc for "${it.title}"`);
+          // The model may echo back the app-computed "special" flag it sees in
+          // data.json context — drop it (classify() recomputes after merge)
+          // and reject anything else unknown.
+          delete it.special;
           for (const k of Object.keys(it)) if (!['time', 'title', 'desc'].includes(k)) throw new Error(`unexpected key "${k}"`);
         }
       }

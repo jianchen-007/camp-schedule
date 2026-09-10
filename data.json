@@ -210,20 +210,27 @@
    ],
    "sunset": [
     {
-     "time": "5:45-6:45pm",
+     "time": "5-6pm",
+     "title": "Family Portraits*",
+     "desc": "Sign up in the Stanford Room for a family portrait that'll provide memories of Sierra Camp for years to come! Meet at the bottom of chicken hill by the stone wall."
+    },
+    {
+     "time": "5:30-6:45pm",
      "title": "Dinner"
     },
     {
      "time": "6:30-7:30pm",
-     "title": "Family Portraits*"
+     "title": "Boat Dock",
+     "desc": "It's been proven that pedal-boating after dinner helps you digest a delicious meal!"
     },
     {
      "time": "6:30-7:30PM",
      "title": "Mulitcultural Engagement Dinner"
     },
     {
-     "time": "7-7:45pm",
-     "title": "Boat Dock"
+     "time": "7-9pm",
+     "title": "Fountain Pretzel Night!",
+     "desc": "Come get a delicious soft pretzel available throughout tonight's Fountain hours!"
     },
     {
      "time": "7:50-9pm",
@@ -232,6 +239,11 @@
     {
      "time": "7:50-9pm",
      "title": "Chickaree/Merganser Night"
+    },
+    {
+     "time": "8-9pm",
+     "title": "Astrocruise*",
+     "desc": "Come join us for an astronomically fun Astrocruise! Meet at 8pm at the Boat Dock and bring warm clothes. Remember to sign up first!"
     },
     {
      "time": "8-9pm",
@@ -244,14 +256,6 @@
     {
      "time": "8:15-10:15pm",
      "title": "Ospreys"
-    },
-    {
-     "time": "9-10:30pm",
-     "title": "Fountain Pretzel Night"
-    },
-    {
-     "time": "10-11pm",
-     "title": "Astrocruise*"
     }
    ]
   },
@@ -262,7 +266,7 @@
      "title": "Rowing*"
     },
     {
-     "time": "7:45-8:45am",
+     "time": "7:30-8:45am",
      "title": "Breakfast"
     },
     {
@@ -290,8 +294,9 @@
      "title": "Advanced Tennis Clinic*"
     },
     {
-     "time": "9:30am-3:30pm",
-     "title": "Kids Groups"
+     "time": "10am-3pm",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room! For Macros, make sure to pack a lunch at the breakfast hiker bar for the long day ahead! Macros will also be taking a ride on Boatster after lunch!\n\nGUPPIES C, D, & E: Welcome to Hike Day little adventurers! Today we'll be hiking to the Fire House to jump in the fire engine, stop, drop and rolllllllllll, and learn about fire safety! Don't forget to pack a lunch at the breakfast hiker bar (no peanut butter please), water, sun hat, sunscreen, and wear walking shoes! Both drop off and pick up will be in your Willow cabin!\n\nCRAWDADS C: It's CRAWDAD BEACH DAY! Meet in your Willow cabin to prepare for a special Boatster transportation to Baby Beach. We will have a day of sandcastle building, swimming and games! Don't forget to wear sunscreen, pack a lunch at the breakfast hiker bar (no peanut butter please), and bring a towel, a bathing suit, a water bottle, and a hat! Pickup will also be in your Willow room."
     },
     {
      "time": "10-11am",
@@ -302,12 +307,38 @@
      "title": "Craft: Shrinky Dink*"
     },
     {
-     "time": "10:15-11:15am",
-     "title": "Faculty Speaker Debrief/Follow-Up"
+     "time": "10-11:45am",
+     "title": "Open Climb",
+     "desc": "For all those excited or curious about climbing, whether or not you have ever touched a rock wall before, this is your time to climb! Come up to the climbing wall; we are eager to help you explore the wall and even learn new skills. Be sure to wear close-toed shoes and clothing you feel comfortable climbing in and bring along a bottle of water. Adults and older kids are welcome to come on up, and parents, also bring your younger kids who are excited about climbing! Be sure to read the Wall rules when you arrive!",
+     "special": true
+    },
+    {
+     "time": "10-12pm",
+     "title": "Crafts: Shibori Indigo Natural Dye*",
+     "desc": "Join us at the picnic tables and experience the wonders of natural indigo shibori tie dye! Napkins & bandanas will be provided but feel free to bring your own clothing or purchase a camp shirt from the fountain to upcycle.",
+     "special": true
     },
     {
      "time": "10:30-11:30am",
-     "title": "Cardio Yoga"
+     "title": "Faculty Speaker Debrief/Follow-Up",
+     "desc": "Itching to discuss yesterday's lecture? Meet on the Fountain Deck for more discussion, excellent questions and contemplations."
+    },
+    {
+     "time": "10:30-2:45pm",
+     "title": "Medium Hike*",
+     "desc": "Come join fellow hikers to venture into the stunning wilderness that is Desolation. A variety of skill and experience levels are welcome, but do keep in mind the extended length of this hike. Bring plenty of water, layers of clothes, and sturdy hiking shoes. Enjoy some exercise in a serene setting and embrace the beauty of the outdoors. Meet at the Fountain Deck and come romp around!",
+     "special": true
+    },
+    {
+     "time": "10:45-11:45am",
+     "title": "Cardio Yoga: No, Really (All Levels Welcome- But Be Warned)",
+     "desc": "Thought yoga was a rest day? Think again!! Cardio Yoga is fast, sweaty, and breathless, blending beginner-friendly poses with energizing movement that will get your heart rate up. We'll move, laugh, challenge ourselves, and finish feeling stronger, refreshed, and ready for whatever comes next. Pinkie promise—the poses are easy… but your heartbeat might have other plans. You've been warned!! Meet at the Crawdeck."
+    },
+    {
+     "time": "11am-12pm",
+     "title": "Naturalist: Wilderness Skills Workshop",
+     "desc": "Before heading out, ensure you're equipped for the challenges life has in store. This workshop will refine your skills in areas like knot tying, tree identification, leave no trace, and more! Meet at the firepit to learn more about what you can do to help. If you have a specific topic you'd like to learn about, find Isaiah ahead of time so he can prepare the lesson.",
+     "special": true
     },
     {
      "time": "11:30am-4pm",
@@ -316,12 +347,8 @@
    ],
    "noon": [
     {
-     "time": "12-12:45pm",
+     "time": "12-1pm",
      "title": "Adult Lunch"
-    },
-    {
-     "time": "1-5pm",
-     "title": "Ski Dock*"
     },
     {
      "time": "1-2pm",
@@ -332,8 +359,20 @@
      "title": "Beginner Sail*"
     },
     {
+     "time": "1-3pm",
+     "title": "Hobie Lessons*",
+     "desc": "Maybe the Bic Open Sailboats aren't exactly your thing… never fear! The Hobie Cats have all the fun of sailing a Bic, only you get to bring a friend along and splash around on the boat's trampoline! Bring your sailing (water-friendly) clothes and head down to the Boat Dock to learn how to sail the Hobie Cats! Please be sure to sign up first.",
+     "special": true
+    },
+    {
      "time": "1:30-3:30",
      "title": "Craft: Bisqueware*"
+    },
+    {
+     "time": "1:45-2:45pm",
+     "title": "Beginners Volleyball",
+     "desc": "Hey volleyballers of all levels, come out to the volleyball quart to practice helpful drills and play games with us! Meet new friends and have a great time. See you there!",
+     "special": true
     },
     {
      "time": "2:30-4:15pm",
@@ -348,20 +387,27 @@
      "title": "Teen Sail"
     },
     {
+     "time": "3-5pm",
+     "title": "Ski Dock*"
+    },
+    {
      "time": "4-5pm",
      "title": "Multicultural Engagement Social"
     },
     {
+     "time": "4-5pm",
+     "title": "Story Hour",
+     "desc": "The Lorax, Don't Let the Pigeon Drive the Bus and Catch-22: all classics of our time. Come hear what Vonnegut has to say about the woes and merits of letting fowl drive large vehicles. All this is to say: let's read stories for an hour! Meet at Cathedral Steps."
+    },
+    {
+     "time": "4-5pm",
+     "title": "Family Boatster*",
+     "desc": "Sign up to bring the whole family out on the waters for an hour of socializing and enjoying the natural scenery of Fallen Leaf!",
+     "special": true
+    },
+    {
      "time": "4-5:30pm",
      "title": "Social Volleyball"
-    },
-    {
-     "time": "5-6pm",
-     "title": "Story Hour"
-    },
-    {
-     "time": "5-6pm",
-     "title": "Boatster Cruise*"
     }
    ],
    "sunset": [

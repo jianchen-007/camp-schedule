@@ -1040,20 +1040,27 @@
    ],
    "sunset": [
     {
-     "time": "5:45-6:45pm",
+     "time": "5:30-6:30pm",
+     "title": "Music Hour",
+     "desc": "Grab some food, some friends and boogie with us as our Staph sing some of their favorite songs for you! It will be an evening of song exchanging and foot tapping tunes."
+    },
+    {
+     "time": "5:30-6:45pm",
      "title": "BBQ Dinner"
     },
     {
      "time": "6-7pm",
-     "title": "Music Hour"
-    },
-    {
-     "time": "7-7:45pm",
      "title": "Boat Dock"
     },
     {
-     "time": "8-8:30pm",
-     "title": "Slide Show"
+     "time": "7-9:15pm",
+     "title": "Last Chance Fountain",
+     "desc": "Last call for treasures of The Fountain. We will not be open on Saturday, so take this opportunity for one last milkshake, one last t-shirt, and one last postcard to hold you over through the year.  Hey you! Yes You, Early Checkouts! Cash or check only please."
+    },
+    {
+     "time": "7:30pm",
+     "title": "Slide Show",
+     "desc": "Join us in the Cathedral Room, take a seat and relish some of the best pictures of the week compiled into a fun, memorable slideshow."
     },
     {
      "time": "8:30-9:15pm",
@@ -1062,22 +1069,19 @@
     {
      "time": "9:15-10pm",
      "title": "Silent Disco"
-    },
-    {
-     "time": "9:15-10:45pm",
-     "title": "Last Chance Fountain"
     }
    ]
   },
   "sat2": {
    "sunrise": [
     {
-     "time": "7:45-8:45am",
+     "time": "7:30-8:45am",
      "title": "Breakfast"
     },
     {
      "time": "8-10am",
-     "title": "Check-Out / Return Keys"
+     "title": "Check-Out / Return Keys",
+     "desc": "Drop off your keys, settle your bill, and bid farewell to your Office staph. Bills can only be paid with CASH or CHECK. Please make checks out to SAA Sierra Programs and if you want to give a tip to the Staph (the large majority of what they're paid), please make the check out to SAA SIERRA PROGRAMS. We hope you had a great week at SSC and that your trip home is a safe one. Our hardworking staph begins cabin cleaning at 10am, so please help them by checking out by then. We miss you already and can't wait to see you in 2027!"
     }
    ],
    "noon": [],
@@ -1819,6 +1823,8 @@
   "sat": true,
   "sun": true,
   "mon": true,
-  "tue": true
+  "tue": true,
+  "fri": true,
+  "sat2": true
  }
 }

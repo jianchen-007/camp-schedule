@@ -479,24 +479,32 @@
    ],
    "sunset": [
     {
-     "time": "5:45-6:45pm",
+     "time": "5-6pm",
+     "title": "Family Portraits*",
+     "desc": "Prep your goofy faces and your picturesque smiles! Meet by the pullout just beyond the ski dock (or the bottom of Chicken Hill) for some instant memory making and be sure to sign up in the Stanford Room."
+    },
+    {
+     "time": "5:30-6:45pm",
      "title": "Dinner"
     },
     {
      "time": "6:30-7:30pm",
-     "title": "Family Portraits*"
+     "title": "Boat Dock"
     },
     {
-     "time": "7-7:45pm",
-     "title": "Boat Dock"
+     "time": "6:45-7:45pm",
+     "title": "Campfire",
+     "desc": "You're sitting on a beach, the water gently lapping at the shore, soft melodies accompany the soothing crackle of the fire….This is hardly your imagination, it's CAMPFIRE! Dress warmly and join your fellow guests down on Baby Beach for a good time!",
+     "special": true
     },
     {
      "time": "7-8pm",
      "title": "Guest-to-Guest*"
     },
     {
-     "time": "7:30-10:00pm",
-     "title": "Fountain Pretzel Night"
+     "time": "7:30-9pm",
+     "title": "Fountain Pretzel Night",
+     "desc": "Fountain Pretzel Night! Come get a delicious soft pretzel available throughout tonight's Fountain hours!"
     },
     {
      "time": "8:30-9:30pm",
@@ -511,30 +519,34 @@
      "title": "Rowing*"
     },
     {
-     "time": "7:45-8:45am",
+     "time": "7:30-8:45am",
      "title": "Breakfast"
     },
     {
      "time": "9-10am",
-     "title": "Linen Bar"
+     "title": "Linen Bar",
+     "desc": "Meet us outside Jeffrey Pine F (by the Boat Dock) and trade your dirty linens for clean ones. They guarantee you've never experienced a cleaning service as refined and sociable as Linen Bar."
     },
     {
      "time": "10am-12pm",
-     "title": "Games Day & Ski Show"
+     "title": "Games Day & Ski Show",
+     "desc": "The time-honored tradition of Games Day continues on Baby Beach. The ancient Olympic Games themselves consisted of egg toss, hula hoop and tug o' war, so make your ancestors proud. Keep an eye toward the lake though for our modern addition of Ski Show! Double Tantrum!"
     }
    ],
    "noon": [
     {
-     "time": "12-12:45pm",
+     "time": "12-1pm",
      "title": "BBQ in Front of Lodge"
-    },
-    {
-     "time": "12:30-3pm",
-     "title": "Guest vs Guest Volleyball*"
     },
     {
      "time": "1-2pm",
      "title": "Wilderness Skills Workshop"
+    },
+    {
+     "time": "1-2:30pm",
+     "title": "Tree Scavenger Hunt",
+     "desc": "Trees! Trees! Trees! These beautiful creatures surround us at camp, but not often enough do we stop to take a closer look at them. Join us at the picnic tables at 1PM to explore and identify some of the trees around us. Feel free to bring questions, or even some plant litter, and get ready to see camp through nature's lens.",
+     "special": true
     },
     {
      "time": "1-3pm",
@@ -545,20 +557,29 @@
      "title": "Boat Dock"
     },
     {
-     "time": "1-5pm",
-     "title": "Ski Dock*"
+     "time": "1:30-3pm",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room!\n\nGUPPIES C, D, & E: Calling all Guppies! Still have some energy after family beach day? We'll spend some mellow (or not so mellow) time running around enjoying the afternoon! Meet in your Willow cabin ready to play!\n\nCRAWDADS C: We heard that the only thing better than the egg toss on Wednesdays is hanging out with the Crawdad counselors. Come see if we're right… Meet in Willow F when you're ready for a rollicking good time! The group will be taking a ride on Boatster, so be sure to wear some sunscreen and pack some water!",
+     "special": true
     },
     {
      "time": "1:30-3:30pm",
      "title": "Kids Sail"
     },
     {
-     "time": "2:30-3:30pm",
-     "title": "Dance: Line Dancing"
+     "time": "1:30-3:30pm",
+     "title": "Wimbledon Wednesday*",
+     "desc": "Champions aren't born, they're made. The question is…do you have what it takes? Are you going to be Stanford Sierra Camp's next Wimbledon Champion? Come join us on the tennis courts for this showdown of the century! All skill levels are welcome! Be sure to bring a tennis racket and some sunscreen! Sign up outside the office first."
     },
     {
-     "time": "2-5pm",
-     "title": "Wimbledon Wednesday*"
+     "time": "1:45-3:15pm",
+     "title": "Guest vs Guest Volleyball*",
+     "desc": "It is time for the battle of the Golden Spike! The annual Guest v. Guest Beach Volleyball Showdown will take place at the Steinbeck Memorial Volleyball Stadium. This tournament is for guests who have previous experience and are ready for some hot competition. Teams will compete 4v4 and will be mixed based on skill level. Everyone is welcome to come and cheer on the competition!"
+    },
+    {
+     "time": "1:45-3:45pm",
+     "title": "Family Craft: Jewelry Making*",
+     "desc": "Add some new pieces to your jewelry collection! We've got beads in every shape and color for you to string together your next masterpiece. Join Andriana & Nia on the Old Lodge Deck to design your very own bracelets, necklaces, earrings, and keychains."
     },
     {
      "time": "2:15-3:45pm",
@@ -566,7 +587,7 @@
     },
     {
      "time": "2:30-3:30pm",
-     "title": "Family Craft: Jewelry Making*"
+     "title": "Dance: Line Dancing"
     },
     {
      "time": "2:30-3:30pm",
@@ -585,12 +606,28 @@
      "title": "Language Hour"
     },
     {
-     "time": "5-6pm",
-     "title": "Story Hour"
+     "time": "3-5pm",
+     "title": "Ski Dock*"
+    },
+    {
+     "time": "4-5pm",
+     "title": "Family Boatster Cruise #1*",
+     "desc": "Bring the family down to the dock for a relaxing cruise out on the lake! Be sure to sign up, as spots are limited!"
+    },
+    {
+     "time": "4-5pm",
+     "title": "Story Hour #1",
+     "desc": "Meet on the Cathedral Room steps for some good old-fashioned storytelling fun."
     },
     {
      "time": "5-6pm",
-     "title": "Boatster Cruise*"
+     "title": "Story Hour #2",
+     "desc": "Let's be honest. There are way too many great stories for just one hour. So today, we have two Story Hours! Come on by the Cathedral Room steps for more storytelling fun."
+    },
+    {
+     "time": "5-6pm",
+     "title": "Family Boatster Cruise #2*",
+     "desc": "Double the Boatsters, double the fun! Sign up for the second chance out on the waters today!"
     },
     {
      "time": "5-6pm",
@@ -603,12 +640,18 @@
    ],
    "sunset": [
     {
-     "time": "5:45-6:45pm",
+     "time": "5:30-6:45pm",
      "title": "Dinner"
     },
     {
-     "time": "7-7:45pm",
+     "time": "6:30-7:30pm",
      "title": "Boat Dock"
+    },
+    {
+     "time": "7-8:30pm",
+     "title": "Family Movie Night",
+     "desc": "Toy Story? Moana? Coco? So many incredible, classic cinematic moments have the potential to grace our screen tonight. Come to the Cathedral Room at 7pm for a relaxing, entertaining night with the whole family!",
+     "special": true
     },
     {
      "time": "7:30-8:45pm",
@@ -635,7 +678,7 @@
      "title": "Morning Exercise"
     },
     {
-     "time": "7:45-8:45am",
+     "time": "7:30-8:45am",
      "title": "Breakfast"
     },
     {
@@ -643,40 +686,39 @@
      "title": "Women's Breakfast"
     },
     {
-     "time": "8-11am",
-     "title": "Ski Dock*"
-    },
-    {
      "time": "8:15am-12pm",
-     "title": "Advanced Mountain Biking*"
+     "title": "Advanced Mountain Biking*",
+     "desc": "Join Matty for an advanced mountain bike ride in town! We'll load up in a van at the bottom of the lodge, head to Corral Trail, South Lake's favorite advanced trail. Corral features rock gardens, jumps, some flow, and big views in a 5.5 mile loop. If time allows, we'll do 2 laps. Let's shred!!!"
     },
     {
      "time": "8:15am-4pm",
      "title": "Long Hike*"
     },
     {
-     "time": "9am-5pm",
-     "title": "Boat Dock"
+     "time": "9-11am",
+     "title": "Ski Dock*"
     },
     {
-     "time": "9:15am-3pm",
-     "title": "Guppies"
+     "time": "9am-5pm",
+     "title": "Boat Dock"
     },
     {
      "time": "9:30am-11:30am",
      "title": "Arts: Oil Painting - Fruit & Still Life*"
     },
     {
-     "time": "9:30am-3:30pm",
-     "title": "Kids Groups"
-    },
-    {
-     "time": "9:30am-3:30pm",
-     "title": "Medium Hike*"
-    },
-    {
      "time": "9:45-11:15am",
      "title": "Couples Tennis"
+    },
+    {
+     "time": "10am-3pm",
+     "title": "Guppies",
+     "desc": "GUPPIES C, D, E, & F: It's GUPPIES BEACH DAY! Meet at your Willow cabin to prepare for a Boaster transportation to Baby Beach. We will have a day of sandcastle building, swimming and games! Don't forget to wear sunscreen, bring a lunch (no peanut butter please), a towel, a bathing suit, a water bottle, and a hat! Drop off and pick up will be in your group's Willow cabin."
+    },
+    {
+     "time": "10am-3pm",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room! For Macros, make sure to pack a lunch for the long day ahead! Macros will also be taking a ride on Boatster after lunch!\n\nCRAWDADS C: Crawdads, are you ready for the journey of a lifetime? It's hike day! First, we'll be heading to the Fire House to learn a little bit about some local heroes, and then we will make the trek to Lily Lake for lunch! Don't forget to pack your lunch at the breakfast hiker bar, and bring water and sunscreen. Be sure to wear your hardiest walking shoes! Both drop off and pick up will be in your group's Lodge room."
     },
     {
      "time": "10-11am",
@@ -684,7 +726,42 @@
     },
     {
      "time": "10-11am",
-     "title": "Fountain Trivia"
+     "title": "Fountain Trivia",
+     "desc": "Stop by The Fountain, enjoy a morning cup of coffee and test your knowledge of miscellaneous facts with Thursday morning trivia! We will guide you through themed rounds, from film to food to Fallen Leaf Lake! Ease into your morning, learn some new things and win prizes while you're at it!"
+    },
+    {
+     "time": "10-11:45am",
+     "title": "Craft: Resin Coasters/Trays*",
+     "desc": "Customize your resin creation with dried flowers, gold flakes, and vibrant pigments! Come learn how to pour resin coasters and trays with Nia at the Old Lodge Deck.",
+     "special": true
+    },
+    {
+     "time": "10:15-11:15am",
+     "title": "Tennis Open Clinic",
+     "desc": "Come meet fellow guests in a friendly setting and enjoy the game in a relaxed setting, with beautiful views to boot! Open to players of all ability levels. We are excited to have y'all with good attitudes and smiles required!",
+     "special": true
+    },
+    {
+     "time": "10:15-11:15am",
+     "title": "Partner Yoga",
+     "desc": "It's time to reconnect with your loved ones!! Meet at the Crawdeck with your partner (or your sister, or your best friend) to reflect on this past year and all that's to come in the months ahead. Bring water, wear clothes you can move in, and take a long, deep breath: SSC has your date night covered this week!",
+     "special": true
+    },
+    {
+     "time": "10:15-11:30am",
+     "title": "Volleyball Free Play",
+     "desc": "Come to the volleyball courts for some fun volleyball free play! Can't wait to see you there!",
+     "special": true
+    },
+    {
+     "time": "10:15am-2:45pm",
+     "title": "Easier Medium Hike*",
+     "desc": "Join us for the easier medium hike of the day. A variety of ability levels are welcome, but please make sure to bring adequate supplies (water, food, sun protection) for an extended day out on the trails. Meet on the Fountain Deck."
+    },
+    {
+     "time": "10:15am-2:45pm",
+     "title": "Harder Medium Hike*",
+     "desc": "Join us for the harder medium hike of the day. A variety of ability levels are welcome, but please make sure to bring adequate supplies (water, food, sun protection) for an extended day out on the trails. Meet on the Fountain Deck."
     },
     {
      "time": "10:30-11:45am",
@@ -693,32 +770,68 @@
    ],
    "noon": [
     {
-     "time": "12-12:45pm",
-     "title": "Adult Lunch"
+     "time": "12-1pm",
+     "title": "Lunch"
     },
     {
      "time": "1pm",
      "title": "Osprey Overnight Leaves"
     },
     {
-     "time": "1-5pm",
-     "title": "Ski Dock *"
+     "time": "1:15-3pm",
+     "title": "Open Climb",
+     "desc": "Join Chiara at our climbing wall for some fun with the rock wall! You can wear comfortable sneakers or borrow our climbing shoes. Please remember to bring water and sunscreen. We've got everything else you need!",
+     "special": true
+    },
+    {
+     "time": "1:30-2:30pm",
+     "title": "Adult Boatster*",
+     "desc": "Missed your chance previous days to partake in some social hour Boatster magic? Seize the day, the moment, the opportunity! Sign up and meet down on the Boat Dock at 1:30pm sharp.",
+     "special": true
+    },
+    {
+     "time": "1:30-3pm",
+     "title": "Advanced Tennis Clinic*",
+     "desc": "Do you know your way around a tennis court? This clinic is for those that want to put a bit more work in on their backhand smash, or maybe want to perfect a slicing dropshot. We will focus less on actual instruction and instead work towards individual goals through practice and repetition. Sign up at the office.",
+     "special": true
+    },
+    {
+     "time": "2-3pm",
+     "title": "Faculty Speaker Lecture: Climate Action During “No and Slow” Politics",
+     "desc": "Talk overview: Global greenhouse gas emissions have not slowed down; in fact, they continue to rise. Stanford is one of the largest campuses in the country, and the largest real estate holder in Silicon Valley. Stanford uniquely operates its own energy, water and waste systems. In this talk I will showcase how the campus has been leveraged to demonstrate impactful solutions to pressing climate and waste challenges that are optimized for Stanford, and scalable across the world. We will explore during “no and slow” sustainability politics, how a great area of opportunity lies in understanding how community culture negatively shapes pro environmental behavior, and opportunities to intervene to reshape culture. You will hear results of some fun and surprising research being done on campus, and hopefully leave inspired to examine how culture has shaped your everyday behaviors towards the environment and climate action in negative and positive ways.\n\nSpeaker Bio: Kristin has been advancing Stanford University's sustainability agenda since 2012, and currently serves as Stanford's Director of Sustainability. Kristin's work aims to transform the university's climate and waste future and support the next generation of sustainability change management leaders. Kristin leads a course in the Stanford Doerr School of Sustainability on Organizational Change Management and on applying Sustainability to City Systems. Prior to joining Stanford, she served as the first Sustainability Planner for the City of Palo Alto, where she developed and enforced the city's green building and sustainable development policies. She also has work experience at both the U.S. and California Environmental Protection Agency, and Natural Resources Defense Council. She did her undergraduate work at the University of California, Davis and received a Masters in Environmental Science, Policy and Management from Columbia University.",
+     "special": true
     },
     {
      "time": "2-4pm",
      "title": "Arts: Watercolor Landscapes*"
     },
     {
+     "time": "2-4pm",
+     "title": "Advanced Sailing Clinic*",
+     "desc": "Come meet Willa down on the boat dock at 3pm to embark on a wonderful afternoon of sailing on beautiful Fallen Leaf Lake!",
+     "special": true
+    },
+    {
      "time": "3-4pm",
      "title": "Yoga: Beach and Shallow Water"
     },
     {
-     "time": "4:30-5:30pm",
-     "title": "Kids + Adults Volleyball"
+     "time": "3-5pm",
+     "title": "Ski Dock*"
     },
     {
-     "time": "5-6pm",
+     "time": "4-5pm",
+     "title": "Book Talk: Arrow of God",
+     "desc": "In a world of increasing division and conflict, it's easy to be convinced our worldview and way of life are \"correct.\" Chinua Achebe, often called the father of modern African literature, challenges many of our Western beliefs in _Arrow of God_ (1964). The novel follows a chief priest in Igbo Nigeria as he navigates a society being reshaped by British colonizers and missionaries. Join Marcus at the Fountain Deck to grapple with Achebe's writing on culture, tradition, colonialism, and power—a perspective as relevant today as it was half a century ago.",
+     "special": true
+    },
+    {
+     "time": "4-5pm",
      "title": "Story Hour"
+    },
+    {
+     "time": "4:30-5:30pm",
+     "title": "Kids + Adults Volleyball"
     },
     {
      "time": "5-6pm",
@@ -727,12 +840,17 @@
    ],
    "sunset": [
     {
-     "time": "5:45-6:45pm",
+     "time": "5:30-6:45pm",
      "title": "Dinner"
     },
     {
-     "time": "7-7:45pm",
+     "time": "6:30-7:30pm",
      "title": "Boat Dock"
+    },
+    {
+     "time": "7-9pm",
+     "title": "Fountain Pretzel Night!",
+     "desc": "Come get a delicious soft pretzel available throughout tonight's Fountain hours!"
     },
     {
      "time": "7:50-9pm",
@@ -744,7 +862,8 @@
     },
     {
      "time": "8-9pm",
-     "title": "Faculty Speaker"
+     "title": "Astrocruise*",
+     "desc": "Space X flights too expensive? Come to our astrocruise, where we guarantee that the incredible night stars of Fallen Leaf will make you feel like you're up in the cosmos. Learn about new constellations and use celestial navigation to find your way back to camp! Hot chocolate and blankets provided. Wear warm clothes, signup beforehand and meet us on the Boat Dock!"
     },
     {
      "time": "8-9:15pm",
@@ -755,16 +874,8 @@
      "title": "Teens"
     },
     {
-     "time": "9-10:30pm",
-     "title": "Fountain Pretzel Night!"
-    },
-    {
      "time": "9:45-10:45pm",
      "title": "Trivia Night!"
-    },
-    {
-     "time": "10-11pm",
-     "title": "Astrocruise*"
     }
    ]
   },
@@ -776,18 +887,19 @@
     },
     {
      "time": "7-8:15am",
-     "title": "SUP Yoga"
+     "title": "SUP Yoga*",
+     "desc": "Love Stand Up Paddle-boarding on still, morning waters? Want to add a twist with some yoga on the board? Come join Stella for SUP yoga, a test of balance, strength, and humility! Meet at the Boat Dock and make sure you wear something you wouldn't mind getting a little wet."
     },
     {
      "time": "7:15-8:15am",
      "title": "Morning Exercise + Cold Plunge*"
     },
     {
-     "time": "7:45-8:45am",
+     "time": "7:30-8:45am",
      "title": "Breakfast (Omelette Bar)"
     },
     {
-     "time": "8-11am",
+     "time": "9-11am",
      "title": "Ski Dock*"
     },
     {
@@ -796,10 +908,11 @@
     },
     {
      "time": "9-11:45am",
-     "title": "Intermediate Mountain Biking*"
+     "title": "Intermediate Mountain Biking*",
+     "desc": "Want to get out and explore the beautiful trails around Fallen Leaf Lake? Tire-d of being on foot? Chain-ge into athletic clothing and closed toed shoes, bring plenty of water, and meet at the picnic tables to join us on a ~3 hour mountain bike ride. This ride is gear-ed towards intermediate riders, so if you are comfortable on a bike, come check out one of our Specialized Stumpjumpers and a helmet and join Nick for a ride through the Sierra!"
     },
     {
-     "time": "9am-5pm",
+     "time": "9am-12pm",
      "title": "Boat Dock"
     },
     {
@@ -811,14 +924,6 @@
      "title": "Crafts: Print Making"
     },
     {
-     "time": "9:30-11am",
-     "title": "Arts: Acrylic Paint*"
-    },
-    {
-     "time": "9:30-11:45am",
-     "title": "Kids Groups"
-    },
-    {
      "time": "9:45-11:30am",
      "title": "Pickleball Play"
     },
@@ -827,30 +932,55 @@
      "title": "Reflection Yoga"
     },
     {
+     "time": "10-11:45am",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room!\n\nGUPPIES C, D, & E: We went to the beach, we went on a hike, and now it's time to make the most of our last day together! Come to your Willow cabin ready to run around, get dirty, and do our lovely end of week PARADE! Pick up will be back in your Willow cabin.\n\nCRAWDADS C: Wow, Snoopers, it feels like we've done it all this week! But the fun isn't over yet – come to Willow F ready to run around and put on the annual Guppy-Crawdad parade! Pick up will be back in your Lodge room."
+    },
+    {
+     "time": "10:15-11:15am",
+     "title": "Faculty Speaker Lecture: Michael Rau, Creativity, Technology and Theatre",
+     "desc": "Talk overview: A casual chat about creativity and art in the age of AI. Meet in Old Lodge.",
+     "special": true
+    },
+    {
+     "time": "10:30am-12pm",
+     "title": "Arts: Acrylic Paint*",
+     "desc": "Unleash your inner artist with Andriana on the Old Lodge Deck at 10:30AM! Whether you're a beginner or seasoned painter, this acrylic session is all about playing with color and texture. Brushes, palette knives, and bold imagination are provided. Come in paint-friendly clothes and be ready to dive into a vibrant, expressive world."
+    },
+    {
      "time": "10:45am-12pm",
      "title": "Teens Group"
     },
     {
-     "time": "",
-     "title": "***EARLY CHECK-OUT Sign-Up Ends at Noon***"
+     "time": "12pm",
+     "title": "***EARLY CHECK-OUT Sign-Up Ends at Noon***",
+     "desc": "Please sign up for early checkout before noon so we can get your bill all ready for you by 3 PM!"
     }
    ],
    "noon": [
     {
-     "time": "12-12:45pm",
+     "time": "12-1pm",
      "title": "Lunch"
     },
     {
-     "time": "1-5pm",
+     "time": "12-5pm",
+     "title": "Boat Dock",
+     "special": true
+    },
+    {
+     "time": "1-2pm",
      "title": "Ski Dock*"
     },
     {
-     "time": "1:15-3:00pm",
-     "title": "Staph Vs. Guest Volleyball"
+     "time": "1-2pm",
+     "title": "Parent and Child Yoga",
+     "desc": "Flutter into the magic of the morning with a special session of fairy yoga to awaken your bodies and imaginations! Meet at the CrawDeck.",
+     "special": true
     },
     {
-     "time": "1:30-2:30pm",
-     "title": "Faculty Speaker Discussion"
+     "time": "1:30-3pm",
+     "title": "Staph Vs. Guest Volleyball",
+     "desc": "Today we will hit the sand again for the Staph vs. Guest tournament! There will be back to back 6v6 games pinning the strongest of the Staph against the greatest of the guests. Both sides will battle for victory in this exciting finale of the week. All guests are welcome, so come on down to the Steinbeck Memorial Volleyball Stadium to join in on the court or cheer from the sidelines."
     },
     {
      "time": "1:30-3:30pm",
@@ -861,16 +991,22 @@
      "title": "Basketball Tournament"
     },
     {
+     "time": "2pm",
+     "title": "Faculty Speaker Discussion",
+     "desc": "Couldn't get enough of today's faculty speaker lecture? Meet on the Fountain Deck for more discussion, excellent questions and contemplations."
+    },
+    {
      "time": "2-3pm",
      "title": "Kids Talent Show*"
     },
     {
-     "time": "2:45-3:45pm",
-     "title": "Psychology Discussion"
+     "time": "2:30-4pm",
+     "title": "Pickleball Tournament*",
+     "desc": "The moment has come: time to show us what you've got in the pickleball circuit. Grab a partner or come solo. Join us at the basketball/pickleball courts for one last afternoon of friendly competition."
     },
     {
-     "time": "2:45-4:15pm",
-     "title": "Pickleball Tournament*"
+     "time": "2:45-3:45pm",
+     "title": "Psychology Discussion"
     },
     {
      "time": "3-4pm",
@@ -885,8 +1021,15 @@
      "title": "Kids Carnival"
     },
     {
-     "time": "3-4:15pm",
-     "title": "Open Climb"
+     "time": "3-4:45pm",
+     "title": "Open Climb",
+     "desc": "Come try out the climbing wall for one last time this week! Lindsey will be supervising as you try out the routes. Ask him for tips! Wear comfortable sneakers and bring water. We've got everything else you need!"
+    },
+    {
+     "time": "3-4:45pm",
+     "title": "Kids Groups",
+     "desc": "MICROS AND MACROS: Micros, head to the Cathedral Room, and Macros, head to the Angora Room!\n\nGUPPIES C, D, & E: It's our last time together? Oh, say it ain't so! But before you leave, we need one more Guppy lovefest – come to your Willow cabin ready to rock it out one last time.\n\nCRAWDADS C: We are super sad that you have to leave soon – but before you head off into the wind, we need you to come to Willow F ready to finish out the week with some cuddles and FUN!",
+     "special": true
     },
     {
      "time": "3-4:30pm",
@@ -894,23 +1037,26 @@
     },
     {
      "time": "3-6pm",
-     "title": "EARLY CHECK-OUT*"
+     "title": "EARLY CHECK-OUT*",
+     "desc": "If you signed up for EARLY CHECK OUT you may pay your bill between 3-6pm on Friday in the Office. We accept cash or check. After 12pm Friday, you may not make any further charges to your account in The Fountain—cash only."
     },
     {
      "time": "4-5pm",
      "title": "Art & Crafts Social"
     },
     {
+     "time": "4-4:45pm",
+     "title": "Cherry House Social",
+     "desc": "Mosey on over to Cherry House to socialize with staph and fellow campers. Recap your wonderful week while sampling the kitchen's finest and sipping on Stanford's reds and whites."
+    },
+    {
      "time": "4:15-5pm",
      "title": "Egg Drop"
     },
     {
-     "time": "4:30-5:30pm",
-     "title": "Cherry House Social"
-    },
-    {
-     "time": "5:00-5:45pm",
-     "title": "Shabbat"
+     "time": "5-5:45pm",
+     "title": "Shabbat",
+     "desc": "Join us on the Dining Room deck for a brief service and to gently reflect on the past week at Camp."
     }
    ],
    "sunset": [
@@ -1690,5 +1836,10 @@
    "dinner": null
   }
  },
- "confirmed": {}
+ "confirmed": {
+  "wed": true,
+  "thu": true,
+  "fri": true,
+  "tue": true
+ }
 }
